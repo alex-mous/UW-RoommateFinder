@@ -49,27 +49,27 @@ Path:
             <section class="mt-3 mb-5" id="form">
                 <form>
                     <p class="h3 text-center mt-4 mb-1">Match Listing</p>
-                    <p class="text-warning text-center small m-0 p-0">This information will be shown to other matches</p>
+                    <p class="text-danger text-center small m-0 p-0">This information will be shown to other matches</p>
                     <label class="row custom-form-row">
                         <span class="col-sm col-12 mb-1 text-center">
                             <p class="m-0 p-0">What is your name?</p>
                         </span>
-                        <input class="col mx-4 mx-sm-0  form-control d-inline" required  type="text" name="name">
+                        <input class="col mx-4 mx-sm-0 form-control d-inline" required type="text" name="name">
                     </label>
                     <hr class="d-sm-none d-block w-50 my-0">
                     <label class="row custom-form-row">
                         <span class="col-sm col-12 mb-1 text-center">
                             <p class="m-0 p-0">What is your email address?</p>
                         </span>
-                        <input class="col mx-4 mx-sm-0  form-control d-inline" required  type="text" name="email">
+                        <input class="col mx-4 mx-sm-0  form-control d-inline" required type="text" name="email">
                     </label>
                     <hr class="d-sm-none d-block w-50 my-0">
                     <label class="row custom-form-row">
                         <span class="col-sm col-12 mb-1 text-center">
                             <p class="m-0 p-0">Write a small bio to introduce yourself to other matches</p>
-                            <p class="text-warning small m-0 p-0">Suggested: 75-125 words. Min: 50 words/Max: 150 words</p>
+                            <p class="text-danger small m-0 p-0">Suggested: 75-125 words. Min: 50 words/Max: 150 words</p>
                         </span>
-                        <textarea class="col mx-4 mx-sm-0  form-control d-inline" required  name="bio"></textarea>
+                        <textarea class="col mx-4 mx-sm-0  form-control d-inline" required name="bio"></textarea>
                     </label>
                     <p class="h3 text-center mt-4 mb-1">Basic Demographics</p>
                     <label class="row custom-form-row">
@@ -77,6 +77,7 @@ Path:
                             Which country are you coming from?
                         </span>
                         <select class="col mx-4 mx-sm-0 form-control" required name="country">
+                            <option disabled selected value> -- select -- </option>
                             <option value="Afganistan">Afghanistan</option>
                             <option value="Albania">Albania</option>
                             <option value="Algeria">Algeria</option>
@@ -331,6 +332,7 @@ Path:
                             <p class="m-0 p-0">Which state are you coming from?</p>
                         </span>
                         <select class="col mx-4 mx-sm-0 form-control" required name="state">
+                            <option disabled selected value> -- select -- </option>
                             <option value="AL">Alabama</option>
                             <option value="AK">Alaska</option>
                             <option value="AZ">Arizona</option>
@@ -391,19 +393,19 @@ Path:
                         <span class="col-sm col-12 mb-1 text-center">
                             <div class="form-check-inline">
                                 <label class="form-check-label">
-                                    <input class="form-check-input" type="radio" name="pronouns" value="he">
+                                    <input class="form-check-input" type="radio" required name="pronouns" value="he">
                                     He/Him
                                 </label>
                             </div>
                             <div class="form-check-inline">
                                 <label class="form-check-label">
-                                    <input class="form-check-input" type="radio" name="pronouns" value="she">
+                                    <input class="form-check-input" type="radio" required name="pronouns" value="she">
                                     She/Her
                                 </label>
                             </div>
                             <div class="form-check-inline">
                                 <label class="form-check-label">
-                                    <input class="form-check-input" type="radio" name="pronouns" value="they">
+                                    <input class="form-check-input" type="radio" required name="pronouns" value="they">
                                     They/Them
                                 </label>
                             </div>
@@ -416,19 +418,19 @@ Path:
                         <span class="col-sm col-12 mb-1 text-center">
                             <div class="form-check-inline">
                                 <label class="form-check-label">
-                                    <input class="form-check-input" type="radio" name="social" value="extrovert">
+                                    <input class="form-check-input" type="radio" required name="social" value="extrovert">
                                     Extrovert
                                 </label>
                             </div>
                             <div class="form-check-inline">
                                 <label class="form-check-label">
-                                    <input class="form-check-input" type="radio" name="social" value="ambivert">
+                                    <input class="form-check-input" type="radio" required name="social" value="ambivert">
                                     Ambivert
                                 </label>
                             </div>
                             <div class="form-check-inline">
                                 <label class="form-check-label">
-                                    <input class="form-check-input" type="radio" name="social" value="introvert">
+                                    <input class="form-check-input" type="radio" required name="social" value="introvert">
                                     Introvert
                                 </label>
                             </div>
@@ -439,8 +441,9 @@ Path:
                             <p class="m-0 p-0">How close would you like to be to your roommate?</p>
                         </span>
                         <select class="col mx-4 mx-sm-0 form-control" required name="closeness">
+                            <option disabled selected value> -- select -- </option>
                             <option value="vclose">Very close</option>
-                            <option value="close" selected>Pretty close</option>
+                            <option value="close">Pretty close</option>
                             <option value="nclose">Friendly but not close</option>
                          </select>
                     </label>
@@ -449,6 +452,7 @@ Path:
                             <p class="m-0 p-0">What is your intended major?</p>
                         </span>
                         <select class="col mx-4 mx-sm-0 form-control" required name="major">
+                            <option disabled selected value> -- select -- </option>
                             <option value="Undecided">Undecided</option>
                             <option value="American Ethnic Studies">American Ethnic Studies</option>
                            	<option value="Art">Art</option>
@@ -561,9 +565,24 @@ Path:
                     <p class="h3 text-center mt-4 mb-1">Housing Preferences</p>
                     <label class="row custom-form-row">
                         <span class="col py-1 text-center">
+                            What is your preferred campus location?
+                        </span>
+                        <select class="col mx-4 mx-sm-0 form-control" required name="campus">
+                            <option disabled selected value> -- select -- </option>
+                            <option value="U">Unsure</option>
+                            <option value="W">West Campus</option>
+                            <option value="ON">Old North Campus</option>
+                            <option value="NN">New North Campus</option>
+                            <option value="G">Greek Row</option>
+                            <option value="G">Off-campus</option>
+                         </select>
+                    </label>
+                    <label class="row custom-form-row">
+                        <span class="col py-1 text-center">
                             What is your preferred Residence Hall?
                         </span>
                         <select class="col mx-4 mx-sm-0 form-control" required name="residence">
+                            <option disabled selected value> -- select -- </option>
                             <option value="Unsure">Unsure</option>
                             <option value="Alder">Alder Hall</option>
                             <option value="Elm">Elm Hall</option>
@@ -584,6 +603,7 @@ Path:
                             What is your ideal room temperature?
                         </span>
                         <select class="col mx-4 mx-sm-0 form-control" required name="temperature">
+                            <option disabled selected value> -- select -- </option>
                             <option value="Cold">Cold (Less than 17 °C/63 °F) </option>
                             <option value="Cool">Cool (17-20 °C/63-68 °F)</option>
                             <option value="Neutral">Neutral (20-23 °C/68-73 °F)</option>
@@ -598,13 +618,13 @@ Path:
                         <span class="col-sm col-12 mb-1 text-center">
                             <div class="form-check-inline">
                                 <label class="form-check-label">
-                                    <input class="form-check-input" type="radio" name="rushing" value="y">
+                                    <input class="form-check-input" type="radio" required name="rushing" value="y">
                                     Yes
                                 </label>
                             </div>
                             <div class="form-check-inline">
                                 <label class="form-check-label">
-                                    <input class="form-check-input" type="radio" name="rushing" value="n">
+                                    <input class="form-check-input" type="radio" required name="rushing" value="n">
                                     No
                                 </label>
                             </div>
@@ -617,13 +637,13 @@ Path:
                         <span class="col-sm col-12 mb-1 text-center">
                             <div class="form-check-inline">
                                 <label class="form-check-label">
-                                    <input class="form-check-input" type="radio" name="lgbtqpref" value="y">
+                                    <input class="form-check-input" type="radio" required name="lgbtqpref" value="y">
                                     Yes
                                 </label>
                             </div>
                             <div class="form-check-inline">
                                 <label class="form-check-label">
-                                    <input class="form-check-input" type="radio" name="lgbtqpref" value="n">
+                                    <input class="form-check-input" type="radio" required name="lgbtqpref" value="n">
                                     No
                                 </label>
                             </div>
@@ -634,10 +654,10 @@ Path:
                             <p class="m-0 p-0">How messy/clean do you intend on keeping the room?</p>
                         </span>
                         <select class="col mx-4 mx-sm-0 form-control" required name="cleanliness">
-                            <option value="None" selected>None</option>
-                            <option value="messy">Organization or cleanliness isn't super important</option>
-                            <option value="neutral" selected>Pretty organized and clean</option>
-                            <option value="tidy">Very organized and super cleam</option>
+                            <option disabled selected value> -- select -- </option>
+                            <option value="messy">Organization/cleanliness don't matter</option>
+                            <option value="neutral">Pretty organized and clean</option>
+                            <option value="tidy">Very organized and super clean</option>
                          </select>
                     </label>
                     <label class="row custom-form-row">
@@ -645,9 +665,10 @@ Path:
                             <p class="m-0 p-0">How noisy/quiet would you want your room to be?</p>
                         </span>
                         <select class="col mx-4 mx-sm-0 form-control" required name="noise">
-                            <option value="loud">I don't mind any amount of noise</option>
-                            <option value="neutral" selected>A little noise is okay</option>
-                            <option value="quiet">I like it to be quiet</option>
+                            <option disabled selected value> -- select -- </option>
+                            <option value="loud">I'm okay with any noise</option>
+                            <option value="neutral">A little noise is okay</option>
+                            <option value="quiet">I prefer quietness</option>
                          </select>
                     </label>
                     <label class="row custom-form-row">
@@ -655,11 +676,12 @@ Path:
                             <p class="m-0 p-0">How often do you plan to have people over?</p>
                         </span>
                         <select class="col mx-4 mx-sm-0 form-control" required name="noise">
-                            <option value="vfreq">Very frequently (I'm a popular person - daily or every few days)</option>
-                            <option value="freq">Frequently (weekly)</option>
-                            <option value="avg" selected>Sometimes (maybe a couple times a month)</option>
-                            <option value="rare">Rarely (once a month)</option>
-                            <option value="rare">Very Rarely (I'm a CS major - maybe once a year)</option>
+                            <option disabled selected value> -- select -- </option>
+                            <option value="vfreq">I'm a popular person - nearly daily</option>
+                            <option value="freq">Maybe weekly</option>
+                            <option value="avg">Maybe a couple times a month</option>
+                            <option value="rare">About once a month</option>
+                            <option value="rare">I'm a CS major - maybe once a year</option>
                          </select>
                     </label>
                     <label class="row custom-form-row">
@@ -679,19 +701,19 @@ Path:
                         <span class="col-sm col-12 mb-1 text-center">
                             <div class="form-check-inline">
                                 <label class="form-check-label">
-                                    <input class="form-check-input" type="radio" name="drink" value="y">
+                                    <input class="form-check-input" type="radio" required name="drink" value="y">
                                     Yes
                                 </label>
                             </div>
                             <div class="form-check-inline">
                                 <label class="form-check-label">
-                                    <input class="form-check-input" type="radio" name="drink" value="m">
-                                    Yes, but only outside of the room
+                                    <input class="form-check-input" type="radio" required name="drink" value="m">
+                                    Only outside
                                 </label>
                             </div>
                             <div class="form-check-inline">
                                 <label class="form-check-label">
-                                    <input class="form-check-input" type="radio" name="drink" value="n">
+                                    <input class="form-check-input" type="radio" required name="drink" value="n">
                                     No
                                 </label>
                             </div>
@@ -704,19 +726,19 @@ Path:
                         <span class="col-sm col-12 mb-1 text-center">
                             <div class="form-check-inline">
                                 <label class="form-check-label">
-                                    <input class="form-check-input" type="radio" name="drinkr" value="y">
+                                    <input class="form-check-input" type="radio" required name="drinkr" value="y">
                                     Yes
                                 </label>
                             </div>
                             <div class="form-check-inline">
                                 <label class="form-check-label">
-                                    <input class="form-check-input" type="radio" name="drinkr" value="m">
-                                    Yes, but only outside of the room
+                                    <input class="form-check-input" type="radio" required name="drinkr" value="m">
+                                    Only outside
                                 </label>
                             </div>
                             <div class="form-check-inline">
                                 <label class="form-check-label">
-                                    <input class="form-check-input" type="radio" name="drinkr" value="n">
+                                    <input class="form-check-input" type="radio" required name="drinkr" value="n">
                                     No
                                 </label>
                             </div>
@@ -729,19 +751,19 @@ Path:
                         <span class="col-sm col-12 mb-1 text-center">
                             <div class="form-check-inline">
                                 <label class="form-check-label">
-                                    <input class="form-check-input" type="radio" name="smoke" value="y">
+                                    <input class="form-check-input" type="radio" required name="smoke" value="y">
                                     Yes
                                 </label>
                             </div>
                             <div class="form-check-inline">
                                 <label class="form-check-label">
-                                    <input class="form-check-input" type="radio" name="smoke" value="m">
-                                    Yes, but only outside of the room
+                                    <input class="form-check-input" type="radio" required name="smoke" value="m">
+                                    Only outside
                                 </label>
                             </div>
                             <div class="form-check-inline">
                                 <label class="form-check-label">
-                                    <input class="form-check-input" type="radio" name="smoke" value="n">
+                                    <input class="form-check-input" type="radio" required name="smoke" value="n">
                                     No
                                 </label>
                             </div>
@@ -754,19 +776,19 @@ Path:
                         <span class="col-sm col-12 mb-1 text-center">
                             <div class="form-check-inline">
                                 <label class="form-check-label">
-                                    <input class="form-check-input" type="radio" name="smoker" value="y">
+                                    <input class="form-check-input" type="radio" required name="smoker" value="y">
                                     Yes
                                 </label>
                             </div>
                             <div class="form-check-inline">
                                 <label class="form-check-label">
-                                    <input class="form-check-input" type="radio" name="smoker" value="m">
-                                    Yes, but only outside of the room
+                                    <input class="form-check-input" type="radio" required name="smoker" value="m">
+                                    Only outside
                                 </label>
                             </div>
                             <div class="form-check-inline">
                                 <label class="form-check-label">
-                                    <input class="form-check-input" type="radio" name="smoker" value="n">
+                                    <input class="form-check-input" type="radio" required name="smoker" value="n">
                                     No
                                 </label>
                             </div>
@@ -779,19 +801,19 @@ Path:
                         <span class="col-sm col-12 mb-1 text-center">
                             <div class="form-check-inline">
                                 <label class="form-check-label">
-                                    <input class="form-check-input" type="radio" name="vape" value="y">
+                                    <input class="form-check-input" type="radio" required name="vape" value="y">
                                     Yes
                                 </label>
                             </div>
                             <div class="form-check-inline">
                                 <label class="form-check-label">
-                                    <input class="form-check-input" type="radio" name="vape" value="m">
-                                    Yes, but only outside of the room
+                                    <input class="form-check-input" type="radio" required name="vape" value="m">
+                                    Only outside
                                 </label>
                             </div>
                             <div class="form-check-inline">
                                 <label class="form-check-label">
-                                    <input class="form-check-input" type="radio" name="vape" value="n">
+                                    <input class="form-check-input" type="radio" required name="vape" value="n">
                                     No
                                 </label>
                             </div>
@@ -804,19 +826,19 @@ Path:
                         <span class="col-sm col-12 mb-1 text-center">
                             <div class="form-check-inline">
                                 <label class="form-check-label">
-                                    <input class="form-check-input" type="radio" name="vaper" value="y">
+                                    <input class="form-check-input" type="radio" required name="vaper" value="y">
                                     Yes
                                 </label>
                             </div>
                             <div class="form-check-inline">
                                 <label class="form-check-label">
-                                    <input class="form-check-input" type="radio" name="vaper" value="m">
-                                    Yes, but only outside of the room
+                                    <input class="form-check-input" type="radio" required name="vaper" value="m">
+                                    Only outside
                                 </label>
                             </div>
                             <div class="form-check-inline">
                                 <label class="form-check-label">
-                                    <input class="form-check-input" type="radio" name="vaper" value="n">
+                                    <input class="form-check-input" type="radio" required name="vaper" value="n">
                                     No
                                 </label>
                             </div>
@@ -829,19 +851,19 @@ Path:
                         <span class="col-sm col-12 mb-1 text-center">
                             <div class="form-check-inline">
                                 <label class="form-check-label">
-                                    <input class="form-check-input" type="radio" name="weed" value="y">
+                                    <input class="form-check-input" type="radio" required name="weed" value="y">
                                     Yes
                                 </label>
                             </div>
                             <div class="form-check-inline">
                                 <label class="form-check-label">
-                                    <input class="form-check-input" type="radio" name="weed" value="m">
-                                    Yes, but only outside of the room
+                                    <input class="form-check-input" type="radio" required name="weed" value="m">
+                                    Only outside
                                 </label>
                             </div>
                             <div class="form-check-inline">
                                 <label class="form-check-label">
-                                    <input class="form-check-input" type="radio" name="weed" value="n">
+                                    <input class="form-check-input" type="radio" required name="weed" value="n">
                                     No
                                 </label>
                             </div>
@@ -854,19 +876,19 @@ Path:
                         <span class="col-sm col-12 mb-1 text-center">
                             <div class="form-check-inline">
                                 <label class="form-check-label">
-                                    <input class="form-check-input" type="radio" name="weedr" value="y">
+                                    <input class="form-check-input" type="radio" required name="weedr" value="y">
                                     Yes
                                 </label>
                             </div>
                             <div class="form-check-inline">
                                 <label class="form-check-label">
-                                    <input class="form-check-input" type="radio" name="weedr" value="m">
-                                    Yes, but only outside of the room
+                                    <input class="form-check-input" type="radio" required name="weedr" value="m">
+                                    Only outside
                                 </label>
                             </div>
                             <div class="form-check-inline">
                                 <label class="form-check-label">
-                                    <input class="form-check-input" type="radio" name="weedr" value="n">
+                                    <input class="form-check-input" type="radio" required name="weedr" value="n">
                                     No
                                 </label>
                             </div>
@@ -906,6 +928,7 @@ Path:
                             <p class="m-0 p-0">What are your extra-curricular interests?</p>
                         </span>
                         <select class="col mx-4 mx-sm-0 form-control" required name="clubs">
+                            <option disabled selected value> -- select -- </option>
                             <option value="none">None</option>
                          </select>
                     </label>
@@ -914,27 +937,27 @@ Path:
                             <p class="m-0 p-0">How important is a roommate who has a similar political ideology to you?</p>
                         </span>
                         <span class="col-sm col-12 mb-1 text-center">
-                            <div class="form-check-inline">
+                            <div class="form-check-inline d-block d-sm-inline">
                                 <label class="form-check-label">
-                                    <input class="form-check-input" type="radio" name="ideologyr" value="3">
+                                    <input class="form-check-input" type="radio" required name="ideologyr" value="3">
                                     Extremely important
                                 </label>
                             </div>
-                            <div class="form-check-inline">
+                            <div class="form-check-inline d-block d-sm-inline">
                                 <label class="form-check-label">
-                                    <input class="form-check-input" type="radio" name="ideologyr" value="2">
+                                    <input class="form-check-input" type="radio" required name="ideologyr" value="2">
                                     Pretty important
                                 </label>
                             </div>
-                            <div class="form-check-inline">
+                            <div class="form-check-inline d-block d-sm-inline">
                                 <label class="form-check-label">
-                                    <input class="form-check-input" type="radio" name="ideologyr" value="1">
+                                    <input class="form-check-input" type="radio" required name="ideologyr" value="1">
                                     Not really important
                                 </label>
                             </div>
-                            <div class="form-check-inline">
+                            <div class="form-check-inline d-block d-sm-inline">
                                 <label class="form-check-label">
-                                    <input class="form-check-input" type="radio" name="ideologyr" value="0">
+                                    <input class="form-check-input" type="radio" required name="ideologyr" value="0">
                                     Don't care at all
                                 </label>
                             </div>
@@ -945,11 +968,13 @@ Path:
                             <p class="m-0 p-0">What best describes your political ideology?</p>
                         </span>
                         <select class="col mx-4 mx-sm-0 form-control" required name="ideology1">
+                            <option disabled selected value> -- select -- </option>
                             <option value="A">Authoritarian</option>
                             <option value="C">Center</option>
                             <option value="L">Libertarian</option>
                          </select>
                         <select class="col mx-4 mx-sm-0 form-control" required name="ideology2">
+                            <option disabled selected value> -- select -- </option>
                             <option value="L">Left</option>
                             <option value="C">Center</option>
                             <option value="R">Right</option>
@@ -960,13 +985,13 @@ Path:
                         <span class="col-sm col-12 mb-1 text-center">
                             <p class="m-0 p-0">What time do you typically get up (within about an hour)?</p>
                         </span>
-                        <input type="time" class="col mx-4 mx-sm-0  form-control d-inline" required  name="waketime">
+                        <input type="time" class="col mx-4 mx-sm-0  form-control d-inline" required name="waketime">
                     </label>
                     <label class="row custom-form-row">
                         <span class="col-sm col-12 mb-1 text-center">
                             <p class="m-0 p-0">What time do you typically go to sleep (within about an hour)?</p>
                         </span>
-                        <input type="time" class="col mx-4 mx-sm-0  form-control d-inline" required  name="sleeptime">
+                        <input type="time" class="col mx-4 mx-sm-0  form-control d-inline" required name="sleeptime">
                     </label>
                     <button class="btn btn-success w-100 mt-3">Submit and match!</button>
                 </form>
