@@ -26,7 +26,7 @@ Path:
 
 	<body>
 		<main class="container">
-            <p class="display-3 text-center">RoommateMatcher</p>
+            <p class="title text-center">RoommateMatcher</p>
             <p class="lead text-center">The Unofficial UW Roommate Matching App</p>
 			<!--<nav class="splash spnav navbar navbar-expand-lg sticky-top">
 				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mainNavItems" aria-controls="mainNavItems" aria-label="Toggle main menu" aria-expanded="false" >
@@ -35,38 +35,48 @@ Path:
 				<div class="collapse navbar-collapse text-center" id="mainNavItems">
 					<div class=" navbar-nav nav nav-fill w-100">
 							<a class="nav-link nav-item splash-nav-item active" href="#">
-								Submit
+								Sign In
 							</a>
 					</div>
 				</div>
 		    </nav>-->
 			<section class="text-center my-4" id="about">
                 Enter information about yourself below and we will match you to a list of the top ten people with closest interests and preferences.
-
-                <p class="text-info">All fields required unless otherwise specified. Fields marked with Public are publicly shown on the list when matching people.</p>
+                <hr class="w-25">
+                <p class="text-info">All fields required unless otherwise specified. All information will be kept private from other matches except for the information required in the Match Listing section.</p>
 			</section>
+            <hr class="w-100">
             <section class="mt-3 mb-5" id="form">
                 <form>
-                    <p class="h3 text-center my-3">Basic Demographics</p>
-                    <label class="row">
-                        <span class="col text-center">
+                    <p class="h3 text-center mt-4 mb-1">Match Listing</p>
+                    <p class="text-warning text-center small m-0 p-0">This information will be shown to other matches</p>
+                    <label class="row custom-form-row">
+                        <span class="col-sm col-12 mb-1 text-center">
                             <p class="m-0 p-0">What is your name?</p>
-                            <p class="text-danger small m-0 p-0">Public</p>
                         </span>
-                        <input class="col form-control d-inline" type="text" name="name">
+                        <input class="col mx-4 mx-sm-0  form-control d-inline" required  type="text" name="name">
                     </label>
-                    <label class="row">
-                        <span class="col text-center">
-                            <p class="m-0 p-0">Wbat is your email address?</p>
-                            <p class="text-danger small m-0 p-0">Public</p>
+                    <hr class="d-sm-none d-block w-50 my-0">
+                    <label class="row custom-form-row">
+                        <span class="col-sm col-12 mb-1 text-center">
+                            <p class="m-0 p-0">What is your email address?</p>
                         </span>
-                        <input class="col form-control d-inline" type="text" name="email">
+                        <input class="col mx-4 mx-sm-0  form-control d-inline" required  type="text" name="email">
                     </label>
-                    <label class="row">
-                        <span class="col py-1 text-center">
+                    <hr class="d-sm-none d-block w-50 my-0">
+                    <label class="row custom-form-row">
+                        <span class="col-sm col-12 mb-1 text-center">
+                            <p class="m-0 p-0">Write a small bio to introduce yourself to other matches</p>
+                            <p class="text-warning small m-0 p-0">Suggested: 75-125 words. Min: 50 words/Max: 150 words</p>
+                        </span>
+                        <textarea class="col mx-4 mx-sm-0  form-control d-inline" required  name="bio"></textarea>
+                    </label>
+                    <p class="h3 text-center mt-4 mb-1">Basic Demographics</p>
+                    <label class="row custom-form-row">
+                        <span class="col-sm col-12 mb-1 text-center">
                             Which country are you coming from?
                         </span>
-                        <select class="col form-control" name="country">
+                        <select class="col mx-4 mx-sm-0 form-control" required name="country">
                             <option value="Afganistan">Afghanistan</option>
                             <option value="Albania">Albania</option>
                             <option value="Algeria">Algeria</option>
@@ -298,7 +308,7 @@ Path:
                             <option value="United Kingdom">United Kingdom</option>
                             <option value="Ukraine">Ukraine</option>
                             <option value="United Arab Erimates">United Arab Emirates</option>
-                            <option value="United States of America">United States of America</option>
+                            <option value="United States">United States</option>
                             <option value="Uraguay">Uruguay</option>
                             <option value="Uzbekistan">Uzbekistan</option>
                             <option value="Vanuatu">Vanuatu</option>
@@ -315,11 +325,12 @@ Path:
                             <option value="Zimbabwe">Zimbabwe</option>
                          </select>
                     </label>
-                    <label class="row d-none">  <!--SHOW ONLY IF COUNTRY=US-->
-                        <span class="col text-center">
+                    <hr class="d-sm-none d-block w-50 my-0">
+                    <label class="row custom-form-row d-none">  <!--SHOW ONLY IF COUNTRY=US-->
+                        <span class="col-sm col-12 mb-1 text-center">
                             <p class="m-0 p-0">Which state are you coming from?</p>
                         </span>
-                        <select class="col form-control" name="state">
+                        <select class="col mx-4 mx-sm-0 form-control" required name="state">
                             <option value="AL">Alabama</option>
                             <option value="AK">Alaska</option>
                             <option value="AZ">Arizona</option>
@@ -373,77 +384,187 @@ Path:
                             <option value="WY">Wyoming</option>
                         </select>
                     </label>
-                    <label class="row">
-                        <span class="col text-center">
+                    <label class="row custom-form-row">
+                        <span class="col-sm col-12 mb-1 text-center">
                             <p class="m-0 p-0">What pronouns do you use?</p>
                         </span>
-                        <div class="form-check-inline">
-                            <label class="form-check-label">
-                                <input class="form-check-input" type="radio" name="pronouns" value="he">
-                                He/Him
-                            </label>
-                        </div>
-                        <div class="form-check-inline">
-                            <label class="form-check-label">
-                                <input class="form-check-input" type="radio" name="pronouns" value="she">
-                                She/Her
-                            </label>
-                        </div>
-                        <div class="form-check-inline">
-                            <label class="form-check-label">
-                                <input class="form-check-input" type="radio" name="pronouns" value="they">
-                                They/Them
-                            </label>
-                        </div>
+                        <span class="col-sm col-12 mb-1 text-center">
+                            <div class="form-check-inline">
+                                <label class="form-check-label">
+                                    <input class="form-check-input" type="radio" name="pronouns" value="he">
+                                    He/Him
+                                </label>
+                            </div>
+                            <div class="form-check-inline">
+                                <label class="form-check-label">
+                                    <input class="form-check-input" type="radio" name="pronouns" value="she">
+                                    She/Her
+                                </label>
+                            </div>
+                            <div class="form-check-inline">
+                                <label class="form-check-label">
+                                    <input class="form-check-input" type="radio" name="pronouns" value="they">
+                                    They/Them
+                                </label>
+                            </div>
+                        </span>
                     </label>
-                    <label class="row">
-                        <span class="col text-center">
+                    <label class="row custom-form-row">
+                        <span class="col-sm col-12 mb-1 text-center">
                             <p class="m-0 p-0">How would you describe yourself socially?</p>
                         </span>
-                        <div class="form-check-inline">
-                            <label class="form-check-label">
-                                <input class="form-check-input" type="radio" name="social" value="extrovert">
-                                Extrovert
-                            </label>
-                        </div>
-                        <div class="form-check-inline">
-                            <label class="form-check-label">
-                                <input class="form-check-input" type="radio" name="social" value="ambivert">
-                                Ambivert
-                            </label>
-                        </div>
-                        <div class="form-check-inline">
-                            <label class="form-check-label">
-                                <input class="form-check-input" type="radio" name="social" value="introvert">
-                                Introvert
-                            </label>
-                        </div>
+                        <span class="col-sm col-12 mb-1 text-center">
+                            <div class="form-check-inline">
+                                <label class="form-check-label">
+                                    <input class="form-check-input" type="radio" name="social" value="extrovert">
+                                    Extrovert
+                                </label>
+                            </div>
+                            <div class="form-check-inline">
+                                <label class="form-check-label">
+                                    <input class="form-check-input" type="radio" name="social" value="ambivert">
+                                    Ambivert
+                                </label>
+                            </div>
+                            <div class="form-check-inline">
+                                <label class="form-check-label">
+                                    <input class="form-check-input" type="radio" name="social" value="introvert">
+                                    Introvert
+                                </label>
+                            </div>
+                        </span>
                     </label>
-                    <label class="row">
-                        <span class="col text-center">
+                    <label class="row custom-form-row">
+                        <span class="col-sm col-12 mb-1 text-center">
                             <p class="m-0 p-0">How close would you like to be to your roommate?</p>
                         </span>
-                        <select class="col form-control" name="closeness">
+                        <select class="col mx-4 mx-sm-0 form-control" required name="closeness">
                             <option value="vclose">Very close</option>
                             <option value="close" selected>Pretty close</option>
                             <option value="nclose">Friendly but not close</option>
                          </select>
                     </label>
-                    <label class="row"> <!--TO COMPLETE-->
-                        <span class="col text-center">
+                    <label class="row custom-form-row">
+                        <span class="col-sm col-12 mb-1 text-center">
                             <p class="m-0 p-0">What is your intended major?</p>
                         </span>
-                        <select class="col form-control" name="major">
-                            <option value="none">Undecided</option>
+                        <select class="col mx-4 mx-sm-0 form-control" required name="major">
+                            <option value="Undecided">Undecided</option>
+                            <option value="American Ethnic Studies">American Ethnic Studies</option>
+                           	<option value="Art">Art</option>
+                            <option value="Art History">Art History</option>
+                            <option value="American Indian Studies">American Indian Studies</option>
+                            <option value="Anthropology">Anthropology</option>
+                            <option value="Asian Studies">Asian Studies	</option>
+                           	<option value="Applied and Computational Mathematical Sciences">Applied and Computational Mathematical Sciences</option>
+                            <option value="Applied Mathematics">Applied Mathematics</option>
+                            <option value="American Indian Studies">American Indian Studies</option>
+                            <option value="Anthropology">Anthropology</option>
+                            <option value="American Ethnic Studies">American Ethnic Studies</option>
+                           	<option value="Architectural Design">Architectural Design</option>
+                            <option value="Architecture">Architecture</option>
+                            <option value="Aeronautics and Astronautics">Aeronautics and Astronautics</option>
+                            <option value="Aquatic and Fishery Sciences">Aquatic and Fishery Sciences</option>
+                            <option value="American Ethnic Studies">American Ethnic Studies</option>
+                           	<option value="Atmospheric Sciences">Atmospheric Sciences</option>
+                            <option value="Biochemistry">Biochemistry</option>
+                            <option value="Bioengineering">Bioengineering</option>
+                            <option value="Bioresource Science and Engineering">Bioresource Science and Engineering</option>
+                            <option value="Composition (Music)">Composition (Music)</option>
+                           	<option value="Chinese">Chinese</option>
+                            <option value="Cinema & Media Studies">Cinema & Media Studies</option>
+                            <option value="Cinema and Media Studies">Cinema and Media Studies</option>
+                            <option value="Classical Studies">Classical Studies</option>
+                            <option value="Classics">Classics</option>
+                           	<option value="Comparative History of Ideas">Comparative History of Ideas</option>
+                            <option value="Comparative Religion">Comparative Religion</option>
+                            <option value="Chemistry">Chemistry</option>
+                            <option value="Computational Finance and Risk Management">Computational Finance and Risk Management</option>
+                            <option value="Canadian Studies">Canadian Studies</option>
+                           	<option value="Communication">Communication</option>
+                            <option value="Community, Environment, and Planning">Community, Environment, and Planning</option>
+                            <option value="Construction Management">Construction Management</option>
+                            <option value="Chemical Engineering">Chemical Engineering</option>
+                            <option value="Civil Engineering">Civil Engineering</option>
+                           	<option value="Computer Engineering">Computer Engineering</option>
+                            <option value="Computer Science">Computer Science</option>
+                            <option value="Dance">Dance</option>
+                            <option value="Design">Design</option>
+                            <option value="Drama">Drama</option>
+                           	<option value="Danish">Dansish	</option>
+                            <option value="Ethnomusicology">Ethnomusicology</option>
+                            <option value="English">English</option>
+                            <option value="Economics">Economics</option>
+                            <option value="European Studies">European Studies</option>
+                           	<option value="Electrical Engineering">Electrical Engineering</option>
+                            <option value="Environmental Engineering">Environmental Engineering</option>
+                            <option value="Earth and Space Sciences">Earth and Space Sciences</option>
+                            <option value="Environmental Science and Terrestrial Resource Management">Environmental Science and Terrestrial Resource Management</option>
+                            <option value="Environmental Studies">Environmental Studies</option>
+                           	<option value="Environmental Health">Environmental Health</option>
+                            <option value="Finnish">Finnish</option>
+                            <option value="French">French</option>
+                            <option value="Guitar">Guitar</option>
+                            <option value="Greek">Greek</option>
+                           	<option value="Geography">Geography</option>
+                            <option value="History">History</option>
+                            <option value="History and Philosophy of Science">History and Philosophy of Science</option>
+                            <option value="Human Centered Design and Engineering">Human Centered Design and Engineering</option>
+                            <option value="Health Informatics and Health Information Management">Composition (Music)</option>
+                           	<option value="Italian">Italian</option>
+                            <option value="Integrated Social Sciences">Integrated Social Sciences</option>
+                            <option value="International Studies">International Studies</option>
+                            <option value="Informatics">Informatics</option>
+                            <option value="Jazz Studies">Jazz Studies</option>
+                           	<option value="Japanese">Japanese</option>
+                            <option value="Jewish Studies">Jewish Studies</option>
+                            <option value="Korean">Korean</option>
+                            <option value="Latin">Latin</option>
+                            <option value="Linguistics">Linguistics</option>
+                           	<option value="Latin American and Caribbean Studies">Latin American and Caribbean Studies</option>
+                            <option value="Law, Societies, and Justice">Law, Societies, and Justice</option>
+                            <option value="Landscape Architecture">Landscape Architecture	</option>
+                            <option value="Music">Music</option>
+                            <option value="Musical Education">Musical Education</option>
+                           	<option value="Mathematics">Mathematics</option>
+                            <option value="Microbiology">Microbiology</option>
+                            <option value="Materials Science and Engineering">Materials Science and Engineering</option>
+                            <option value="Mechanical Engineering">Mechanical Engineering</option>                           
+                            <option value="Marine Biology">Marine Biology</option>
+                           	<option value="Medical Laboratory Science">Medical Laboratory Science</option>
+                            <option value="Near Eastern Languages and Civilization">Near Eastern Languages and Civilization</option>
+                            <option value="Norwegian">Norwegian</option>
+                            <option value="Neuroscience">Neuroscience</option>
+                            <option value="Nursing">Nursing</option>
+                           	<option value="Orchestral Instruments">Orchestral Instruments</option>
+                            <option value="Organ (Music)">Organ (Music)</option>
+                            <option value="Oceanography">Oceanography</option>
+                            <option value="Percussion">Percussion</option>
+                            <option value="Piano">Piano</option>
+                           	<option value="Physics">Physics</option>
+                            <option value="Psychology">Psychology</option>
+                            <option value="Philosophy">Philosophy</option>
+                            <option value="Political Science">Political Science</option>
+                            <option value="Public Health - Global Health">Public Health - Global Health</option>
+                           	<option value="Real Estate">Real Estate</option>
+                            <option value="Scandinavian Studies">Scandinavian Studies</option>
+                            <option value="Slavic Languages and Literatures">Slavic Languages and Literatures</option>
+                            <option value="South Asian Languages and Literature (Hindi and Sanskrit)">South Asian Languages and Literature (Hindi and Sanskrit)	</option>
+                            <option value="Spanish">Spanish</option>
+                           	<option value="Swedish">Swedish</option>
+                            <option value="Speech and Hearing Sciences">Speech and Hearing Sciences</option>
+                            <option value="Sociology">Sociology</option>
+                            <option value="Social Welfare">Social Welfare</option>
+                            <option value="Voice (Music)">Voice (Music)</option>
                          </select>
                     </label>
-                    <p class="h3 text-center my-3">Housing Preferences</p>
-                    <label class="row">
+                    <p class="h3 text-center mt-4 mb-1">Housing Preferences</p>
+                    <label class="row custom-form-row">
                         <span class="col py-1 text-center">
-                            Preferred Residence Hall
+                            What is your preferred Residence Hall?
                         </span>
-                        <select class="col form-control" name="residence">
-                            <option value="Undecided" selected>Undecided</option>
+                        <select class="col mx-4 mx-sm-0 form-control" required name="residence">
+                            <option value="Unsure">Unsure</option>
                             <option value="Alder">Alder Hall</option>
                             <option value="Elm">Elm Hall</option>
                             <option value="Hansee">Hansee Hall</option>
@@ -458,11 +579,11 @@ Path:
                             <option value="Willow">Willow Hall</option>
                          </select>
                     </label>
-                    <label class="row">
+                    <label class="row custom-form-row">
                         <span class="col py-1 text-center">
-                            Ideal Room Temperature
+                            What is your ideal room temperature?
                         </span>
-                        <select class="col form-control" name="temperature">
+                        <select class="col mx-4 mx-sm-0 form-control" required name="temperature">
                             <option value="Cold">Cold (Less than 17 °C/63 °F) </option>
                             <option value="Cool">Cool (17-20 °C/63-68 °F)</option>
                             <option value="Neutral">Neutral (20-23 °C/68-73 °F)</option>
@@ -470,33 +591,70 @@ Path:
                             <option value="Hot">Hot (More than 26 °C/78 °F)</option>
                          </select>
                     </label>
-                    
-                    <label class="row">
-                        <span class="col text-center">
+                    <label class="row custom-form-row">
+                        <span class="col py-1 text-center">
+                            Do you plan on rushing?
+                        </span>
+                        <span class="col-sm col-12 mb-1 text-center">
+                            <div class="form-check-inline">
+                                <label class="form-check-label">
+                                    <input class="form-check-input" type="radio" name="rushing" value="y">
+                                    Yes
+                                </label>
+                            </div>
+                            <div class="form-check-inline">
+                                <label class="form-check-label">
+                                    <input class="form-check-input" type="radio" name="rushing" value="n">
+                                    No
+                                </label>
+                            </div>
+                        </span>
+                    </label>
+                    <label class="row custom-form-row">
+                        <span class="col py-1 text-center">
+                            Do you mind if your roommate is LGBTQ+?
+                        </span>
+                        <span class="col-sm col-12 mb-1 text-center">
+                            <div class="form-check-inline">
+                                <label class="form-check-label">
+                                    <input class="form-check-input" type="radio" name="lgbtqpref" value="y">
+                                    Yes
+                                </label>
+                            </div>
+                            <div class="form-check-inline">
+                                <label class="form-check-label">
+                                    <input class="form-check-input" type="radio" name="lgbtqpref" value="n">
+                                    No
+                                </label>
+                            </div>
+                        </span>
+                    </label>
+                    <label class="row custom-form-row">
+                        <span class="col-sm col-12 mb-1 text-center">
                             <p class="m-0 p-0">How messy/clean do you intend on keeping the room?</p>
                         </span>
-                        <select class="col form-control" name="cleanliness">
+                        <select class="col mx-4 mx-sm-0 form-control" required name="cleanliness">
                             <option value="None" selected>None</option>
                             <option value="messy">Organization or cleanliness isn't super important</option>
                             <option value="neutral" selected>Pretty organized and clean</option>
                             <option value="tidy">Very organized and super cleam</option>
                          </select>
                     </label>
-                    <label class="row">
-                        <span class="col text-center">
+                    <label class="row custom-form-row">
+                        <span class="col-sm col-12 mb-1 text-center">
                             <p class="m-0 p-0">How noisy/quiet would you want your room to be?</p>
                         </span>
-                        <select class="col form-control" name="noise">
+                        <select class="col mx-4 mx-sm-0 form-control" required name="noise">
                             <option value="loud">I don't mind any amount of noise</option>
                             <option value="neutral" selected>A little noise is okay</option>
                             <option value="quiet">I like it to be quiet</option>
                          </select>
                     </label>
-                    <label class="row">
-                        <span class="col text-center">
+                    <label class="row custom-form-row">
+                        <span class="col-sm col-12 mb-1 text-center">
                             <p class="m-0 p-0">How often do you plan to have people over?</p>
                         </span>
-                        <select class="col form-control" name="noise">
+                        <select class="col mx-4 mx-sm-0 form-control" required name="noise">
                             <option value="vfreq">Very frequently (I'm a popular person - daily or every few days)</option>
                             <option value="freq">Frequently (weekly)</option>
                             <option value="avg" selected>Sometimes (maybe a couple times a month)</option>
@@ -504,158 +662,222 @@ Path:
                             <option value="rare">Very Rarely (I'm a CS major - maybe once a year)</option>
                          </select>
                     </label>
-                    <label class="row">
-                        <span class="col text-center">
+                    <label class="row custom-form-row">
+                        <span class="col-sm col-12 mb-1 text-center">
                             <p class="m-0 p-0">How often can you tolerate visitors?</p>
                         </span>
-                        <select class="col form-control" name="noise">
+                        <select class="col mx-4 mx-sm-0 form-control" required name="noise">
                             <option value="low">I'm a CS major so as few as possible</option>
                             <option value="avg" selected>Occasionally is okay</option>
                             <option value="high">All the time is fine with me!</option>
                          </select>
                     </label>
-                    <label class="row">
-                        <span class="col text-center">
+                    <label class="row custom-form-row">
+                        <span class="col-sm col-12 mb-1 text-center">
                             <p class="m-0 p-0">Do you plan to drink?</p>
                         </span>
-                        <div class="form-check-inline">
-                            <label class="form-check-label">
-                                <input class="form-check-input" type="radio" name="drink" value="y">
-                                Yes
-                            </label>
-                        </div>
-                        <div class="form-check-inline">
-                            <label class="form-check-label">
-                                <input class="form-check-input" type="radio" name="drink" value="n">
-                                No
-                            </label>
-                        </div>
+                        <span class="col-sm col-12 mb-1 text-center">
+                            <div class="form-check-inline">
+                                <label class="form-check-label">
+                                    <input class="form-check-input" type="radio" name="drink" value="y">
+                                    Yes
+                                </label>
+                            </div>
+                            <div class="form-check-inline">
+                                <label class="form-check-label">
+                                    <input class="form-check-input" type="radio" name="drink" value="m">
+                                    Yes, but only outside of the room
+                                </label>
+                            </div>
+                            <div class="form-check-inline">
+                                <label class="form-check-label">
+                                    <input class="form-check-input" type="radio" name="drink" value="n">
+                                    No
+                                </label>
+                            </div>
+                        </span>
                     </label>
-                    <label class="row">
-                        <span class="col text-center">
+                    <label class="row custom-form-row">
+                        <span class="col-sm col-12 mb-1 text-center">
                             <p class="m-0 p-0">Do you feel comfortable with a roommate who drinks?</p>
                         </span>
-                        <div class="form-check-inline">
-                            <label class="form-check-label">
-                                <input class="form-check-input" type="radio" name="drinkr" value="y">
-                                Yes
-                            </label>
-                        </div>
-                        <div class="form-check-inline">
-                            <label class="form-check-label">
-                                <input class="form-check-input" type="radio" name="drinkr" value="n">
-                                No
-                            </label>
-                        </div>
+                        <span class="col-sm col-12 mb-1 text-center">
+                            <div class="form-check-inline">
+                                <label class="form-check-label">
+                                    <input class="form-check-input" type="radio" name="drinkr" value="y">
+                                    Yes
+                                </label>
+                            </div>
+                            <div class="form-check-inline">
+                                <label class="form-check-label">
+                                    <input class="form-check-input" type="radio" name="drinkr" value="m">
+                                    Yes, but only outside of the room
+                                </label>
+                            </div>
+                            <div class="form-check-inline">
+                                <label class="form-check-label">
+                                    <input class="form-check-input" type="radio" name="drinkr" value="n">
+                                    No
+                                </label>
+                            </div>
+                        </span>
                     </label>
-                    <label class="row">
-                        <span class="col text-center">
+                    <label class="row custom-form-row">
+                        <span class="col-sm col-12 mb-1 text-center">
                             <p class="m-0 p-0">Do you plan to smoke?</p>
                         </span>
-                        <div class="form-check-inline">
-                            <label class="form-check-label">
-                                <input class="form-check-input" type="radio" name="smoke" value="y">
-                                Yes
-                            </label>
-                        </div>
-                        <div class="form-check-inline">
-                            <label class="form-check-label">
-                                <input class="form-check-input" type="radio" name="smoke" value="n">
-                                No
-                            </label>
-                        </div>
+                        <span class="col-sm col-12 mb-1 text-center">
+                            <div class="form-check-inline">
+                                <label class="form-check-label">
+                                    <input class="form-check-input" type="radio" name="smoke" value="y">
+                                    Yes
+                                </label>
+                            </div>
+                            <div class="form-check-inline">
+                                <label class="form-check-label">
+                                    <input class="form-check-input" type="radio" name="smoke" value="m">
+                                    Yes, but only outside of the room
+                                </label>
+                            </div>
+                            <div class="form-check-inline">
+                                <label class="form-check-label">
+                                    <input class="form-check-input" type="radio" name="smoke" value="n">
+                                    No
+                                </label>
+                            </div>
+                        </span>
                     </label>
-                    <label class="row">
-                        <span class="col text-center">
+                    <label class="row custom-form-row">
+                        <span class="col-sm col-12 mb-1 text-center">
                             <p class="m-0 p-0">Do you feel comfortable with a roommate who smokes?</p>
                         </span>
-                        <div class="form-check-inline">
-                            <label class="form-check-label">
-                                <input class="form-check-input" type="radio" name="smoker" value="y">
-                                Yes
-                            </label>
-                        </div>
-                        <div class="form-check-inline">
-                            <label class="form-check-label">
-                                <input class="form-check-input" type="radio" name="smoker" value="n">
-                                No
-                            </label>
-                        </div>
+                        <span class="col-sm col-12 mb-1 text-center">
+                            <div class="form-check-inline">
+                                <label class="form-check-label">
+                                    <input class="form-check-input" type="radio" name="smoker" value="y">
+                                    Yes
+                                </label>
+                            </div>
+                            <div class="form-check-inline">
+                                <label class="form-check-label">
+                                    <input class="form-check-input" type="radio" name="smoker" value="m">
+                                    Yes, but only outside of the room
+                                </label>
+                            </div>
+                            <div class="form-check-inline">
+                                <label class="form-check-label">
+                                    <input class="form-check-input" type="radio" name="smoker" value="n">
+                                    No
+                                </label>
+                            </div>
+                        </span>
                     </label>
-                    <label class="row">
-                        <span class="col text-center">
+                    <label class="row custom-form-row">
+                        <span class="col-sm col-12 mb-1 text-center">
                             <p class="m-0 p-0">Do you plan to vape?</p>
                         </span>
-                        <div class="form-check-inline">
-                            <label class="form-check-label">
-                                <input class="form-check-input" type="radio" name="vape" value="y">
-                                Yes
-                            </label>
-                        </div>
-                        <div class="form-check-inline">
-                            <label class="form-check-label">
-                                <input class="form-check-input" type="radio" name="vape" value="n">
-                                No
-                            </label>
-                        </div>
+                        <span class="col-sm col-12 mb-1 text-center">
+                            <div class="form-check-inline">
+                                <label class="form-check-label">
+                                    <input class="form-check-input" type="radio" name="vape" value="y">
+                                    Yes
+                                </label>
+                            </div>
+                            <div class="form-check-inline">
+                                <label class="form-check-label">
+                                    <input class="form-check-input" type="radio" name="vape" value="m">
+                                    Yes, but only outside of the room
+                                </label>
+                            </div>
+                            <div class="form-check-inline">
+                                <label class="form-check-label">
+                                    <input class="form-check-input" type="radio" name="vape" value="n">
+                                    No
+                                </label>
+                            </div>
+                        </span>
                     </label>
-                    <label class="row">
-                        <span class="col text-center">
+                    <label class="row custom-form-row">
+                        <span class="col-sm col-12 mb-1 text-center">
                             <p class="m-0 p-0">Do you feel comfortable with a roommate who vapes?</p>
                         </span>
-                        <div class="form-check-inline">
-                            <label class="form-check-label">
-                                <input class="form-check-input" type="radio" name="vaper" value="y">
-                                Yes
-                            </label>
-                        </div>
-                        <div class="form-check-inline">
-                            <label class="form-check-label">
-                                <input class="form-check-input" type="radio" name="vaper" value="n">
-                                No
-                            </label>
-                        </div>
+                        <span class="col-sm col-12 mb-1 text-center">
+                            <div class="form-check-inline">
+                                <label class="form-check-label">
+                                    <input class="form-check-input" type="radio" name="vaper" value="y">
+                                    Yes
+                                </label>
+                            </div>
+                            <div class="form-check-inline">
+                                <label class="form-check-label">
+                                    <input class="form-check-input" type="radio" name="vaper" value="m">
+                                    Yes, but only outside of the room
+                                </label>
+                            </div>
+                            <div class="form-check-inline">
+                                <label class="form-check-label">
+                                    <input class="form-check-input" type="radio" name="vaper" value="n">
+                                    No
+                                </label>
+                            </div>
+                        </span>
                     </label>
-                    <label class="row">
-                        <span class="col text-center">
+                    <label class="row custom-form-row">
+                        <span class="col-sm col-12 mb-1 text-center">
                             <p class="m-0 p-0">Do you plan to use weed?</p>
                         </span>
-                        <div class="form-check-inline">
-                            <label class="form-check-label">
-                                <input class="form-check-input" type="radio" name="weed" value="y">
-                                Yes
-                            </label>
-                        </div>
-                        <div class="form-check-inline">
-                            <label class="form-check-label">
-                                <input class="form-check-input" type="radio" name="weed" value="n">
-                                No
-                            </label>
-                        </div>
+                        <span class="col-sm col-12 mb-1 text-center">
+                            <div class="form-check-inline">
+                                <label class="form-check-label">
+                                    <input class="form-check-input" type="radio" name="weed" value="y">
+                                    Yes
+                                </label>
+                            </div>
+                            <div class="form-check-inline">
+                                <label class="form-check-label">
+                                    <input class="form-check-input" type="radio" name="weed" value="m">
+                                    Yes, but only outside of the room
+                                </label>
+                            </div>
+                            <div class="form-check-inline">
+                                <label class="form-check-label">
+                                    <input class="form-check-input" type="radio" name="weed" value="n">
+                                    No
+                                </label>
+                            </div>
+                        </span>
                     </label>
-                    <label class="row">
-                        <span class="col text-center">
+                    <label class="row custom-form-row">
+                        <span class="col-sm col-12 mb-1 text-center">
                             <p class="m-0 p-0">Do you feel comfortable with a roommate who uses weed?</p>
                         </span>
-                        <div class="form-check-inline">
-                            <label class="form-check-label">
-                                <input class="form-check-input" type="radio" name="weedr" value="y">
-                                Yes
-                            </label>
-                        </div>
-                        <div class="form-check-inline">
-                            <label class="form-check-label">
-                                <input class="form-check-input" type="radio" name="weedr" value="n">
-                                No
-                            </label>
-                        </div>
+                        <span class="col-sm col-12 mb-1 text-center">
+                            <div class="form-check-inline">
+                                <label class="form-check-label">
+                                    <input class="form-check-input" type="radio" name="weedr" value="y">
+                                    Yes
+                                </label>
+                            </div>
+                            <div class="form-check-inline">
+                                <label class="form-check-label">
+                                    <input class="form-check-input" type="radio" name="weedr" value="m">
+                                    Yes, but only outside of the room
+                                </label>
+                            </div>
+                            <div class="form-check-inline">
+                                <label class="form-check-label">
+                                    <input class="form-check-input" type="radio" name="weedr" value="n">
+                                    No
+                                </label>
+                            </div>
+                        </span>
                     </label>
-                    <p class="h3 text-center my-3">Interests</p>
-                    <label class="row">
-                        <span class="col text-center">
+                    <p class="h3 text-center mt-4 mb-1">Interests</p>
+                    <label class="row custom-form-row">
+                        <span class="col-sm col-12 mb-1 text-center">
                             <p class="m-0 p-0">If you plan to play a varsity sport, what is it?</p>
                         </span>
-                        <select class="col form-control" name="sport">
+                        <select class="col mx-4 mx-sm-0 form-control" required name="sport">
                             <option value="None" selected>None</option>
                             <option value="MBaseball">Men's Baseball</option>
                             <option value="MBasketball">Men's Basketball</option>
@@ -679,56 +901,72 @@ Path:
                             <option value="WVolleyball">Women's Volleyball</option>
                          </select>
                     </label>
-                    <label class="row"> <!--TO COMPLETE-->
-                        <span class="col text-center">
-                            <p class="m-0 p-0">What clubs are you interested in?</p>
+                    <label class="row custom-form-row"> <!--TO COMPLETE-->
+                        <span class="col-sm col-12 mb-1 text-center">
+                            <p class="m-0 p-0">What are your extra-curricular interests?</p>
                         </span>
-                        <select class="col form-control" name="clubs">
-
+                        <select class="col mx-4 mx-sm-0 form-control" required name="clubs">
+                            <option value="none">None</option>
                          </select>
                     </label>
-                    <label class="row">
-                        <span class="col text-center">
+                    <label class="row custom-form-row">
+                        <span class="col-sm col-12 mb-1 text-center">
+                            <p class="m-0 p-0">How important is a roommate who has a similar political ideology to you?</p>
+                        </span>
+                        <span class="col-sm col-12 mb-1 text-center">
+                            <div class="form-check-inline">
+                                <label class="form-check-label">
+                                    <input class="form-check-input" type="radio" name="ideologyr" value="3">
+                                    Extremely important
+                                </label>
+                            </div>
+                            <div class="form-check-inline">
+                                <label class="form-check-label">
+                                    <input class="form-check-input" type="radio" name="ideologyr" value="2">
+                                    Pretty important
+                                </label>
+                            </div>
+                            <div class="form-check-inline">
+                                <label class="form-check-label">
+                                    <input class="form-check-input" type="radio" name="ideologyr" value="1">
+                                    Not really important
+                                </label>
+                            </div>
+                            <div class="form-check-inline">
+                                <label class="form-check-label">
+                                    <input class="form-check-input" type="radio" name="ideologyr" value="0">
+                                    Don't care at all
+                                </label>
+                            </div>
+                        </span>
+                    </label>
+                    <label class="row custom-form-row"> <!--SHOW ONLY IF IDEOLOGYR != don't care-->
+                        <span class="col-sm col-12 mb-1 text-center">
                             <p class="m-0 p-0">What best describes your political ideology?</p>
                         </span>
-                        <select class="col form-control" name="ideology">
-                            <option value="FR">Far-right</option>
-                            <option value="R">Right</option>
-                            <option value="CR">Center-right</option>
-                            <option value="C">Centerist</option>
-                            <option value="CL">Center-left</option>
+                        <select class="col mx-4 mx-sm-0 form-control" required name="ideology1">
+                            <option value="A">Authoritarian</option>
+                            <option value="C">Center</option>
+                            <option value="L">Libertarian</option>
+                         </select>
+                        <select class="col mx-4 mx-sm-0 form-control" required name="ideology2">
                             <option value="L">Left</option>
-                            <option value="FL">Far-left</option>
+                            <option value="C">Center</option>
+                            <option value="R">Right</option>
                          </select>
                     </label>
-                    <label class="row">
-                        <span class="col text-center">
-                            <p class="m-0 p-0">Would you prefer someone who has a similar ideology to you?</p>
-                        </span>
-                        <div class="form-check-inline">
-                            <label class="form-check-label">
-                                <input class="form-check-input" type="radio" name="ideologyr" value="y">
-                                Yes
-                            </label>
-                        </div>
-                        <div class="form-check-inline">
-                            <label class="form-check-label">
-                                <input class="form-check-input" type="radio" name="ideologyr" value="n">
-                                No
-                            </label>
-                        </div>
-                    </label>
-                    <label class="row">
-                        <span class="col text-center">
+                    
+                    <label class="row custom-form-row">
+                        <span class="col-sm col-12 mb-1 text-center">
                             <p class="m-0 p-0">What time do you typically get up (within about an hour)?</p>
                         </span>
-                        <input type="time" class="col form-control d-inline" name="waketime">
+                        <input type="time" class="col mx-4 mx-sm-0  form-control d-inline" required  name="waketime">
                     </label>
-                    <label class="row">
-                        <span class="col text-center">
+                    <label class="row custom-form-row">
+                        <span class="col-sm col-12 mb-1 text-center">
                             <p class="m-0 p-0">What time do you typically go to sleep (within about an hour)?</p>
                         </span>
-                        <input type="time" class="col form-control d-inline" name="sleeptime">
+                        <input type="time" class="col mx-4 mx-sm-0  form-control d-inline" required  name="sleeptime">
                     </label>
                     <button class="btn btn-success w-100 mt-3">Submit and match!</button>
                 </form>

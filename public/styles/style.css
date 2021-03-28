@@ -1,0 +1,26 @@
+@media only screen and (max-width: 576px) {
+    .title {
+        font-size: 10vw;
+    }
+}
+
+@media only screen and (min-width: 576px) and (max-width: 992px) {
+    .title {
+        font-size: 2.5em;
+    }
+}
+
+@media only screen and (min-width: 992px) {
+    .title {
+        font-size: 3em;
+    }
+}
+
+
+.custom-form-row {
+    padding: 0.25em 0;
+}
+
+.section-header {
+
+}
