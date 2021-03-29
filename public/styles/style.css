@@ -29,17 +29,6 @@ a.no-style:hover {
     color: rgb(200, 200, 200, 1);
 }
 
-
-.main {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    overflow: hidden;
-    z-index: 10;
-}
-
 .splash {
     position: absolute;
     text-align: center;
@@ -120,6 +109,15 @@ a.no-style:hover {
     .subtitle {
         font-size: 5.5vw;
     }
+
+    #loginForm, #signupForm {
+        left: 12.5%;
+        width: 75%;
+    }
+
+    #formClose {
+        left: 8%;
+    }
 }
 
 @media only screen and (min-width: 576px) and (max-width: 992px) {
@@ -130,6 +128,15 @@ a.no-style:hover {
     .subtitle {
         font-size: 1.5em;
     }
+
+    #loginForm, #signupForm {
+        left: 22.5%;
+        width: 55%;
+    }
+
+    #formClose {
+        left: 20.5%;
+    }
 }
 
 @media only screen and (min-width: 992px) {
@@ -139,6 +146,15 @@ a.no-style:hover {
 
     .subtitle {
         font-size: 2em;
+    }
+
+    #loginForm, #signupForm {
+        left: 35%;
+        width: 30%;
+    }
+
+    #formClose {
+        left: 33%;
     }
 }
 
@@ -173,6 +189,7 @@ a.no-style:hover {
     animation: splash 3s ease-in-out forwards;
     background-color: rgb(0,0,0);
     will-change: opacity;
+    filter: blur(4px);
 }
 
 /*--Splash Animation--*/
@@ -206,6 +223,41 @@ a.no-style:hover {
     }
 }
 
+/*Login/Signup forms*/
+#formFloat {
+    z-index: 25;
+    background-color: rgb(24, 25, 26, 0.9);
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    text-align: center;
+}
+
+main.blurred .splash {
+    filter: blur(3px);
+}
+
+#loginForm, #signupForm {
+    position: relative;
+    top: 30%;
+}
+
+#formClose {
+    position: relative;
+    top: 29%;
+    margin: 0;
+    padding: 0;
+    font-size: 2em;
+    cursor: pointer;
+    width: 2em;
+}
+
+#formMsg {
+    position: relative;
+    top: 50%;
+}
 
 /*Main Content*/
 
@@ -213,8 +265,9 @@ a.no-style:hover {
     font-size: 1.5em;
 }
 
-
-footer {
+.footer {
+    text-align: center;
+    width: 100%;
     position: absolute;
     bottom: 0;
     z-index: 10;
