@@ -6,6 +6,26 @@ window.onload = () => {
         setCookie: false
     });
     let usr = auth.currentUser();
+
+    let hash = window.location.hash;
+    if (hash.includes("confirmation_token")) {
+        showForms(true);
+        showMsg(`<b>Confirming email address...</b>`, "signupMsg", "info");
+        let token = hash.slice(hash.indexOf("confirmation_token=")+19);
+        console.log("Attempting to confirm user with confirmation token");
+        auth.confirm(token, false)
+            .then(() => window.location.hash = "#confirmed")
+            .catch((err) => {
+                showMsg(`<b>Error while confirming email address.</b> ${err.json.msg}.`, "signupMsg", "danger");
+                console.log("Error while confirming: ")
+                console.dir(err);
+            });
+    } else if (hash.includes("confirmed")) {
+        showForms(true);
+        showMsg(`<b>Successfully confirmed your email!</b> You will now be redirected to <a href="/dashboard">your Dashboard</a> in a few seconds`, "signupMsg", "info");
+        console.log("User successfully confirmed!");
+
+    }
     
     console.log(usr);
 
@@ -41,6 +61,7 @@ const showForms = (signUp, show=true) => {
 const doLogin = (e) => {
     e.preventDefault();
     let data = new FormData(e.target);
+    showMsg("<b>Loading...</b>", "loginMsg", "info");
     auth.login(data.get("email"), data.get("password"), data.get("persist") == "y")
         .then((resp) => {
             console.log("Received API response for login: ", resp);
@@ -49,7 +70,7 @@ const doLogin = (e) => {
         .catch((err) => {
             console.log("Error received: API response for login: ");
             console.dir(err);
-            showMsg(`<b>Error while logging in!</b> ${err.json.error_description}`, "loginMsg", "danger");
+            showMsg(`<b>Error while logging in!</b> ${err.json.error_description||err.json.msg}`, "loginMsg", "danger");
         });
 }
 
@@ -57,6 +78,7 @@ const doLogin = (e) => {
 const doSignup = (e) => {
     e.preventDefault();
     let data = new FormData(e.target);
+    showMsg("<b>Loading...</b>", "signupMsg", "info");
     if (data.get("password") != data.get("passwordverify")) {
         showMsg(`<b>Error!</b> Passwords do not match`, "signupMsg", "danger");
     }
@@ -68,7 +90,7 @@ const doSignup = (e) => {
         .catch((err) => {
             console.log("Error received: API response for sign up: ");
             console.dir(err);
-            showMsg(`<b>Error while signing up!</b> ${err.json.error_description}`, "signupMsg", "danger");
+            showMsg(`<b>Error while signing up!</b> ${err.json.error_description||err.json.msg}`, "signupMsg", "danger");
         });
 }
 
