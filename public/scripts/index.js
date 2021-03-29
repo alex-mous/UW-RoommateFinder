@@ -96,7 +96,8 @@ const doSignup = (e) => {
         .catch((err) => {
             console.log("Error received: API response for sign up: ");
             console.dir(err);
-            showMsg(`<b>Error while signing up!</b> ${err.json.error_description||err.json.msg}`, "signupMsg", "danger");
+            if (err.json.error_description) showMsg(`<b>Error while signing up!</b> ${err.json.error_description}`, "signupMsg", "danger");
+            else showMsg(`<b>Error while signing up!</b> ${err.json.msg}. It's likely that this means that you are not using a UW email address.`, "signupMsg", "danger");
         });
 }
 
