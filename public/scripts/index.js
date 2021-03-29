@@ -7,25 +7,7 @@ window.onload = () => {
     });
     let usr = auth.currentUser();
 
-    let hash = window.location.hash;
-    if (hash.includes("confirmation_token")) {
-        showForms(true);
-        showMsg(`<b>Confirming email address...</b>`, "signupMsg", "info");
-        let token = hash.slice(hash.indexOf("confirmation_token=")+19);
-        console.log("Attempting to confirm user with confirmation token");
-        auth.confirm(token, false)
-            .then(() => window.location.hash = "#confirmed")
-            .catch((err) => {
-                showMsg(`<b>Error while confirming email address.</b> ${err.json.msg}.`, "signupMsg", "danger");
-                console.log("Error while confirming: ")
-                console.dir(err);
-            });
-    } else if (hash.includes("confirmed")) {
-        showForms(true);
-        showMsg(`<b>Successfully confirmed your email!</b> You will now be redirected to <a href="/dashboard">your Dashboard</a> in a few seconds`, "signupMsg", "info");
-        console.log("User successfully confirmed!");
-
-    }
+    checkConfirmation(window.location.hash);
     
     console.log(usr);
 
@@ -45,6 +27,30 @@ window.onload = () => {
     document.querySelector("#loginForm").onsubmit = doLogin;
     document.querySelector("#signupForm").onsubmit = doSignup;
     document.querySelector("#logoutBtn").onclick = doLogout;
+}
+
+//Check if there is a confirmation token to process or if there is any hash that needs to be addressed (including confirmed state after email fully confirmed)
+const checkConfirmation = (hash) => {
+    if (hash.includes("confirmation_token")) {
+        showForms(true);
+        showMsg(`<b>Confirming email address...</b>`, "signupMsg", "info");
+        let token = hash.slice(hash.indexOf("confirmation_token=")+19);
+        console.log("Attempting to confirm user with confirmation token");
+        auth.confirm(token, false)
+            .then(() => {
+                window.location.hash = "#confirmed";
+                window.location.reload();
+            })
+            .catch((err) => {
+                showMsg(`<b>Error while confirming email address.</b> ${err.json.msg}.`, "signupMsg", "danger");
+                console.log("Error while confirming: ")
+                console.dir(err);
+            });
+    } else if (hash.includes("confirmed")) {
+        showForms(true);
+        showMsg(`<b>Successfully confirmed your email!</b> You will now be redirected to <a href="/dashboard">your Dashboard</a> in a few seconds`, "signupMsg", "info");
+        console.log("User successfully confirmed!");
+    }
 }
 
 

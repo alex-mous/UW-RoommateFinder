@@ -1,0 +1,124 @@
+<!--Copyright 2021 (c), Alex Mous
+All rights reserved.
+
+Page:
+	Home
+Path:
+	/index.html
+-->
+
+
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta name="Description" content="PAGE_DESC">
+
+		<title>RoommateMatcher - Unofficial UW Roommate Finding Program</title>
+		<!--Links/includes-->
+		<link rel="icon" href="/assets/favicon.ico" type="image/x-icon">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta charset="UTF-8">
+
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+		<link rel="stylesheet" href="/styles/dashboard.css">
+	</head>
+
+	<body>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="/">RoommateMatcher</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mainNavItems" aria-controls="mainNavItems" aria-label="Toggle main menu" aria-expanded="false" >
+                <i class="fa fa-bars"></i>
+            </button>
+            <div class="collapse navbar-collapse ml-auto" id="mainNavItems">
+                <div class="ml-auto navbar-nav nav nav-pills">
+                    <a class="nav-item nav-link mx-1" href="/about">
+                        Why RoommateMatcher?
+                    </a>
+                    <a class="nav-item nav-link mx-1" href="/profile">
+                        Profile
+                    </a>
+                    <a class="mx-1 btn btn-outline-danger" id="logoutBtn" href="#">
+                        Log Out
+                    </a>
+                </div>
+            </div>
+        </nav>
+
+		<main class="container">
+            
+            <p class="h1 text-center">RoommateMatcher - Dashboard</p>
+
+            <p class="text-center"><i class="fa fa-info-circle"></i><span class="ml-2 text-info" id="mainMsg">No new notifications</span></p>
+
+            <p class="text-center">If your <a href="/profile">profile</a> is complete, you'll see all of your matches listed below.</p>
+            
+
+            <p class="h2 text-center">Matches</p>
+            <section class="text-center my-4" id="matches">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>
+                                Name
+                            </th>
+                            <th>
+                                Contact
+                            </th>
+                            <th>
+                                Biography
+                            </th>
+                            <th>
+                                Match Score
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody id="matchTable">
+
+                    </tbody>
+                </table>
+			</section>
+            <hr class="w-75">
+
+			<footer class="footer pt-3 pb-1 px-3 my-0">
+                <p class="text-muted">
+                    Copyright (c) 2021. Created with ❤️ and 🍵 by Alex Mous. <a href="https://github.com/alex-mous/RoommateMatcher" target="_blank">View the source code on GitHub!</a>
+                </p>		
+            </footer>
+		</main>
+
+
+		<!--Schema for Google-->
+		<script type="application/ld+json">
+			{
+			  "@context": "https://schema.org",
+			  "@type": "Organization",
+			  "url": "URL",
+			  "logo": "URL/assets/logo.png"
+			}
+		</script>
+
+		<script type="application/ld+json">
+			{
+			  "@context": "https://schema.org",
+			  "@type": "BreadcrumbList",
+			  "itemListElement": [{
+				"@type": "ListItem",
+				"position": 1,
+				"name": "Home",
+				"item": "URL"
+			  }]
+			}
+		</script>
+
+		<!-- JavaScript Scripts -->
+
+		<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+		<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+        <script type="text/javascript" src="/scripts/gotrue.js"></script>
+		<script type="text/javascript" src="/scripts/dashboard.js"></script>
+
+		
+	</body>
+</html>
