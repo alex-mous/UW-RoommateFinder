@@ -36,7 +36,7 @@ const checkConfirmation = (hash) => {
         showMsg(`<b>Confirming email address...</b>`, "signupMsg", "info");
         let token = hash.slice(hash.indexOf("confirmation_token=")+19);
         console.log("Attempting to confirm user with confirmation token");
-        auth.confirm(token, false)
+        auth.confirm(token, true)
             .then(() => {
                 window.location.hash = "#confirmed";
                 window.location.reload();
