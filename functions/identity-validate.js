@@ -1,9 +1,9 @@
 exports.handler = async (ev, ctx) => {
-    console.log(ev);
-    const {identity, user} = ctx.clientContext;
-    console.log(JSON.parse(ev.body));
+    const evt = JSON.parse(ev.body);
+    const user = evt.user;
+    console.log("User: ", user);
+    console.log("Has UW email: ", user.email.endsWith("@uw.edu"));
     return {
-        statusCode: 503,
-        body: JSON.stringify({"app_metadata": {"roles": ["admin"]}})
+        statusCode: user.email.endsWith("@uw.edu") ? 200 : 400
     }
 }
