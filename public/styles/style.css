@@ -99,6 +99,7 @@ a.no-style:hover {
     margin: auto auto;
     will-change: opacity;
     z-index: 10;
+    width: 100%;
 }
 
 .splash.txt .title {
