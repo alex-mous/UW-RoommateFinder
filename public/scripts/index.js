@@ -50,6 +50,9 @@ const checkConfirmation = (hash) => {
         showForms(true);
         showMsg(`<b>Successfully confirmed your email!</b> You will now be redirected to <a href="/dashboard">your Dashboard</a> in a few seconds`, "signupMsg", "info");
         console.log("User successfully confirmed!");
+        window.setTimeout(() => {
+            window.location.href = "/dashboard";
+        }, 3000);
     }
 }
 
