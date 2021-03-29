@@ -1,12 +1,8 @@
 [build]
+  functions = "functions/"
   publish = "public/"
 
 
 [context.production] #Production deploys
   publish = "public/"
   environment = { ACCESS_TOKEN = "Test" }
-
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200

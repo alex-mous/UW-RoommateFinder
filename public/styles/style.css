@@ -1,26 +1,220 @@
+.custom-form-row {
+    padding: 0.25em 0;
+}
+
+
+/*General Attributes*/
+
+html {
+    height: 100%;
+    overflow: hidden;
+}
+
+body {
+    overflow-x: hidden;
+    height: 100%;
+    background-color: rgb(24, 26, 27);
+}
+
+body, button, .splash-nav-item a {
+    color:  rgb(255, 255, 255, 1) !important;
+}
+
+a.no-style {
+    text-decoration: none;
+    color: rgb(255, 255, 255, 1);
+}
+
+a.no-style:hover {
+    color: rgb(200, 200, 200, 1);
+}
+
+
+.main {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    overflow: hidden;
+    z-index: 10;
+}
+
+.splash {
+    position: absolute;
+    text-align: center;
+}
+
+.spnav {
+    position: absolute;
+    top: 0;
+    font-family: 'Titillium Web', sans-serif !important;
+    width: 100%;
+    margin: 0;
+    z-index: 20;
+    background-color: rgb(0,0,0,0);
+}
+
+.splash.logo {
+    position: absolute;
+    top: 0.3em;
+    right: 0.3em;
+    width: calc(60px + 1em);
+    padding: 0.35em;
+    border-radius: 15px;
+    background-color: rgb(25,25,25,0.75);
+}
+
+.splash-nav-item {
+    color: rgb(255,255,255);
+    text-decoration: none;
+    border-bottom: 1.5px solid #444;
+    font-size: 1.25rem;
+    margin: 0.3rem 1rem;
+    padding: 0.25em;
+    width: 10em;
+    transition: border-radius ease 300ms;
+}
+
+.splash-nav-item.active {
+    border-color: #ccc;
+}
+
+.splash-nav-item:hover {
+    color: rgb(200,200,200);
+    border-bottom-width: 1.5px;
+    border-bottom-style: solid;
+    border-bottom-color: #eee;
+    border-radius: 6px;
+    background-color: rgb(0,0,0, 0.25);
+}
+
+/*Splash Screen*/
+
+.splash.txt {
+    background: rgb(0,0,0,0);
+    font-family: 'Titillium Web', sans-serif;
+    font-weight: 800;
+    top: 25%;
+    margin: auto auto;
+    will-change: opacity;
+    z-index: 10;
+}
+
+.splash.txt .title {
+    opacity: 0%;
+    animation: splashtxt 1.5s 0.5s ease-in forwards;
+}
+
+.splash.txt .subtitle {
+    opacity: 0%;
+    animation: splashtxt 2s 1.5s ease-in forwards;
+}
+
 @media only screen and (max-width: 576px) {
     .title {
-        font-size: 10vw;
+        font-size: 8.5vw;
+    }
+
+    .subtitle {
+        font-size: 5.5vw;
     }
 }
 
 @media only screen and (min-width: 576px) and (max-width: 992px) {
     .title {
-        font-size: 2.5em;
+        font-size: 3em;
+    }
+
+    .subtitle {
+        font-size: 1.5em;
     }
 }
 
 @media only screen and (min-width: 992px) {
     .title {
-        font-size: 3em;
+        font-size: 5em;
+    }
+
+    .subtitle {
+        font-size: 2em;
     }
 }
 
 
-.custom-form-row {
-    padding: 0.25em 0;
+.splash.scroll {
+    background: rgb(0,0,0,0);
+    font-family: 'Titillium Web', sans-serif;
+    position: absolute;
+    width: 100%;
+    top: 60%;
+    opacity: 0%;
+    z-index: 20;
+    text-align: center;
+    animation: splashtxt 0.5s 2.1s ease-in forwards, splashscroll 2s 2s ease-in-out forwards;
+    will-change: transform, opacity;
 }
 
-.section-header {
+.splash.scroll p {
+    font-size: 1.5rem;
+    padding: 0;
+    margin: 0;
+}
 
+
+.splash.img {
+    width: 100%;
+    min-height: 100%;
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    z-index: 1;
+    animation: splash 3s ease-in-out forwards;
+    background-color: rgb(0,0,0);
+    will-change: opacity;
+}
+
+/*--Splash Animation--*/
+
+@keyframes splash {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 25%;
+    }
+}
+
+@keyframes splashtxt {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 100%;
+    }
+}
+
+@keyframes splashscroll {
+    0% {
+        transform: translateY(2rem);
+    }
+    100% {
+
+    }
+}
+
+
+/*Main Content*/
+
+.block .header {
+    font-size: 1.5em;
+}
+
+
+footer {
+    position: absolute;
+    bottom: 0;
+    z-index: 10;
 }

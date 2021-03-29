@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/alex-mous/RoomateMatcher/issues"
   },
-  "homepage": "https://github.com/alex-mous/RoomateMatcher#readme"
+  "homepage": "https://github.com/alex-mous/RoomateMatcher#readme",
+  "dependencies": {
+    "gotrue-js": "^0.9.29"
+  }
 }
