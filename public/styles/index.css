@@ -99,15 +99,16 @@ a.no-style:hover {
 .splash.txt .subtitle {
     opacity: 0%;
     animation: splashtxt 2s 1.5s ease-in forwards;
+    padding: 0 1.5em;
 }
 
-@media only screen and (max-width: 576px) {
+@media only screen and (max-width: 620px) {
     .title {
-        font-size: 8.5vw;
+        font-size: 7.5vw;
     }
 
     .subtitle {
-        font-size: 5.5vw;
+        font-size: 4.5vw;
     }
 
     #loginForm, #signupForm {
@@ -120,9 +121,9 @@ a.no-style:hover {
     }
 }
 
-@media only screen and (min-width: 576px) and (max-width: 992px) {
+@media only screen and (min-width: 620px) and (max-width: 992px) {
     .title {
-        font-size: 3em;
+        font-size: 2.75em;
     }
 
     .subtitle {
@@ -141,7 +142,7 @@ a.no-style:hover {
 
 @media only screen and (min-width: 992px) {
     .title {
-        font-size: 5em;
+        font-size: 4.5em;
     }
 
     .subtitle {
@@ -155,6 +156,25 @@ a.no-style:hover {
 
     #formClose {
         left: 33%;
+    }
+}
+
+@media only screen and (min-width: 1200px) {
+    .subtitle {
+        padding: 0 7em !important;
+    }
+
+}
+
+@media only screen and (min-width: 1345px) {
+    .subtitle {
+        padding: 0 23vw !important;
+    }
+}
+
+@media only screen and (min-width: 1550px) {
+    .subtitle {
+        padding: 0 0 !important;
     }
 }
 
@@ -257,6 +277,10 @@ main.blurred .splash {
 #formMsg {
     position: relative;
     top: 50%;
+}
+
+#warnMsg {
+    padding-top: 0.5em;
 }
 
 /*Main Content*/

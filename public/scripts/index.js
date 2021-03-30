@@ -75,6 +75,9 @@ const doLogin = (e) => {
         .then((resp) => {
             console.log("Received API response for login: ", resp);
             showMsg("<b>Success!</b> You'll be redirected to <a href='/dashboard'>your Dashboard</a> in a few seconds.", "loginMsg", "success");
+            window.setTimeout(() => {
+                window.location.href = "/dashboard";
+            }, 3000);
         })
         .catch((err) => {
             console.log("Error received: API response for login: ");
@@ -109,7 +112,7 @@ const doLogout = () => {
     if (!auth.currentUser()) return;
     auth.currentUser().logout()
         .then(() => {
-            showMsg("Logged out! Reloading in 3 seconds...");
+            showMsg("Logged out! Reloading in 3 seconds...", "warnMsg", "success");
             window.setTimeout(() => {
                 window.location.reload();
             }, 3000);

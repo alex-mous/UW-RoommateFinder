@@ -22,7 +22,7 @@ const doLogout = () => {
         .then(() => {
             window.setTimeout(() => {
                 window.location.href = "/";
-            }, 3000);
+            }, 500);
         })
         .catch((err) => {
             console.log("Error while attempting to log out: ")

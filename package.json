@@ -4,8 +4,12 @@
   "description": "Roommate Matching web interface",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "cd public/"
+    "start": "npm-run-all --parallel start:app start:server",
+    "start:app": "netlify dev",
+    "start:server": "netlify-lambda serve functions",
+    "build": "npm-run-all --parallel build:**",
+    "build:app": "react-scripts build",
+    "build:functions": "netlify-lambda build functions"
   },
   "repository": {
     "type": "git",
@@ -18,6 +22,20 @@
   },
   "homepage": "https://github.com/alex-mous/RoomateMatcher#readme",
   "dependencies": {
-    "gotrue-js": "^0.9.29"
+    "faunadb": "^4.1.3",
+    "gotrue-js": "^0.9.29",
+    "node-fetch": "^2.6.1"
+  },
+  "devDependencies": {
+    "netlify-lambda": "^2.0.3",
+    "npm-run-all": "^4.1.5"
+  },
+  "proxy": {
+    "/.netlify/functions": {
+      "target": "http://localhost:9000",
+      "pathRewrite": {
+        "^/\\.netlify/functions": ""
+      }
+    }
   }
 }
