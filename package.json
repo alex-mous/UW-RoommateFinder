@@ -8,7 +8,6 @@
     "start:app": "netlify dev",
     "start:server": "netlify-lambda serve functions",
     "build": "npm-run-all --parallel build:**",
-    "build:app": "react-scripts build",
     "build:functions": "netlify-lambda build functions"
   },
   "repository": {

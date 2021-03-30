@@ -3,6 +3,5 @@
   publish = "public/"
 
 
-[context.production] #Production deploys
+[context.production]
   publish = "public/"
-  environment = { ACCESS_TOKEN = "Test" }
