@@ -11,7 +11,7 @@ UW RoommateFinder is a project designed by the UW Discord 2025 CS team that help
 To use it create an account at [roommatematcher.netlify.app](https://roommatematcher.netlify.app) (an UW email is necessary), after that answer the questions in the form. In your profile should be a refresh button, press it and you will able to see your 10 best matches, with a small description of each person. Everytime you want to check your matches it is recomended that you refresh them, as there might be better ones. 
 
 ## Support
-For support you can contact us on the [UW 2025 discord](https://discord.gg/TtchJ6DGKF), you can also look for @Tsuho#3532, @i dont know#3651 or Amarante#3384.
+For support you can contact us on the [UW 2025 discord](https://discord.gg/TtchJ6DGKF), you can also look for @Tsuho#3532, @Amarante#3384,@Palak Mehta#6615, or @i dont know#3651.
 
 ## To do
 -
@@ -24,7 +24,7 @@ If you wish to contribute to the project please contact us on the UW 2025 Discor
 
 A big thank you to [Alex Mous](https://github.com/alex-mous), he is the brain of project and has coded and planned most of it. This project wouldn't be a fraction of what it is without him.
 
-Another thank you to [Palak Mehta](https://github.com/palak-mehta), who helped code and plan the project. For [myself](https://github.com/pedrodeoliamarante), I enviosned the project and helped with coding and design.
+Another thank you to [Palak Mehta](https://github.com/palak-mehta) and [Nahush Shrivatsa](https://github.com/nahushvatsa), who helped code and plan the project. For [myself](https://github.com/pedrodeoliamarante), I enviosned the project and helped with coding and design.
 
 To end, a special thank you to everyone at the UW 2025 discord, who helped us gather data and gave us ideias.
 
