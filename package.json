@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/alex-mous/RoomateMatcher#readme",
   "dependencies": {
+    "encoder": "^0.2.4",
     "faunadb": "^4.1.3",
     "gotrue-js": "^0.9.29",
     "node-fetch": "^2.6.1"
