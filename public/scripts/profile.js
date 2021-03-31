@@ -147,7 +147,7 @@ const doUpdate = (e) => {
 
 //Load all of the form data from user memory (precondition - user is logged in)
 const loadForm = () => {
-
+    
 }
 
 //Show or clear a message. htmlMsg store the html to be displayed. blockId is the ID of the element to target. type is the text type (info/success/warn/danger)
