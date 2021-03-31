@@ -22,7 +22,7 @@ window.onload = () => {
         let elem = document.getElementById("bioCount");
         let len = e.srcElement.value.split(" ").length
         elem.classList.toggle("text-center-small-text-success", len<150);
-        elem.classList.toggle("text-center-small-text-success", len>=150); 
+        elem.classList.toggle("text-center-small-text-danger", len>=150); 
         if (e.srcElement.value.split(" ").length >= 150 && e.which >= 0x20) {
             e.preventDefault();
         }
