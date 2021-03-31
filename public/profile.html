@@ -59,23 +59,23 @@ Path:
                     <p class="h4 text-center mt-4 mb-1">Match Listing</p>
                     <p class="text-danger text-center small m-0 p-0">This information will be shown to other matches</p>
                     <label class="row custom-form-row">
-                        <span class="col-sm col-12 mb-1 text-center">
+                        <span class="col-md col-12 mb-1 py-2 text-center">
                             <p class="m-0 p-0">What is your name?</p>
                         </span>
                         <input class="col mx-4 mx-sm-0 form-control d-inline" required type="text" name="name">
                     </label>
-                    <hr class="d-sm-none d-block w-50 my-0">
+                    <hr class="d-md-none d-block w-50 my-0">
                     <label class="row custom-form-row">
-                        <span class="col-sm col-12 mb-1 text-center">
+                        <span class="col-md col-12 mb-1 py-2 text-center">
                             <p class="m-0 p-0">What is your email address?</p>
                         </span>
                         <input class="col mx-4 mx-sm-0  form-control d-inline" required type="text" name="email">
                     </label>
-                    <hr class="d-sm-none d-block w-50 my-0">
+                    <hr class="d-md-none d-block w-50 my-0">
                     <label class="row custom-form-row">
-                        <span class="col-sm col-12 mb-1 text-center">
+                        <span class="col-md col-12 mb-1 py-2 text-center">
                             <p class="m-0 p-0">Write a small bio to introduce yourself to other matches</p>
-                            <p class="text-danger small m-0 p-0">Suggested: 75-125 words</p>
+                            <p class="text-info small m-0 p-0">Suggested: 75-125 words</p>
                             <p class="text-center small text-warning">Current word count: <span id="bioCount">0</span>/150 Max</p>
                         </span>
                         <textarea class="col mx-4 mx-sm-0 w-0 form-control d-inline" id="bioText" required name="bio"></textarea>
@@ -83,10 +83,10 @@ Path:
                     <p class="h4 text-center mt-4 mb-1">Basic Demographics</p>
                    
                     <label class="row custom-form-row">
-                        <span class="col-sm col-12 mb-1 text-center">
+                        <span class="col-md col-12 mb-1 py-2 text-center">
                             <p class="m-0 p-0">Would you prefer to be matched with someone from the same location?</p>
                         </span>
-                        <span class="col-sm col-12 mb-1 text-center">
+                        <span class="col-md col-12 mb-1 py-2 text-center">
                             <div class="form-check-inline">
                                 <label class="form-check-label">
                                     <input class="form-check-input" type="radio" required name="countrymatch" value="y">
@@ -101,9 +101,9 @@ Path:
                             </div>
                         </span>
                     </label>
-                    <hr class="d-sm-none d-block w-50 my-0">
-                    <label class="row custom-form-row d-none f-country">
-                        <span class="col-sm col-12 mb-1 text-center">
+                    <hr class="d-md-none d-block w-50 my-0">
+                    <label class="row custom-form-row no-height" id="f-country">
+                        <span class="col-md col-12 mb-1 py-2 text-center">
                             Which country are you coming from?
                         </span>
                         <select class="col mx-4 mx-sm-0 form-control" required name="country">
@@ -356,9 +356,9 @@ Path:
                             <option value="Zimbabwe">Zimbabwe</option>
                          </select>
                     </label>
-                    <hr class="d-sm-none d-block w-50 my-0">
-                    <label class="row custom-form-row d-none f-country" id="stateSect">
-                        <span class="col-sm col-12 mb-1 text-center">
+                    <hr class="d-md-none d-block w-50 my-0">
+                    <label class="row custom-form-row no-height" id="f-state">
+                        <span class="col-md col-12 mb-1 py-2 text-center">
                             <p class="m-0 p-0">Which state are you coming from?</p>
                         </span>
                         <select class="col mx-4 mx-sm-0 form-control" required name="state">
@@ -416,12 +416,12 @@ Path:
                             <option value="WY">Wyoming</option>
                         </select>
                     </label>
-                    <hr class="d-sm-none d-block w-50 my-0">
+                    <hr class="d-md-none d-block w-50 my-0">
                     <label class="row custom-form-row">
-                        <span class="col-sm col-12 mb-1 text-center">
+                        <span class="col-md col-12 mb-1 py-2 text-center">
                             <p class="m-0 p-0">What pronouns do you use?</p>
                         </span>
-                        <span class="col-sm col-12 mb-1 text-center">
+                        <span class="col-md col-12 mb-1 py-2 text-center">
                             <div class="form-check-inline">
                                 <label class="form-check-label">
                                     <input class="form-check-input" type="radio" required name="pronouns" value="he">
@@ -442,12 +442,12 @@ Path:
                             </div>
                         </span>
                     </label>
-                    <hr class="d-sm-none d-block w-50 my-0">
+                    <hr class="d-md-none d-block w-50 my-0">
                     <label class="row custom-form-row">
-                        <span class="col-sm col-12 mb-1 text-center">
+                        <span class="col-md col-12 mb-1 py-2 text-center">
                             <p class="m-0 p-0">How would you describe yourself socially?</p>
                         </span>
-                        <span class="col-sm col-12 mb-1 text-center">
+                        <span class="col-md col-12 mb-1 py-2 text-center">
                             <div class="form-check-inline">
                                 <label class="form-check-label">
                                     <input class="form-check-input" type="radio" required name="social" value="extrovert">
@@ -468,9 +468,9 @@ Path:
                             </div>
                         </span>
                     </label>
-                    <hr class="d-sm-none d-block w-50 my-0">
+                    <hr class="d-md-none d-block w-50 my-0">
                     <label class="row custom-form-row">
-                        <span class="col-sm col-12 mb-1 text-center">
+                        <span class="col-md col-12 mb-1 py-2 text-center">
                             <p class="m-0 p-0">How close would you like to be to your roommate?</p>
                         </span>
                         <select class="col mx-4 mx-sm-0 form-control" required name="closeness">
@@ -480,9 +480,9 @@ Path:
                             <option value="nclose">Friendly but not close</option>
                          </select>
                     </label>
-                    <hr class="d-sm-none d-block w-50 my-0">
+                    <hr class="d-md-none d-block w-50 my-0">
                     <label class="row custom-form-row">
-                        <span class="col-sm col-12 mb-1 text-center">
+                        <span class="col-md col-12 mb-1 py-2 text-center">
                             <p class="m-0 p-0">What is your intended major?</p>
                         </span>
                         <select class="col mx-4 mx-sm-0 form-control" required name="major">
@@ -598,7 +598,7 @@ Path:
                     </label>
                     <p class="h4 text-center mt-4 mb-1">Housing Preferences</p>
                     <label class="row custom-form-row">
-                        <span class="col py-1 text-center">
+                        <span class="col-md col-12 mb-1 py-2 text-center">
                             What is your preferred campus location?
                         </span>
                         <select class="col mx-4 mx-sm-0 form-control" required name="campus">
@@ -611,9 +611,9 @@ Path:
                             <option value="G">Off-campus</option>
                          </select>
                     </label>
-                    <hr class="d-sm-none d-block w-50 my-0">
+                    <hr class="d-md-none d-block w-50 my-0">
                     <label class="row custom-form-row">
-                        <span class="col py-1 text-center">
+                        <span class="col-md col-12 mb-1 py-2 text-center">
                             What is your preferred Residence Hall?
                         </span>
                         <select class="col mx-4 mx-sm-0 form-control" required name="residence">
@@ -633,9 +633,9 @@ Path:
                             <option value="Willow">Willow Hall</option>
                          </select>
                     </label>
-                    <hr class="d-sm-none d-block w-50 my-0">
+                    <hr class="d-md-none d-block w-50 my-0">
                     <label class="row custom-form-row">
-                        <span class="col py-1 text-center">
+                        <span class="col-md col-12 mb-1 py-2 text-center">
                             What is your ideal room temperature?
                         </span>
                         <select class="col mx-4 mx-sm-0 form-control" required name="temperature">
@@ -647,12 +647,12 @@ Path:
                             <option value="Hot">Hot (More than 26 °C/78 °F)</option>
                          </select>
                     </label>
-                    <hr class="d-sm-none d-block w-50 my-0">
+                    <hr class="d-md-none d-block w-50 my-0">
                     <label class="row custom-form-row">
-                        <span class="col py-1 text-center">
+                        <span class="col-md col-12 mb-1 py-2 text-center">
                             Do you plan on rushing?
                         </span>
-                        <span class="col-sm col-12 mb-1 text-center">
+                        <span class="col-md col-12 mb-1 py-2 text-center">
                             <div class="form-check-inline">
                                 <label class="form-check-label">
                                     <input class="form-check-input" type="radio" required name="rushing" value="y">
@@ -667,12 +667,12 @@ Path:
                             </div>
                         </span>
                     </label>
-                    <hr class="d-sm-none d-block w-50 my-0">
+                    <hr class="d-md-none d-block w-50 my-0">
                     <label class="row custom-form-row">
-                        <span class="col py-1 text-center">
+                        <span class="col-md col-12 mb-1 py-2 text-center">
                             Do you identify as LGBTQ+?
                         </span>
-                        <span class="col-sm col-12 mb-1 text-center">
+                        <span class="col-md col-12 mb-1 py-2 text-center">
                             <div class="form-check-inline">
                                 <label class="form-check-label">
                                     <input class="form-check-input" type="radio" required name="lgbtq" value="y">
@@ -693,12 +693,12 @@ Path:
                             </div>
                         </span>
                     </label>
-                    <label class="row custom-form-row">
-                        <span class="col py-1 text-center">
+                    <label class="row no-height" id="f-lgbtq">
+                        <span class="col-md col-12 mb-1 py-2 text-center">
                             If you do, would feel comfortable rooming with any LGBTQ+ person?
                             <p class="text-danger small m-0 p-0">If no, please specify in your bio</p>
                         </span>
-                        <span class="col-sm col-12 mb-1 text-center">
+                        <span class="col-md col-12 mb-1 py-2 text-center">
                             <div class="form-check-inline">
                                 <label class="form-check-label">
                                     <input class="form-check-input" type="radio" required name="lgbtqpref" value="y">
@@ -713,9 +713,9 @@ Path:
                             </div>
                         </span>
                     </label>
-                    <hr class="d-sm-none d-block w-50 my-0">
+                    <hr class="d-md-none d-block w-50 my-0">
                     <label class="row custom-form-row">
-                        <span class="col-sm col-12 mb-1 text-center">
+                        <span class="col-md col-12 mb-1 py-2 text-center">
                             <p class="m-0 p-0">How messy/clean do you intend on keeping the room?</p>
                         </span>
                         <select class="col mx-4 mx-sm-0 form-control" required name="cleanliness">
@@ -725,9 +725,9 @@ Path:
                             <option value="tidy">Very organized and super clean</option>
                          </select>
                     </label>
-                    <hr class="d-sm-none d-block w-50 my-0">
+                    <hr class="d-md-none d-block w-50 my-0">
                     <label class="row custom-form-row">
-                        <span class="col-sm col-12 mb-1 text-center">
+                        <span class="col-md col-12 mb-1 py-2 text-center">
                             <p class="m-0 p-0">How noisy/quiet would you want your room to be?</p>
                         </span>
                         <select class="col mx-4 mx-sm-0 form-control" required name="noise">
@@ -737,9 +737,9 @@ Path:
                             <option value="quiet">I prefer quietness</option>
                          </select>
                     </label>
-                    <hr class="d-sm-none d-block w-50 my-0">
+                    <hr class="d-md-none d-block w-50 my-0">
                     <label class="row custom-form-row">
-                        <span class="col-sm col-12 mb-1 text-center">
+                        <span class="col-md col-12 mb-1 py-2 text-center">
                             <p class="m-0 p-0">How often do you plan to have people over?</p>
                         </span>
                         <select class="col mx-4 mx-sm-0 form-control" required name="noise">
@@ -751,9 +751,9 @@ Path:
                             <option value="rare">I'm a CS major - maybe once a year</option>
                          </select>
                     </label>
-                    <hr class="d-sm-none d-block w-50 my-0">
+                    <hr class="d-md-none d-block w-50 my-0">
                     <label class="row custom-form-row">
-                        <span class="col-sm col-12 mb-1 text-center">
+                        <span class="col-md col-12 mb-1 py-2 text-center">
                             <p class="m-0 p-0">How often can you tolerate visitors?</p>
                         </span>
                         <select class="col mx-4 mx-sm-0 form-control" required name="noise">
@@ -763,12 +763,12 @@ Path:
                             <option value="high">All the time is fine with me!</option>
                          </select>
                     </label>
-                    <hr class="d-sm-none d-block w-50 my-0">
+                    <hr class="d-md-none d-block w-50 my-0">
                     <label class="row custom-form-row">
-                        <span class="col-sm col-12 mb-1 text-center">
+                        <span class="col-md col-12 mb-1 py-2 text-center">
                             <p class="m-0 p-0">Do you plan to drink?</p>
                         </span>
-                        <span class="col-sm col-12 mb-1 text-center">
+                        <span class="col-md col-12 mb-1 py-2 text-center">
                             <div class="form-check-inline">
                                 <label class="form-check-label">
                                     <input class="form-check-input" type="radio" required name="drink" value="y">
@@ -789,12 +789,12 @@ Path:
                             </div>
                         </span>
                     </label>
-                    <hr class="d-sm-none d-block w-50 my-0">
+                    <hr class="d-md-none d-block w-50 my-0">
                     <label class="row custom-form-row">
-                        <span class="col-sm col-12 mb-1 text-center">
+                        <span class="col-md col-12 mb-1 py-2 text-center">
                             <p class="m-0 p-0">Do you feel comfortable with a roommate who drinks?</p>
                         </span>
-                        <span class="col-sm col-12 mb-1 text-center">
+                        <span class="col-md col-12 mb-1 py-2 text-center">
                             <div class="form-check-inline">
                                 <label class="form-check-label">
                                     <input class="form-check-input" type="radio" required name="drinkr" value="y">
@@ -815,12 +815,12 @@ Path:
                             </div>
                         </span>
                     </label>
-                    <hr class="d-sm-none d-block w-50 my-0">
+                    <hr class="d-md-none d-block w-50 my-0">
                     <label class="row custom-form-row">
-                        <span class="col-sm col-12 mb-1 text-center">
+                        <span class="col-md col-12 mb-1 py-2 text-center">
                             <p class="m-0 p-0">Do you plan to smoke?</p>
                         </span>
-                        <span class="col-sm col-12 mb-1 text-center">
+                        <span class="col-md col-12 mb-1 py-2 text-center">
                             <div class="form-check-inline">
                                 <label class="form-check-label">
                                     <input class="form-check-input" type="radio" required name="smoke" value="y">
@@ -841,12 +841,12 @@ Path:
                             </div>
                         </span>
                     </label>
-                    <hr class="d-sm-none d-block w-50 my-0">
+                    <hr class="d-md-none d-block w-50 my-0">
                     <label class="row custom-form-row">
-                        <span class="col-sm col-12 mb-1 text-center">
+                        <span class="col-md col-12 mb-1 py-2 text-center">
                             <p class="m-0 p-0">Do you feel comfortable with a roommate who smokes?</p>
                         </span>
-                        <span class="col-sm col-12 mb-1 text-center">
+                        <span class="col-md col-12 mb-1 py-2 text-center">
                             <div class="form-check-inline">
                                 <label class="form-check-label">
                                     <input class="form-check-input" type="radio" required name="smoker" value="y">
@@ -867,12 +867,12 @@ Path:
                             </div>
                         </span>
                     </label>
-                    <hr class="d-sm-none d-block w-50 my-0">
+                    <hr class="d-md-none d-block w-50 my-0">
                     <label class="row custom-form-row">
-                        <span class="col-sm col-12 mb-1 text-center">
+                        <span class="col-md col-12 mb-1 py-2 text-center">
                             <p class="m-0 p-0">Do you plan to vape?</p>
                         </span>
-                        <span class="col-sm col-12 mb-1 text-center">
+                        <span class="col-md col-12 mb-1 py-2 text-center">
                             <div class="form-check-inline">
                                 <label class="form-check-label">
                                     <input class="form-check-input" type="radio" required name="vape" value="y">
@@ -893,12 +893,12 @@ Path:
                             </div>
                         </span>
                     </label>
-                    <hr class="d-sm-none d-block w-50 my-0">
+                    <hr class="d-md-none d-block w-50 my-0">
                     <label class="row custom-form-row">
-                        <span class="col-sm col-12 mb-1 text-center">
+                        <span class="col-md col-12 mb-1 py-2 text-center">
                             <p class="m-0 p-0">Do you feel comfortable with a roommate who vapes?</p>
                         </span>
-                        <span class="col-sm col-12 mb-1 text-center">
+                        <span class="col-md col-12 mb-1 py-2 text-center">
                             <div class="form-check-inline">
                                 <label class="form-check-label">
                                     <input class="form-check-input" type="radio" required name="vaper" value="y">
@@ -919,12 +919,12 @@ Path:
                             </div>
                         </span>
                     </label>
-                    <hr class="d-sm-none d-block w-50 my-0">
+                    <hr class="d-md-none d-block w-50 my-0">
                     <label class="row custom-form-row">
-                        <span class="col-sm col-12 mb-1 text-center">
+                        <span class="col-md col-12 mb-1 py-2 text-center">
                             <p class="m-0 p-0">Do you plan to use weed?</p>
                         </span>
-                        <span class="col-sm col-12 mb-1 text-center">
+                        <span class="col-md col-12 mb-1 py-2 text-center">
                             <div class="form-check-inline">
                                 <label class="form-check-label">
                                     <input class="form-check-input" type="radio" required name="weed" value="y">
@@ -945,12 +945,12 @@ Path:
                             </div>
                         </span>
                     </label>
-                    <hr class="d-sm-none d-block w-50 my-0">
+                    <hr class="d-md-none d-block w-50 my-0">
                     <label class="row custom-form-row">
-                        <span class="col-sm col-12 mb-1 text-center">
+                        <span class="col-md col-12 mb-1 py-2 text-center">
                             <p class="m-0 p-0">Do you feel comfortable with a roommate who uses weed?</p>
                         </span>
-                        <span class="col-sm col-12 mb-1 text-center">
+                        <span class="col-md col-12 mb-1 py-2 text-center">
                             <div class="form-check-inline">
                                 <label class="form-check-label">
                                     <input class="form-check-input" type="radio" required name="weedr" value="y">
@@ -973,7 +973,7 @@ Path:
                     </label>
                     <p class="h4 text-center mt-4 mb-1">Interests</p>
                     <label class="row custom-form-row">
-                        <span class="col-sm col-12 mb-1 text-center">
+                        <span class="col-md col-12 mb-1 py-2 text-center">
                             <p class="m-0 p-0">If you plan to play a varsity sport, what is it?</p>
                         </span>
                         <select class="col mx-4 mx-sm-0 form-control" required name="sport">
@@ -1001,11 +1001,11 @@ Path:
                             <option value="WVolleyball">Women's Volleyball</option>
                          </select>
                     </label>
-                    <hr class="d-sm-none d-block w-50 my-0">
+                    <hr class="d-md-none d-block w-50 my-0">
                     <label class="row custom-form-row">
-                        <span class="col-sm col-12 mb-1 text-center">
+                        <span class="col-md col-12 mb-1 py-2 text-center">
                             <p class="m-0 p-0">What are your extra-curricular interests?</p>
-                            <p class="text-danger text-center small m-0 p-0">To select multiple options, hold down the Ctrl key on Windows or the Command key on Mac</p>
+                            <p class="text-info text-center small m-0 p-0">To select multiple options, hold down the Ctrl key on Windows or the Command key on Mac</p>
                         </span>
                         <select class="col mx-4 mx-sm-0 form-control" required multiple name="clubs">
                             <option disabled selected value> -- select -- </option>
@@ -1030,28 +1030,22 @@ Path:
                             <option value="travel">Travelling</option>
                          </select>
                     </label>
-                    <hr class="d-sm-none d-block w-50 my-0">
+                    <hr class="d-md-none d-block w-50 my-0">
                     <label class="row custom-form-row">
-                        <span class="col-sm col-12 mb-1 text-center">
+                        <span class="col-md col-12 mb-1 py-2 text-center">
                             <p class="m-0 p-0">How important is a roommate who has a similar political ideology to you?</p>
                         </span>
-                        <span class="col-sm col-12 mb-1 text-center">
+                        <span class="col-md col-12 mb-1 py-2 text-center">
                             <div class="form-check-inline d-block d-sm-inline">
                                 <label class="form-check-label">
-                                    <input class="form-check-input" type="radio" required name="ideologyr" value="3">
+                                    <input class="form-check-input" type="radio" required name="ideologyr" value="50">
                                     Extremely important
                                 </label>
                             </div>
                             <div class="form-check-inline d-block d-sm-inline">
                                 <label class="form-check-label">
-                                    <input class="form-check-input" type="radio" required name="ideologyr" value="2">
-                                    Pretty important
-                                </label>
-                            </div>
-                            <div class="form-check-inline d-block d-sm-inline">
-                                <label class="form-check-label">
-                                    <input class="form-check-input" type="radio" required name="ideologyr" value="1">
-                                    Not really important
+                                    <input class="form-check-input" type="radio" required name="ideologyr" value="10">
+                                    Somewhat important
                                 </label>
                             </div>
                             <div class="form-check-inline d-block d-sm-inline">
@@ -1062,34 +1056,34 @@ Path:
                             </div>
                         </span>
                     </label>
-                    <hr class="d-sm-none d-block w-50 my-0">
-                    <label class="row custom-form-row"> <!--SHOW ONLY IF IDEOLOGYR != don't care-->
-                        <span class="col-sm col-12 mb-1 text-center">
+                    <hr class="d-md-none d-block w-50 my-0">
+                    <label class="row no-height" id="f-ideology">
+                        <span class="col-md-6 col-12 mb-1 py-2 text-center">
                             <p class="m-0 p-0">What best describes your political ideology?</p>
                         </span>
-                        <select class="col mx-4 mx-sm-0 form-control" required name="ideology1">
+                        <select class="col ml-4 ml-sm-0 mr-sm-2 form-control" required name="ideology1">
                             <option disabled selected value> -- select -- </option>
                             <option value="A">Authoritarian</option>
                             <option value="C">Center</option>
                             <option value="L">Libertarian</option>
                          </select>
-                        <select class="col mx-4 mx-sm-0 form-control" required name="ideology2">
+                        <select class="col mr-4 mx-sm-0 form-control" required name="ideology2">
                             <option disabled selected value> -- select -- </option>
                             <option value="L">Left</option>
                             <option value="C">Center</option>
                             <option value="R">Right</option>
                          </select>
                     </label>
-                    <hr class="d-sm-none d-block w-50 my-0">
+                    <hr class="d-md-none d-block w-50 my-0">
                     <label class="row custom-form-row">
-                        <span class="col-sm col-12 mb-1 text-center">
+                        <span class="col-md col-12 mb-1 py-2 text-center">
                             <p class="m-0 p-0">What time do you typically get up (within about an hour)?</p>
                         </span>
                         <input type="time" class="col mx-4 mx-sm-0  form-control d-inline" required name="waketime">
                     </label>
-                    <hr class="d-sm-none d-block w-50 my-0">
+                    <hr class="d-md-none d-block w-50 my-0">
                     <label class="row custom-form-row">
-                        <span class="col-sm col-12 mb-1 text-center">
+                        <span class="col-md col-12 mb-1 py-2 text-center">
                             <p class="m-0 p-0">What time do you typically go to sleep (within about an hour)?</p>
                         </span>
                         <input type="time" class="col mx-4 mx-sm-0  form-control d-inline" required name="sleeptime">

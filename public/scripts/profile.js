@@ -23,11 +23,24 @@ window.onload = () => {
 
     document.querySelectorAll("input[name='countrymatch']").forEach((ele) => {
         ele.onchange = (e) => {
-            document.querySelector(".f-country").classList.toggle("d-none", e.target.value != "y");
-            console.log(e.target.value == "y");
-            if (e.target.value == "y") {
-                
-            }
+            document.querySelector("#f-country").classList.toggle("full-height", e.target.value == "y");
+        }
+    });
+
+    document.querySelector("select[name='country']").onchange = (e) => {
+        console.log(e.target.value == "United States");
+        document.querySelector("#f-state").classList.toggle("full-height", e.target.value == "United States");
+    }
+
+    document.querySelectorAll("input[name='lgbtq']").forEach((ele) => {
+        ele.onchange = (e) => {
+            document.querySelector("#f-lgbtq").classList.toggle("full-height", e.target.value != "n");
+        }
+    });
+
+    document.querySelectorAll("input[name='ideologyr']").forEach((ele) => {
+        ele.onchange = (e) => {
+            document.querySelector("#f-ideology").classList.toggle("full-height", e.target.value > 0);
         }
     });
 }
