@@ -106,7 +106,7 @@ Path:
                         <span class="col-md col-12 mb-1 py-2 text-center">
                             Which country are you coming from?
                         </span>
-                        <select class="col mx-4 mx-sm-0 form-control" required name="country">
+                        <select class="col mx-4 mx-sm-0 form-control" required disabled name="country">
                             <option disabled selected value> -- select -- </option>
                             <option value="Afganistan">Afghanistan</option>
                             <option value="Albania">Albania</option>
@@ -361,7 +361,7 @@ Path:
                         <span class="col-md col-12 mb-1 py-2 text-center">
                             <p class="m-0 p-0">Which state are you coming from?</p>
                         </span>
-                        <select class="col mx-4 mx-sm-0 form-control" required name="state">
+                        <select class="col mx-4 mx-sm-0 form-control" required disabled name="state">
                             <option disabled selected value> -- select -- </option>
                             <option value="AL">Alabama</option>
                             <option value="AK">Alaska</option>
@@ -619,18 +619,18 @@ Path:
                         <select class="col mx-4 mx-sm-0 form-control" required name="residence">
                             <option disabled selected value> -- select -- </option>
                             <option value="Unsure">Unsure</option>
-                            <option value="Alder">Alder Hall</option>
-                            <option value="Elm">Elm Hall</option>
-                            <option value="Hansee">Hansee Hall</option>
-                            <option value="Lander">Lander Hall</option>
-                            <option value="Madrona">Madrona Hall</option>
-                            <option value="Maple">Maple Hall</option>
-                            <option value="McCarty">McCarty Hall</option>
-                            <option value="McManon">McManon Hall</option>
-                            <option value="Oak">Oak Hall</option>
-                            <option value="Poplar">Poplar Hall</option>
-                            <option value="Terry">Terry Hall</option>
-                            <option value="Willow">Willow Hall</option>
+                            <option value="Alder Hall">Alder Hall</option>
+                            <option value="Elm Hall">Elm Hall</option>
+                            <option value="Hansee Hall">Hansee Hall</option>
+                            <option value="Lander Hall">Lander Hall</option>
+                            <option value="Madrona Hall">Madrona Hall</option>
+                            <option value="Maple Hall">Maple Hall</option>
+                            <option value="McCarty Hall">McCarty Hall</option>
+                            <option value="McManon Hall">McManon Hall</option>
+                            <option value="Oak Hall">Oak Hall</option>
+                            <option value="Poplar Hall">Poplar Hall</option>
+                            <option value="Terry Hall">Terry Hall</option>
+                            <option value="Willow Hall">Willow Hall</option>
                          </select>
                     </label>
                     <hr class="d-md-none d-block w-50 my-0">
@@ -671,6 +671,7 @@ Path:
                     <label class="row custom-form-row">
                         <span class="col-md col-12 mb-1 py-2 text-center">
                             Do you identify as LGBTQ+?
+                            <p class="text-danger small m-0 p-0">Used to determine roommate compatability. If you'd rather not say, please specify in your bio or when people contact you</p>
                         </span>
                         <span class="col-md col-12 mb-1 py-2 text-center">
                             <div class="form-check-inline">
@@ -685,29 +686,23 @@ Path:
                                     No
                                 </label>
                             </div>
-                            <div class="form-check-inline">
-                                <label class="form-check-label">
-                                    <input class="form-check-input" type="radio" required name="lgbtq" value="r">
-                                    Rather not say
-                                </label>
-                            </div>
                         </span>
                     </label>
                     <label class="row no-height" id="f-lgbtq">
                         <span class="col-md col-12 mb-1 py-2 text-center">
-                            If you do, would feel comfortable rooming with any LGBTQ+ person?
+                            If identify as LGBTQ+, would feel comfortable rooming with any LGBTQ+ person?
                             <p class="text-danger small m-0 p-0">If no, please specify in your bio</p>
                         </span>
                         <span class="col-md col-12 mb-1 py-2 text-center">
                             <div class="form-check-inline">
                                 <label class="form-check-label">
-                                    <input class="form-check-input" type="radio" required name="lgbtqpref" value="y">
+                                    <input class="form-check-input" type="radio" required disabled name="lgbtqpref" value="y">
                                     Yes
                                 </label>
                             </div>
                             <div class="form-check-inline">
                                 <label class="form-check-label">
-                                    <input class="form-check-input" type="radio" required name="lgbtqpref" value="n">
+                                    <input class="form-check-input" type="radio" required disabled name="lgbtqpref" value="n">
                                     No
                                 </label>
                             </div>
@@ -1089,7 +1084,8 @@ Path:
                         <input type="time" class="col mx-4 mx-sm-0  form-control d-inline" required name="sleeptime">
                     </label>
                     <hr class="d-sm-none d-block w-75 my-2">
-                    <button class="btn btn-success w-100 mt-3">Submit and match!</button>
+                    <button class="btn btn-success w-100 mt-3">Update Profile!</button>
+                    <p class="mt-3 text-center w-100"><span id="resMsg"></span></p>
                 </form>
             </section>
 			<footer class="footer pt-3 pb-1 px-3 my-0">
