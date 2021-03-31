@@ -19,11 +19,12 @@ window.onload = () => {
 
     document.querySelector("textarea[name='bio']").onkeyup = (e) => {
         let words = e.srcElement.value.match(/\b[-?(\w+)?]+\b/gi);
-        let elem = document.getElementsByClassName("text-center small text-success");
+        let elem = document.getElementById("bioCount");
+        let p = elem.parentNode;
         document.querySelector("#bioCount").innerText = words.length;
         let len = words.length
-        elem[0].classList.toggle("text-success", len<150);
-        elem[0].classList.toggle("text-danger", len>=150);
+        p.classList.toggle("text-success", len<150);
+        p.classList.toggle("text-danger", len>=150);
         if (len >= 150 && e.which >= 0x20) {
             e.preventDefault(); 
         }
