@@ -21,6 +21,24 @@ Path:
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 		<link rel="stylesheet" href="/styles/dashboard.css">
         <link rel="stylesheet" href="/styles/style.css">
+		
+		<style>
+			.description-container {
+				max.width: 800px;
+				margin: 40px auto 20px;
+			} .description-container .floating-image{
+				max.width: 800px;
+			} .description-container .floating-image.right{
+				float: right;
+				margin-left: 30px;
+				margin-bottom: 10px;
+			} .description-container .floating-image.left{
+				float: left;
+				margin-left: 30px;
+				margin-bottom: 10px;
+			} 
+		</style>
+		
 	</head>
 
 	<body>
@@ -45,8 +63,8 @@ Path:
         </nav>
 
 		<main class="container">
-                       
-		<img src="/assets/UWSdorm1.jpg" alt="Dorms buildings at UW" style="width:300px;height:300px;></img>
+                       <div class="descirption-container">
+		<img src="/assets/UWSdorm1.jpg" alt="Dorms buildings at UW" class="img-responsive floating-image left"></img>
 		
             <p class="h1 text-center">RoommateFinder - Dashboard</p>
 
@@ -54,8 +72,10 @@ Path:
 
             <p class="text-center">If your <a href="/profile">profile</a> is complete, you'll see all of your matches listed below.</p>
             
-		<img src="/assets/UWSdorm2.jpg" alt="Dorms buildings at UW" style="width:300px;height:300px;></img>
-
+		<img src="/assets/UWSdorm2.jpg" alt="Dorms buildings at UW" class="img-responsive floating-image right"></img>
+		
+		</div>
+		
             <p class="h2 text-center">Matches</p>
             <section class="text-center my-4" id="matches">
                 <table class="table">
