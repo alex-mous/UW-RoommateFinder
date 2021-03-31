@@ -18,13 +18,14 @@ window.onload = () => {
     document.querySelector("#profileForm").onsubmit = doUpdate;
 
     document.querySelector("textarea[name='bio']").onkeyup = (e) => {
-        document.querySelector("#bioCount").innerText = e.srcElement.value.split(" ").length;
+        var words = e.srcElement.value.match(/\b[-?(\w+)?]+\b/gi);
+        document.querySelector("#bioCount").innerText = words.length;
         //let elem = document.getElementById("bioCount");
-        let len = e.srcElement.value.split(" ").length
-        document.querySelector("#bioCount").classList.toggle("text-center small text-success", len<150);
-        document.querySelector("#bioCount").classList.toggle("text-center small text-danger", len>=150); 
-        if (e.srcElement.value.split(" ").length >= 150 && e.which >= 0x20) {
+        let len = words.length
+        if (len >= 150 && e.which >= 0x20) {
             e.preventDefault();
+            document.querySelector("#bioCount").classList.remove("text-center", "small", "text-danger"); 
+            document.querySelector("#bioCount").classList.add("text-center", "small", "text-danger"); 
         }
     }
 
