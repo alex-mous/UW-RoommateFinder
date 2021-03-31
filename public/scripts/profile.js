@@ -20,12 +20,12 @@ window.onload = () => {
     document.querySelector("textarea[name='bio']").onkeyup = (e) => {
         var words = e.srcElement.value.match(/\b[-?(\w+)?]+\b/gi);
         document.querySelector("#bioCount").innerText = words.length;
-        //let elem = document.getElementById("bioCount");
         let len = words.length
+        document.querySelector("#bioCount").classList.toggle('text-center', len>=150)
+        document.querySelector("#bioCount").classList.toggle('small', len>=150)
+        document.querySelector("#bioCount").classList.toggle('text-danger', len>=150)
         if (len >= 150 && e.which >= 0x20) {
-            e.preventDefault();
-            document.querySelector("#bioCount").classList.remove("text-center", "small", "text-danger"); 
-            document.querySelector("#bioCount").classList.add("text-center", "small", "text-danger"); 
+            e.preventDefault(); 
         }
     }
 
