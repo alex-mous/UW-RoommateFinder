@@ -19,8 +19,11 @@ window.onload = () => {
 
     document.querySelector("textarea[name='bio']").onkeyup = (e) => {
         document.querySelector("#bioCount").innerText = e.srcElement.value.split(" ").length;
+        var elem = document.getElementById("bioCount");
         if (e.srcElement.value.split(" ").length >= 150 && e.which >= 0x20) {
             e.preventDefault();
+            elem.classList.remove("text-center small text-success");
+            elem.classList.add("text-center small text-danger");
         }
     }
 
