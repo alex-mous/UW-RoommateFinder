@@ -13,6 +13,23 @@ window.onload = () => {
 
     console.log("User logged in!");
     document.querySelector("#logoutBtn").onclick = doLogout;
+
+    document.querySelector("textarea[name='bio']").onkeyup = (e) => {
+        document.querySelector("#bioCount").innerText = e.srcElement.value.split(" ").length;
+        if (e.srcElement.value.split(" ").length >= 150 && e.which >= 0x20) {
+            e.preventDefault();
+        }
+    }
+
+    document.querySelectorAll("input[name='countrymatch']").forEach((ele) => {
+        ele.onchange = (e) => {
+            document.querySelector(".f-country").classList.toggle("d-none", e.target.value != "y");
+            console.log(e.target.value == "y");
+            if (e.target.value == "y") {
+                
+            }
+        }
+    });
 }
 
 //Logout the current user

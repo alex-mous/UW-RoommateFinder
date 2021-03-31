@@ -1,17 +1,15 @@
-<!--Copyright 2021 (c), Alex Mous
-All rights reserved.
-
+<!--
 Page:
 	Home
 Path:
-	/index.html
+	/profile.html
 -->
 
 
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<meta name="Description" content="PAGE_DESC">
+		<meta name="robots" content="noindex">
 
 		<title>RoommateFinder - Unofficial UW Roommate Finding Program</title>
 		<!--Links/includes-->
@@ -21,7 +19,8 @@ Path:
 
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
-		<link rel="stylesheet" href="/styles/dashboard.css">
+		<link rel="stylesheet" href="/styles/profile.css">
+        <link rel="stylesheet" href="/styles/style.css">
 	</head>
 
 	<body>
@@ -76,12 +75,34 @@ Path:
                     <label class="row custom-form-row">
                         <span class="col-sm col-12 mb-1 text-center">
                             <p class="m-0 p-0">Write a small bio to introduce yourself to other matches</p>
-                            <p class="text-danger small m-0 p-0">Suggested: 75-125 words. Min: 50 words/Max: 150 words</p>
+                            <p class="text-danger small m-0 p-0">Suggested: 75-125 words</p>
+                            <p class="text-center small text-warning">Current word count: <span id="bioCount">0</span>/150 Max</p>
                         </span>
-                        <textarea class="col mx-4 mx-sm-0  form-control d-inline" required name="bio"></textarea>
+                        <textarea class="col mx-4 mx-sm-0 w-0 form-control d-inline" id="bioText" required name="bio"></textarea>
                     </label>
                     <p class="h4 text-center mt-4 mb-1">Basic Demographics</p>
+                   
                     <label class="row custom-form-row">
+                        <span class="col-sm col-12 mb-1 text-center">
+                            <p class="m-0 p-0">Would you prefer to be matched with someone from the same location?</p>
+                        </span>
+                        <span class="col-sm col-12 mb-1 text-center">
+                            <div class="form-check-inline">
+                                <label class="form-check-label">
+                                    <input class="form-check-input" type="radio" required name="countrymatch" value="y">
+                                    Yes
+                                </label>
+                            </div>
+                            <div class="form-check-inline">
+                                <label class="form-check-label">
+                                    <input class="form-check-input" type="radio" required name="countrymatch" value="n">
+                                    No
+                                </label>
+                            </div>
+                        </span>
+                    </label>
+                    <hr class="d-sm-none d-block w-50 my-0">
+                    <label class="row custom-form-row d-none f-country">
                         <span class="col-sm col-12 mb-1 text-center">
                             Which country are you coming from?
                         </span>
@@ -336,7 +357,7 @@ Path:
                          </select>
                     </label>
                     <hr class="d-sm-none d-block w-50 my-0">
-                    <label class="row custom-form-row d-none">  <!--SHOW ONLY IF COUNTRY=US-->
+                    <label class="row custom-form-row d-none f-country" id="stateSect">
                         <span class="col-sm col-12 mb-1 text-center">
                             <p class="m-0 p-0">Which state are you coming from?</p>
                         </span>

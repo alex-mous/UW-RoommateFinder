@@ -283,15 +283,7 @@ main.blurred .splash {
     padding-top: 0.5em;
 }
 
-/*Main Content*/
-
-.block .header {
-    font-size: 1.5em;
-}
-
 .footer {
-    text-align: center;
-    width: 100%;
     position: absolute;
     bottom: 0;
     z-index: 10;

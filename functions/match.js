@@ -1,21 +1,5 @@
-//import faunadb from 'faunadb';
-import fetch from "node-fetch";
-/*
-import GoTrue from 'gotrue-js';
+//import fetch from "node-fetch";
 
-const auth = new GoTrue({
-    APIUrl: 'https://roommatematcher.netlify.app/.netlify/identity',
-    audience: '',
-    setCookie: false,
-});
-auth.login("amous@uw.edu", "test", true);
-
-const query = faunadb.query;
-
-const client = new faunadb.Client({
-    secret: process.env.FAUNADB_SECRET
-});
-*/
 exports.handler = (ev, ct, cb) => {
     //const data = JSON.parse(ev.body);
     return {
