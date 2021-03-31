@@ -22,8 +22,8 @@ window.onload = () => {
         let elem = document.getElementById("#bioCount");
         document.querySelector("#bioCount").innerText = words.length;
         let len = words.length
-        elem.toggle("text-success", len<150);
-        elem.querySelector("#bioCount").toggle("text-danger", len>=150);
+        elem.classList.toggle("text-success", len<150);
+        elem.classList.toggle("text-danger", len>=150);
         if (len >= 150 && e.which >= 0x20) {
             e.preventDefault(); 
         }
