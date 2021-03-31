@@ -21,6 +21,9 @@ window.onload = () => {
         var words = e.srcElement.value.match(/\b[-?(\w+)?]+\b/gi);
         document.querySelector("#bioCount").innerText = words.length;
         let len = words.length
+        document.querySelector("#bioCount").classList.toggle('text-center', len<150)
+        document.querySelector("#bioCount").classList.toggle('small', len<150)
+        document.querySelector("#bioCount").classList.toggle('text-success', len<150)
         document.querySelector("#bioCount").classList.toggle('text-center', len>=150)
         document.querySelector("#bioCount").classList.toggle('small', len>=150)
         document.querySelector("#bioCount").classList.toggle('text-danger', len>=150)
