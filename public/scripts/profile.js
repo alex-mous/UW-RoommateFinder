@@ -233,7 +233,6 @@ const loadForm = () => {
 
     setTime("waketime", user.profile.prefsMinimized.waketime);
     setTime("sleeptime", user.profile.prefsMinimized.sleeptime);
-
 }
 
 //Show or clear a message. htmlMsg store the html to be displayed. blockId is the ID of the element to target. type is the text type (info/success/warn/danger)
