@@ -18,12 +18,15 @@ window.onload = () => {
     document.querySelector("#profileForm").onsubmit = doUpdate;
 
     document.querySelector("textarea[name='bio']").onkeyup = (e) => {
-        document.querySelector("#bioCount").innerText = e.srcElement.value.split(" ").length;
-        var elem = document.getElementById("bioCount");
-        elem.classList.toggle("text-center small text-success", e.srcElement.value.split(" ").length<150);
-        elem.classList.toggle("text-center small text-danger", e.srcElement.value.split(" ").length>=150); 
-        if (e.srcElement.value.split(" ").length >= 150 && e.which >= 0x20) {
-            e.preventDefault();
+        let words = e.srcElement.value.match(/\b[-?(\w+)?]+\b/gi);
+        document.querySelector("#bioCount").innerText = words.length;     //simul word counting
+        let child = document.getElementById("bioCount");
+        let parent = child.parentNode;
+        let len = words.length
+        parent.classList.toggle("text-success", len<150);    //color changing, same with line 27
+        parent.classList.toggle("text-danger", len>=150);
+        if (len >= 150 && e.which >= 0x20) {
+            e.preventDefault(); 
         }
     }
 
