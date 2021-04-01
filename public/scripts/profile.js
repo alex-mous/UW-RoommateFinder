@@ -123,8 +123,8 @@ const doUpdate = (e) => {
                 interests: data.getAll("interests"),
                 ideology: {
                     rank: data.get("ideologyr"),
-                    lr: data.get("ideology1"),
-                    al: data.get("ideology2")
+                    al: data.get("ideology1"),
+                    lr: data.get("ideology2")
                 },
                 location: data.get("campus"),
                 hall: data.get("residence")
