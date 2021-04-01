@@ -154,7 +154,7 @@ const doUpdate = (e) => {
 //Load all of the form data from user memory (precondition - user is logged in)
 const loadForm = () => {
     let user = auth.currentUser().user_metadata;
-    if (!user) return;
+    if (!user?.listing) return;
     document.querySelector("input[name='name']").value = user.listing.name;
     document.querySelector("input[name='email']").value = user.listing.email;
     document.querySelector("textarea[name='bio']").value = user.listing.bio;
