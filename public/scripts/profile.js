@@ -9,26 +9,16 @@ window.onload = () => {
     });
     user = auth.currentUser();
 
-    if (user == null) { //Exit page if not logged in
-        window.location.href = "/"
-    }
+    if (user == null) window.location.href = "/" //Exit page if not logged in
 
-    console.log("User logged in!");
+    console.log("User logged in", user);
+
     document.querySelector("#logoutBtn").onclick = doLogout;
     document.querySelector("#profileForm").onsubmit = doUpdate;
 
-    document.querySelector("textarea[name='bio']").onkeyup = (e) => {
-        let words = e.srcElement.value.match(/\b[-?(\w+)?]+\b/gi);
-        document.querySelector("#bioCount").innerText = words.length;     //simul word counting
-        let child = document.getElementById("bioCount");
-        let parent = child.parentNode;
-        let len = words.length
-        parent.classList.toggle("text-success", len<150);    //color changing, same with line 27
-        parent.classList.toggle("text-danger", len>=150);
-        if (len >= 150 && e.which >= 0x20) {
-            e.preventDefault(); 
-        }
-    }
+
+    let bioText = document.querySelector("textarea[name='bio']");
+    bioText.onkeydown = onBioText;
 
     document.querySelectorAll("input[name='countrymatch']").forEach((ele) => {
         ele.onchange = (e) => {
@@ -164,7 +154,11 @@ const loadForm = () => {
     document.querySelector("input[name='name']").value = userData.listing.name;
     document.querySelector("input[name='email']").value = userData.listing.email;
     document.querySelector("textarea[name='bio']").value = userData.listing.bio;
-    document.querySelector("#bioCount").value = userData.listing.bio.split(" ").length;
+    onBioText({
+        target: document.querySelector("textarea[name='bio']"),
+        which: 0x20,
+        preventDefault: () => {}
+    })
 
     if (userData.profile.prefsRanked.country != null) {
         let yesBx = document.querySelector("input[name='countrymatch'][value='y']");
@@ -241,6 +235,20 @@ const loadForm = () => {
 
     setTime("waketime", userData.profile.prefsMinimized.waketime);
     setTime("sleeptime", userData.profile.prefsMinimized.sleeptime);
+}
+
+//Validate bio length isn't too long and update UI accordingly
+const onBioText = (e) => {
+    let words = e.target.value.match(/\b[-?(\w+)?]+\b/gi);
+    if (!words) return;
+    document.querySelector("#bioCount").innerText = words.length;     //simul word counting
+    let parent = document.getElementById("bioCount").parentNode;
+    let len = words.length;
+    parent.classList.toggle("text-success", len<150);    //color changing, same with line 27
+    parent.classList.toggle("text-danger", len>=150);
+    if (len >= 150 && e.which == 0x20) {
+        e.preventDefault();
+    }
 }
 
 //Show or clear a message. htmlMsg store the html to be displayed. blockId is the ID of the element to target. type is the text type (info/success/warn/danger)
