@@ -153,7 +153,6 @@ const doUpdate = (e) => {
 
 //Load all of the form data from user memory (precondition - user is logged in)
 const loadForm = () => {
-<<<<<<< HEAD
     let user = auth.currentUser().user_metadata;
     if (!user) return;
     document.querySelector("input[name='name']").value = user.listing.name;
@@ -235,9 +234,6 @@ const loadForm = () => {
     setTime("waketime", user.profile.prefsMinimized.waketime);
     setTime("sleeptime", user.profile.prefsMinimized.sleeptime);
 
-=======
-    
->>>>>>> fb52c4b94f8ed9499d0f6d0c8dacff4dedbf2b98
 }
 
 //Show or clear a message. htmlMsg store the html to be displayed. blockId is the ID of the element to target. type is the text type (info/success/warn/danger)
