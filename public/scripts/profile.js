@@ -1,4 +1,4 @@
-let auth;
+let auth, user;
 
 window.onload = () => {
     //Initialize auth
@@ -7,9 +7,9 @@ window.onload = () => {
         audience: "",
         setCookie: false
     });
-    let usr = auth.currentUser();
+    user = auth.currentUser();
 
-    if (usr == null) { //Exit page if not logged in
+    if (user == null) { //Exit page if not logged in
         window.location.href = "/"
     }
 
@@ -76,7 +76,7 @@ const doLogout = () => {
 
 const doUpdate = (e) => {
     e.preventDefault();
-    console.log(e.target);
+    if (!auth.currentUser()) return;
     let data = new FormData(e.target);
     /*
     Ranking system:
@@ -120,14 +120,14 @@ const doUpdate = (e) => {
                 state: data.get("state"), //May be null
                 major: data.get("major"),
                 sport: data.get("sport"),
-                clubs: data.getAll("interests"),
+                interests: data.getAll("interests"),
                 ideology: {
                     rank: data.get("ideologyr"),
-                    lr: data.get("ideology1"),
-                    al: data.get("ideology2")
+                    al: data.get("ideology1"),
+                    lr: data.get("ideology2")
                 },
                 location: data.get("campus"),
-                hall: data.get("hall")
+                hall: data.get("residence")
             },
             prefsMinimized: { //Preferences that can be minimized by subtraction - all numerical values
                 cleanliness: data.get("cleanliness"),
@@ -143,34 +143,40 @@ const doUpdate = (e) => {
             }
         }
     }
+
+    showMsg("Saving...", "resMsg", "info");
+
     auth.currentUser().update({
         data: {
             ...user
         }
-    }).then(u => console.log(u));
+    }).then(u => {
+        showMsg("Profile updated!", "resMsg", "success")
+        console.log("User:", u);
+    });
 
 }
 
 //Load all of the form data from user memory (precondition - user is logged in)
 const loadForm = () => {
-    let user = auth.currentUser().user_metadata;
-    if (!user) return;
-    document.querySelector("input[name='name']").value = user.listing.name;
-    document.querySelector("input[name='email']").value = user.listing.email;
-    document.querySelector("textarea[name='bio']").value = user.listing.bio;
-    document.querySelector("#bioCount").value = user.listing.bio.split(" ").length;
+    let userData = user.user_metadata;
+    if (!userData?.listing) return;
+    document.querySelector("input[name='name']").value = userData.listing.name;
+    document.querySelector("input[name='email']").value = userData.listing.email;
+    document.querySelector("textarea[name='bio']").value = userData.listing.bio;
+    document.querySelector("#bioCount").value = userData.listing.bio.split(" ").length;
 
-    if (user.profile.prefsRanked.country != null) {
+    if (userData.profile.prefsRanked.country != null) {
         let yesBx = document.querySelector("input[name='countrymatch'][value='y']");
         yesBx.checked = true;
         document.querySelector("input[name='countrymatch']").onchange({
             target: yesBx
         });
         let countrySelect = document.querySelector("select[name='country']");
-        countrySelect.value = user.profile.prefsRanked.country;
-        if (user.profile.prefsRanked.state) {
+        countrySelect.value = userData.profile.prefsRanked.country;
+        if (userData.profile.prefsRanked.state) {
             let stateSelect = document.querySelector("select[name='state']");
-            stateSelect.value = user.profile.prefsRanked.state;
+            stateSelect.value = userData.profile.prefsRanked.state;
             countrySelect.onchange({
                 target: countrySelect
             });
@@ -179,45 +185,47 @@ const loadForm = () => {
         document.querySelector("input[name='countrymatch'][value='n']").checked = true;
     }
 
-    document.querySelector(`input[name='pronouns'][value='${user.profile.prefsAbs.pronouns}']`).checked = true;
-    document.querySelector(`input[name='social'][value='${user.profile.prefsMinimized.social}']`).checked = true;
+    document.querySelector(`input[name='pronouns'][value='${userData.profile.prefsAbs.pronouns}']`).checked = true;
+    document.querySelector(`input[name='social'][value='${userData.profile.prefsMinimized.social}']`).checked = true;
 
-    document.querySelector("select[name='closeness']").value = user.profile.prefsMinimized.closeness;
-    document.querySelector("select[name='major']").value = user.profile.prefsRanked.major;
-    document.querySelector("select[name='campus']").value = user.profile.prefsRanked.location;
-    document.querySelector("select[name='residence']").value = user.profile.prefsRanked.hall;
-    document.querySelector("select[name='temperature']").value = user.profile.prefsMinimized.temperature;
-    document.querySelector("select[name='cleanliness']").value = user.profile.prefsMinimized.cleanliness;
-    document.querySelector("select[name='noise']").value = user.profile.prefsMinimized.noise;
-    document.querySelector("select[name='pplover']").value = user.profile.prefsMinimized.pplover;
-    document.querySelector("select[name='visover']").value = user.profile.prefsMinimized.visover;
-    document.querySelector("select[name='sport']").value = user.profile.prefsRanked.sport;
-    document.querySelector("select[name='ideology1']").value = user.profile.prefsRanked.ideology.al;
-    document.querySelector("select[name='ideology2']").value = user.profile.prefsRanked.ideology.lr;
+    document.querySelector("select[name='closeness']").value = userData.profile.prefsMinimized.closeness;
+    document.querySelector("select[name='major']").value = userData.profile.prefsRanked.major;
+    document.querySelector("select[name='campus']").value = userData.profile.prefsRanked.location;
+    document.querySelector("select[name='residence']").value = userData.profile.prefsRanked.hall;
+    document.querySelector("select[name='temperature']").value = userData.profile.prefsMinimized.temperature;
+    document.querySelector("select[name='cleanliness']").value = userData.profile.prefsMinimized.cleanliness;
+    document.querySelector("select[name='noise']").value = userData.profile.prefsMinimized.noise;
+    document.querySelector("select[name='pplover']").value = userData.profile.prefsMinimized.pplover;
+    document.querySelector("select[name='visover']").value = userData.profile.prefsMinimized.visover;
+    document.querySelector("select[name='sport']").value = userData.profile.prefsRanked.sport;
+    document.querySelector("select[name='ideology1']").value = userData.profile.prefsRanked.ideology.al;
+    document.querySelector("select[name='ideology2']").value = userData.profile.prefsRanked.ideology.lr;
 
-    document.querySelector(`input[name='rushing'][value='${user.profile.prefsMinimized.rushing}']`).checked = true;
-    document.querySelector(`input[name='drink'][value='${user.profile.prefsAbs.drink.me}']`).checked = true;
-    document.querySelector(`input[name='drinkr'][value='${user.profile.prefsAbs.drink.you}']`).checked = true;
-    document.querySelector(`input[name='vape'][value='${user.profile.prefsAbs.vape.me}']`).checked = true;
-    document.querySelector(`input[name='vaper'][value='${user.profile.prefsAbs.vape.you}']`).checked = true;
-    document.querySelector(`input[name='smoke'][value='${user.profile.prefsAbs.smoke.me}']`).checked = true;
-    document.querySelector(`input[name='smoker'][value='${user.profile.prefsAbs.smoke.you}']`).checked = true;
-    document.querySelector(`input[name='weed'][value='${user.profile.prefsAbs.weed.me}']`).checked = true;
-    document.querySelector(`input[name='weedr'][value='${user.profile.prefsAbs.weed.you}']`).checked = true;
+    document.querySelector(`input[name='rushing'][value='${userData.profile.prefsMinimized.rushing}']`).checked = true;
+    document.querySelector(`input[name='drink'][value='${userData.profile.prefsAbs.drink.me}']`).checked = true;
+    document.querySelector(`input[name='drinkr'][value='${userData.profile.prefsAbs.drink.you}']`).checked = true;
+    document.querySelector(`input[name='vape'][value='${userData.profile.prefsAbs.vape.me}']`).checked = true;
+    document.querySelector(`input[name='vaper'][value='${userData.profile.prefsAbs.vape.you}']`).checked = true;
+    document.querySelector(`input[name='smoke'][value='${userData.profile.prefsAbs.smoke.me}']`).checked = true;
+    document.querySelector(`input[name='smoker'][value='${userData.profile.prefsAbs.smoke.you}']`).checked = true;
+    document.querySelector(`input[name='weed'][value='${userData.profile.prefsAbs.weed.me}']`).checked = true;
+    document.querySelector(`input[name='weedr'][value='${userData.profile.prefsAbs.weed.you}']`).checked = true;
 
-    for (let opt of document.querySelector("select[name='interests']").options) {
-        if (user.profile.prefsRanked.interests.includes(opt.value)) opt.selected = true;
-        else opt.selected = false;
+    if (userData.profile.prefsRanked.interests) {
+        for (let opt of document.querySelector("select[name='interests']").options) {
+            if (userData.profile.prefsRanked.interests.includes(opt.value)) opt.selected = true;
+            else opt.selected = false;
+        }
     }
 
-    let lgbtqRad = document.querySelector(`input[name='lgbtq'][value='${user.profile.prefsRanked.lgbtq}']`);
+    let lgbtqRad = document.querySelector(`input[name='lgbtq'][value='${userData.profile.prefsRanked.lgbtq || "n"}']`);
     lgbtqRad.checked = true;
     document.querySelector("input[name='lgbtq']").onchange({
             target: lgbtqRad
     });
-    if (user.profile.prefsRanked.lgbtq == "y") document.querySelector(`input[name='lgbtqpref'][value='${user.profile.prefsAbs.lgbtq}']`).checked = true;
+    if (userData.profile.prefsRanked.lgbtq == "y") document.querySelector(`input[name='lgbtqpref'][value='${userData.profile.prefsAbs.lgbtq}']`).checked = true;
 
-    let ideologyRad = document.querySelector(`input[name='ideologyr'][value='${user.profile.prefsRanked.ideology.rank}']`);
+    let ideologyRad = document.querySelector(`input[name='ideologyr'][value='${userData.profile.prefsRanked.ideology.rank}']`);
     ideologyRad.checked = true;
     document.querySelector("input[name='ideologyr']").onchange({
             target: ideologyRad
@@ -231,8 +239,8 @@ const loadForm = () => {
         document.querySelector(`input[name='${name}']`).value = `${hrs}:${mins}`;
     }
 
-    setTime("waketime", user.profile.prefsMinimized.waketime);
-    setTime("sleeptime", user.profile.prefsMinimized.sleeptime);
+    setTime("waketime", userData.profile.prefsMinimized.waketime);
+    setTime("sleeptime", userData.profile.prefsMinimized.sleeptime);
 }
 
 //Show or clear a message. htmlMsg store the html to be displayed. blockId is the ID of the element to target. type is the text type (info/success/warn/danger)
