@@ -76,6 +76,7 @@ const doLogout = () => {
 
 const doUpdate = (e) => {
     e.preventDefault();
+    console.log(e.target);
     let data = new FormData(e.target);
     /*
     Ranking system:
@@ -112,7 +113,6 @@ const doUpdate = (e) => {
                 lgbtq: data.get("lgbtqpref"),
             //Ternary or more
                 pronouns: data.get("pronouns"),
-                
 
             },
             prefsRanked: { //Preferences that are preferrable if they exists, but not like flags and are not subtractable like Minimized ones
@@ -120,15 +120,14 @@ const doUpdate = (e) => {
                 state: data.get("state"), //May be null
                 major: data.get("major"),
                 sport: data.get("sport"),
-                interests: data.getAll("interests"),
+                clubs: data.getAll("interests"),
                 ideology: {
                     rank: data.get("ideologyr"),
-                    al: data.get("ideology1"),
-                    lr: data.get("ideology2")
+                    lr: data.get("ideology1"),
+                    al: data.get("ideology2")
                 },
                 location: data.get("campus"),
-                hall: data.get("residence"),
-                lgbtq: data.get("lgbtq"),
+                hall: data.get("hall")
             },
             prefsMinimized: { //Preferences that can be minimized by subtraction - all numerical values
                 cleanliness: data.get("cleanliness"),
@@ -141,23 +140,20 @@ const doUpdate = (e) => {
                 temperature: data.get("temperature"),
                 waketime: parseInt(data.get("waketime"))*60 + parseInt(data.get("waketime").slice(-2)), //Minutes
                 sleeptime: parseInt(data.get("sleeptime"))*60 + parseInt(data.get("sleeptime").slice(-2)) //Minutes
-            },
+            }
         }
     }
-    showMsg("Updating your profile...", "resMsg", "info")
     auth.currentUser().update({
         data: {
             ...user
         }
-    }).then((u) => {
-        console.log("User now: ", u);
-        showMsg("Successfully updated your profile!", "resMsg", "success");
-    });
+    }).then(u => console.log(u));
 
 }
 
 //Load all of the form data from user memory (precondition - user is logged in)
 const loadForm = () => {
+<<<<<<< HEAD
     let user = auth.currentUser().user_metadata;
     if (!user) return;
     document.querySelector("input[name='name']").value = user.listing.name;
@@ -239,6 +235,9 @@ const loadForm = () => {
     setTime("waketime", user.profile.prefsMinimized.waketime);
     setTime("sleeptime", user.profile.prefsMinimized.sleeptime);
 
+=======
+    
+>>>>>>> fb52c4b94f8ed9499d0f6d0c8dacff4dedbf2b98
 }
 
 //Show or clear a message. htmlMsg store the html to be displayed. blockId is the ID of the element to target. type is the text type (info/success/warn/danger)

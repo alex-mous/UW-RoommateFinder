@@ -26,10 +26,10 @@ A big thank you to [Alex Mous](https://github.com/alex-mous), he is the brain of
 
 Another thank you to [Palak Mehta](https://github.com/palak-mehta) and [Nahush Shrivatsa](https://github.com/nahushvatsa), who helped code and plan the project. For [myself](https://github.com/pedrodeoliamarante), I enviosned the project and helped with coding and design.
 
-To end, a special thank you to everyone at the UW 2025 discord, who helped us gather data and gave us ideias.
+To end, a special thank you to everyone at the UW 2025 discord, who helped us gather data and gave us amazing ideas.
 
 ## License 
 
 All assets and code are under the [GNU General Public License v3.0](https://github.com/alex-mous/RoommateMatcher/blob/main/LICENSE) and in the public domain unless specified otherwise.
 
-The assets in logo/ are trademarks of their respective owners and are under their terms and license.
+The assets in logo are trademarks of their respective owners and are under their terms and license.
