@@ -13,6 +13,9 @@ window.onload = () => {
 
     console.log("User logged in!");
     document.querySelector("#logoutBtn").onclick = doLogout;
+
+    let userData = usr.user_metadata;
+    if (!userData) showMsg("Please go to <a href='/profile'>Profile</a> to complete your profile and start getting matches")
 }
 
 //Logout the current user
