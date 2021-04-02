@@ -1,21 +1,10 @@
-let auth, user;
+// auth, user defined in main
 
 window.onload = () => {
-    //Initialize auth
-    auth = new GoTrue({
-        APIUrl: "https://roommatematcher.netlify.app/.netlify/identity",
-        audience: "",
-        setCookie: false
-    });
-    user = auth.currentUser();
-
     if (user == null) window.location.href = "/" //Exit page if not logged in
 
-    console.log("User logged in", user);
-
-    document.querySelector("#logoutBtn").onclick = doLogout;
     document.querySelector("#profileForm").onsubmit = doUpdate;
-
+    document.querySelector("#logoutBtn").onclick = doLogout;
 
     let bioText = document.querySelector("textarea[name='bio']");
     bioText.onkeydown = onBioText;
@@ -47,21 +36,6 @@ window.onload = () => {
     });
 
     loadForm();
-}
-
-//Logout the current user
-const doLogout = () => {
-    if (!auth.currentUser()) return;
-    auth.currentUser().logout()
-        .then(() => {
-            window.setTimeout(() => {
-                window.location.href = "/";
-            }, 3000);
-        })
-        .catch((err) => {
-            console.log("Error while attempting to log out: ")
-            console.dir(err);
-        });
 }
 
 const doUpdate = (e) => {
@@ -249,11 +223,4 @@ const onBioText = (e) => {
     if (len >= 150 && e.which == 0x20) {
         e.preventDefault();
     }
-}
-
-//Show or clear a message. htmlMsg store the html to be displayed. blockId is the ID of the element to target. type is the text type (info/success/warn/danger)
-const showMsg = (htmlMsg, blockId, type) => {
-    let msgBlock = document.querySelector(`#${blockId}`);
-    msgBlock.classList = [`text-${type}`];
-    msgBlock.innerHTML = htmlMsg;
 }

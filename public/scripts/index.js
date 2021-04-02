@@ -1,22 +1,18 @@
+// user, auth defined in main
+
 window.onload = () => {
-    //Initialize auth
-    auth = new GoTrue({
-        APIUrl: "https://roommatematcher.netlify.app/.netlify/identity",
-        audience: "",
-        setCookie: false
-    });
-    let usr = auth.currentUser();
+    if (user != null) document.querySelectorAll(".no-auth, .auth-only").forEach(ele => ele.classList.toggle("d-none"));
 
     checkConfirmation(window.location.hash);
-    
-    console.log(usr);
 
-    if (usr != null) { //Toggle conditional display elements
-        console.log("User logged in!");
-        document.querySelectorAll(".no-auth, .auth-only").forEach(ele => ele.classList.toggle("d-none"))
-    }
+    document.querySelectorAll(".login-btn").forEach(btn => {
+        btn.onclick = () => showForms(false);
+    });
 
-    document.querySelector("#loginBtn").onclick = () => showForms(false);
+    document.querySelectorAll(".logout-btn").forEach(btn => {
+        btn.onclick = doLogout;
+    });
+
     document.querySelector("#signupBtn").onclick = () => showForms(true);
 
     document.querySelector("#showSignUpLink").onclick = () => showForms(true);
@@ -26,7 +22,6 @@ window.onload = () => {
 
     document.querySelector("#loginForm").onsubmit = doLogin;
     document.querySelector("#signupForm").onsubmit = doSignup;
-    document.querySelector("#logoutBtn").onclick = doLogout;
 }
 
 //Check if there is a confirmation token to process or if there is any hash that needs to be addressed (including confirmed state after email fully confirmed)
@@ -56,34 +51,12 @@ const checkConfirmation = (hash) => {
     }
 }
 
-
 //Show the login or signup form for the user (shows signup form is signUp is true)
 const showForms = (signUp, show=true) => {
     document.querySelector("#signupForm").classList.toggle("d-none", !signUp);
     document.querySelector("#loginForm").classList.toggle("d-none", signUp);
     document.querySelector("#formFloat").classList.toggle("d-none", !show);
     document.querySelector("#main").classList.toggle("blurred", show);
-}
-
-
-//Attempt to login the user given the form data
-const doLogin = (e) => {
-    e.preventDefault();
-    let data = new FormData(e.target);
-    showMsg("<b>Loading...</b>", "loginMsg", "info");
-    auth.login(data.get("email"), data.get("password"), data.get("persist") == "y")
-        .then((resp) => {
-            console.log("Received API response for login: ", resp);
-            showMsg("<b>Success!</b> You'll be redirected to <a href='/dashboard'>your Dashboard</a> in a few seconds.", "loginMsg", "success");
-            window.setTimeout(() => {
-                window.location.href = "/dashboard";
-            }, 3000);
-        })
-        .catch((err) => {
-            console.log("Error received: API response for login: ");
-            console.dir(err);
-            showMsg(`<b>Error while logging in!</b> ${err.json.error_description||err.json.msg}`, "loginMsg", "danger");
-        });
 }
 
 //Attempt to sign up the user given the form data
@@ -107,26 +80,22 @@ const doSignup = (e) => {
         });
 }
 
-//Logout the current user
-const doLogout = () => {
-    if (!auth.currentUser()) return;
-    auth.currentUser().logout()
-        .then(() => {
-            showMsg("Logged out! Reloading in 3 seconds...", "warnMsg", "success");
+//Attempt to login the user given the form data
+const doLogin = (e) => {
+    e.preventDefault();
+    let data = new FormData(e.target);
+    showMsg("<b>Loading...</b>", "loginMsg", "info");
+    auth.login(data.get("email"), data.get("password"), data.get("persist") == "y")
+        .then((resp) => {
+            console.log("Received API response for login: ", resp);
+            showMsg("<b>Success!</b> You'll be redirected to <a href='/dashboard'>your Dashboard</a> in a few seconds.", "loginMsg", "success");
             window.setTimeout(() => {
-                window.location.reload();
+                window.location.href = "/dashboard";
             }, 3000);
         })
         .catch((err) => {
-            showMsg("<b>Error while logging out.</b> Please check the console.", "warnMsg", "danger");
-            console.log("Error while attempting to log out: ")
+            console.log("Error received: API response for login: ");
             console.dir(err);
+            showMsg(`<b>Error while logging in!</b> ${err.json.error_description||err.json.msg}`, "loginMsg", "danger");
         });
-}
-
-//Show or clear a message. htmlMsg store the html to be displayed. blockId is the ID of the element to target. type is the text type (info/success/warn/danger)
-let showMsg = (htmlMsg, blockId, type) => {
-    let msgBlock = document.querySelector(`#${blockId}`);
-    msgBlock.classList = [`text-${type}`];
-    msgBlock.innerHTML = htmlMsg;
 }
