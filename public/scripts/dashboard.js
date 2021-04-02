@@ -10,17 +10,14 @@ window.onload = () => {
     if (!user.user_metadata) showMsg("Please go to <a href='/profile'>Profile</a> to complete your profile and start getting matches");
 
     user.jwt(true).then((token) => {
-        fetch("https://roommatematcher.netlify.app/.netlify/functions/match",
+        fetch("/.netlify/functions/match",
         {
-            method:"POST",
+            method: "GET",
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': `Bearer ${token}`,
             },
-            credentials: "include",
-            body: JSON.stringify(
-                {test:"abc"}
-            )
+            credentials: "include"
         })
             .then(res =>res.json())
             .then(res => console.log(res))
