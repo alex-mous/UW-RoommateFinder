@@ -1,5 +1,5 @@
 [build]
-  functions = "distfunctions/"
+  functions = "functions/"
   publish = "public/"
 
 
