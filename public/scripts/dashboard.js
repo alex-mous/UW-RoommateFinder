@@ -11,11 +11,7 @@ window.onload = () => {
 
     user.jwt(true).then((token) => {
         console.log("Got token", token);
-        fetch("/.netlify/functions/match",
-        {
-            method: "GET"
-        })
-            .then(res => res.json())
+        fetch("/.netlify/functions/match")
             .then(res => console.log(res))
     })
 
