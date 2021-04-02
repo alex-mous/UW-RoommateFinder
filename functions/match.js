@@ -1,26 +1,18 @@
 import fetch from "node-fetch";
 
 exports.handler = (ev, ct, cb) => {
-    if (!ct.clientContext || !ct.clientContext.identity || !ct.clientContext.user) {
-        return {
-            statusCode: 400,
-            body: JSON.stringify({success: false})
-        }
-    }
-
-    const {identity, user} = ct.clientContext;
-    console.log("ID", identity);
-    console.log("User", user);
-    console.log("Data", data);
-
-    if (!identity || !user) {
-        return {
-            statusCode: 400,
-            body: JSON.stringify({success: false})
-        }
-    }
-
     try {
+        if (!ct.clientContext || !ct.clientContext.identity || !ct.clientContext.user) {
+            return {
+                statusCode: 400,
+                body: JSON.stringify({success: false})
+            }
+        }
+
+        const {identity, user} = ct.clientContext;
+        console.log("ID", identity);
+        console.log("User", user);
+    
         return fetch(`${identity.url}/admin/users`, {
             method: "GET",
             headers: {
