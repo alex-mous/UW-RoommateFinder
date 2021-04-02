@@ -23,7 +23,7 @@ window.onload = () => {
                 if (res.success) {
                     for (let user of res.users) {
                         let row = document.createElement("TR");
-                        row.innerHTML = `<td>${user.name}</td><td>${user.email}</td><td>${user.bio}</td><td>${user.score}</td>`;
+                        row.innerHTML = `<td>${user.name}</td><td>${user.email}</td><td>div class="bio">${user.bio}</div></td><td>${user.match}</td>`;
                         document.querySelector("#matchTable").appendChild(row);
                     }
                 } else {
