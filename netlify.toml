@@ -1,7 +1,8 @@
 [build]
-  functions = "distfunctions/"
+functions = "dist_functions/"
   publish = "public/"
-
+  command = "npm run build"
 
 [context.production]
   publish = "public/"
+  
