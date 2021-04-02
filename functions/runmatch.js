@@ -3,19 +3,20 @@ const fetch = require('node-fetch').default;
 
 const handler = async (event, context) => {
     console.log("Starting request...");
-    if (!context.clientContext || !context.clientContext.identity) {
-      return {
-          statusCode: 501,
-          body: `Internal Server Fault`,
-      }
-    }
-    const { identity } = context.clientContext;
-    const user = event.body.user;
-    const usersUrl = `${identity.url}/admin/users`;
-    const adminAuthHeader = `Bearer ${identity.token}`;
-    console.log("CTX", context.clientContext);
-    console.log("EV", user);
     try {
+      if (!context.clientContext || !context.clientContext.identity) {
+        return {
+            statusCode: 501,
+            body: `Internal Server Fault`,
+        }
+      }
+      const { identity } = context.clientContext;
+      const user = event.body.user;
+      const usersUrl = `${identity.url}/admin/users`;
+      const adminAuthHeader = `Bearer ${identity.token}`;
+      console.log("CTX", context.clientContext);
+      console.log("EV", user);
+    
         return fetch(usersUrl, {
             method: 'GET',
             headers: { Authorization: adminAuthHeader },
