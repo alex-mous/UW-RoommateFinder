@@ -1,4 +1,4 @@
-import fetch from "node-fetch";
+//import fetch from "node-fetch";
 
 exports.handler = (ev, ct, cb) => {
     return {
