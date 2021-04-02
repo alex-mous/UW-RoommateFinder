@@ -10,30 +10,34 @@ exports.handler = (ev, ct, cb) => {
     if (!identity || !user) {
         return {
             statusCode: 400,
-            body: JSON.stringify({success: true, test: ct.clientContext})
+            body: JSON.stringify({success: false})
         }
     }
 
-    return fetch(`${identity.url}/admin/users`, {
-        method: "GET",
-        headers: {
-            Authorization: `Bearer ${identity.token}`
-        }
-    })
-        .then((res) => res.json())
-        .then((res) => {
-            console.log("Results:", res);
-            return {
-                statusCode: 200,
-                body: JSON.stringify({success: true, body: res})
+    try {
+        return fetch(`${identity.url}/admin/users`, {
+            method: "GET",
+            headers: {
+                Authorization: `Bearer ${identity.token}`
             }
         })
-        .catch((err) => {
-            console.error("Failed to fetch users:", err);
-            return {
-                statusCode: 500,
-                body: JSON.stringify({success: false, body: err})
-            }
-        })
+            .then((res) => res.json())
+            .then((res) => {
+                console.log("Results:", res);
+                return {
+                    statusCode: 200,
+                    body: JSON.stringify({success: true, body: res})
+                }
+            })
+            .catch((err) => {
+                console.log("Failed to fetch users:", err);
+                return {
+                    statusCode: 500,
+                    body: JSON.stringify({success: false, body: err})
+                }
+            });
+    } catch (err) {
+        console.log("External 500", err);
+    }
 
 }
