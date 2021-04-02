@@ -11,15 +11,11 @@ window.onload = () => {
 
     user.jwt(true).then(() => {
         console.log("Got token", user.token.access_token);
-        fetch("/.netlify/functions/runmatch", {
-            method: "POST",
+        fetch("/.netlify/functions/testfn", {
             headers: {
-                'Content-Type': 'application/json',
                 'Authorization': 'Bearer ' + user.token.access_token
             },
-            body: {
-                user: JSON.stringify(user)
-            }
+            credentials: 'include'
         })
             .then(res => console.log(res))
     })

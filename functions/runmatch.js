@@ -11,25 +11,16 @@ const handler = async (event, context) => {
         }
       }
       const { identity } = context.clientContext;
-      const user = event.body.user;
       const usersUrl = `${identity.url}/admin/users`;
       const adminAuthHeader = `Bearer ${identity.token}`;
       console.log("CTX", context.clientContext);
-      console.log("EV", user);
     
-        return fetch(usersUrl, {
+        let data = await (await fetch(usersUrl, {
             method: 'GET',
             headers: { Authorization: adminAuthHeader },
-        })
-            .then((response) => response.json())
-            .then((data) => {
-                console.log("Resulting data", JSON.stringify(data));
-                return { statusCode: 200, body: JSON.stringify({success:true}) };
-            })
-            .catch((error) => ({
-                statusCode: 500,
-                body: `Internal Server Fault: ${error}`,
-            }));
+        })).json();
+        console.log("Resulting data", JSON.stringify(data));
+        return { statusCode: 200, body: JSON.stringify({success:true}) };
     } catch (error) {
         console.log("Err", error);
         return {
