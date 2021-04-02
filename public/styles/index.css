@@ -16,17 +16,17 @@ body {
     background-color: rgb(24, 26, 27);
 }
 
-body, button, .splash-nav-item a {
-    color:  rgb(255, 255, 255, 1) !important;
+body, .btn, .splash-nav-item a {
+    color:  #d9d5d0 !important;
 }
 
 a.no-style {
     text-decoration: none;
-    color: rgb(255, 255, 255, 1);
+    color: #d9d5d0 !important;
 }
 
 a.no-style:hover {
-    color: rgb(200, 200, 200, 1);
+    color: #d9d5d0;
 }
 
 .splash {
@@ -287,4 +287,9 @@ main.blurred .splash {
     position: absolute;
     bottom: 0;
     z-index: 10;
+    color: #d9d5d0 !important;
+}
+
+.navbar-light .navbar-nav .nav-link {
+    color: rgb(0,0,0,0.55);
 }
