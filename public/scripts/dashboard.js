@@ -13,11 +13,7 @@ window.onload = () => {
         console.log("Got token", token);
         fetch("/.netlify/functions/match",
         {
-            method: "GET",
-            headers: {
-                'Authorization': `Bearer ${token}`
-            },
-            credentials: "include"
+            method: "GET"
         })
             .then(res => res.json())
             .then(res => console.log(res))
