@@ -1,0 +1,170 @@
+<!--
+Page:
+	Home
+Path:
+	/index.html
+-->
+
+
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta name="Description" content="Welcome to the unofficial University of Washington roommate finding program! Find a dorm roommate out of other registered UW students through a set of profile questions.">
+
+		<title>RoommateFinder - Unofficial UW Roommate Finding Program</title>
+
+		<link rel="icon" href="/assets/icon.svg" type="image/x-icon">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta charset="UTF-8">
+
+		<link rel="stylesheet" href="/styles/bootstrap.min.css">
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+		<link rel="stylesheet" href="/styles/index.css">
+        <link rel="stylesheet" href="/styles/style.css">
+	</head>
+
+	<body>
+		<main class="" id="main">
+            <img src="/assets/splash.jpg" class="img splash" alt="main background image"></img>
+
+            <section class="txt splash">
+                <p class="title">UW RoommateFinder</p>
+                <p class="subtitle">Welcome to the unofficial University of Washington roommate finding program</p>
+            </section>
+
+            <section class="scroll splash">
+                <p class="mb-3 no-auth">Login or sign up to get started</p>
+                <p class="mb-3 auth-only d-none">Go to your Dashboard to update your profile or see current matches</p>
+                <span>
+                    <span class="no-auth">
+                        <button class="btn btn-lg btn-success px-5 mx-2 login-btn">
+                            Log In
+                        </button>
+                        <button class="btn btn-lg btn-success px-5 mx-2" id="signupBtn">
+                            Sign Up
+                        </button>
+                    </span>
+                    <span class="auth-only d-none">
+                        <a class="btn btn-lg btn-success px-5 mx-2" href="/dashboard">
+                            Dashboard
+                        </a>
+                        <button class="btn btn-lg btn-danger px-5 mx-2 logout-btn">
+                            Log Out
+                        </button>
+                    </span>
+                </span>
+                <p class="d-none text-danger" id="warnMsg"></p>
+            </section>
+
+            <nav class="navbar spnav navbar-expand-lg navbar-dark">
+                <a class="navbar-brand" href="/">
+                    <img src="/assets/icon.svg" src="site logo" height="50">
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mainNavItems" aria-controls="mainNavItems" aria-label="Show or hide main menu" aria-expanded="false" >
+                    <i class="fa fa-bars"></i>
+                </button>
+                <div class="collapse navbar-collapse ml-auto" id="mainNavItems">
+                    <div class="ml-auto navbar-nav nav nav-pills">
+                        <a class="nav-item nav-link mx-2" href="/about">
+                            Why RoommateFinder?
+                        </a>
+                        <a class="nav-item nav-link mx-1" href="/profile">
+                            Profile
+                        </a>
+                        <a class="nav-item nav-link mx-1" href="/dashboard">
+                            Dashboard
+                        </a>
+                        <a class="mx-1 btn btn-outline-success no-auth login-btn" href="#">
+                            Log In
+                        </a>
+                        <a class="mx-1 btn btn-outline-danger auth-only d-none logout-btn" href="#">
+                            Log Out
+                        </a>
+                    </div>
+                </div>
+            </nav>
+            <footer class="footer pt-3 pb-1 px-3 my-0">
+                <p>
+                    Copyright (c) 2021. Created with ❤️ and 🍵 by Alex Mous. <a href="https://github.com/alex-mous/UW-RoommateFinder" rel="noopener nofollow" target="_blank">View the source code on GitHub!</a>
+                </p>		
+            </footer>
+        </main>
+        <section class="d-none" id="formFloat">
+            <div id="formClose"><i class="fa fa-times"></i></div>
+            <form class="d-none" id="loginForm">
+                <p class="w-100 h3 mb-2 text-center">Login</p>
+                <label class="w-100">
+                    <span class="sr-only">UW Email Address (@uw.edu)</span>
+                    <input class="form-control" type="text" name="email" placeholder="UW Email Address (@uw.edu)">
+                </label>
+                <label class="w-100">
+                    <span class="sr-only">Password</span>
+                    <input class="form-control" type="password" name="password" placeholder="Password">
+                </label>
+                <label class="w-100 mt-1">
+                    <span class="mr-3">Keep me signed in?</span>
+                    <div class="form-check-inline">
+                        <label class="form-check-label mx-2">
+                            <input class="form-check-input" type="radio" name="persist" value="y" checked>
+                            Yes
+                        </label>
+                        <label class="form-check-label mx-2">
+                            <input class="form-check-input" type="radio" name="persist" value="n">
+                            No
+                        </label>
+                    </div>
+                </label>
+                <button class="mt-2 w-100 btn btn-success">Log in!</button>
+                <p class="text-center my-1">Don't have an account? <a class="link" href="#" id="showSignUpLink">Sign up instead</a></p>
+                <p class="text-center my-3"><span id="loginMsg"></span></p>
+            </form>
+
+            <form class="d-none" id="signupForm">
+                <p class="w-100 h3 mb-2 text-center">Sign up</p>
+                <label class="w-100">
+                    <span class="sr-only">UW Email Address (@uw.edu)</span>
+                    <input class="form-control" type="text" name="email" placeholder="UW Email Address (@uw.edu)">
+                </label>
+                <label class="w-100">
+                    <span class="sr-only">Password</span>
+                    <input class="form-control" type="password" name="password" placeholder="Password">
+                </label>
+                <label class="w-100">
+                    <span class="sr-only">Confirm Password</span>
+                    <input class="form-control" type="password" name="passwordverify" placeholder="Confirm Password">
+                </label>
+                <button class="w-100 btn btn-success">Sign up!</button>
+                <p class="text-center my-1">Already have an account? <a class="link" href="#" id="showLoginLink">Log in instead</a></p>
+                <p class="text-center my-3"><span id="signupMsg"></span></p>
+            </form>
+        </section>
+
+        <script type="application/ld+json">
+            {
+            "@context": "https://schema.org",
+            "@type": "Organization",
+            "url": "URL",
+            "logo": "URL/assets/logo.png"
+            }
+        </script>
+
+        <script type="application/ld+json">
+            {
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [{
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "URL"
+            }]
+            }
+        </script>
+
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
+        <script type="text/javascript" src="/scripts/gotrue.js"></script>
+        <script type="text/javascript" src="/scripts/main.js"></script>
+        <script type="text/javascript" src="/scripts/index.js"></script>
+    </body>
+</html>
