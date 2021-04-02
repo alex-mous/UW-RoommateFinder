@@ -22,8 +22,8 @@ window.onload = () => {
                 {test:"abc"}
             )
         })
-            .then(res => console.log(res));//;res.json())
-            //.then(res => console.log(res))
+            .then(res =>res.json())
+            .then(res => console.log(res))
     })
 
     
