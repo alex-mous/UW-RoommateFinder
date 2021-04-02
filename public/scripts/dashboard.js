@@ -10,7 +10,7 @@ window.onload = () => {
     if (!user.user_metadata) showMsg("Please go to <a href='/profile'>Profile</a> to complete your profile and start getting matches");
 
     user.jwt(true).then((token) => {
-        console.log("Got token")
+        console.log("Got token", token)
         fetch("/.netlify/functions/match",
         {
             method: "GET",
