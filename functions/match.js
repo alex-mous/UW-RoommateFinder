@@ -1,6 +1,6 @@
 import fetch from "node-fetch";
 
-exports.handler = async (ev, ct, cb) => {
+exports.handler = async (ev, ct) => {
     try {
         if (!ct.clientContext || !ct.clientContext.identity || !ct.clientContext.user) {
             return {
