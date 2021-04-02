@@ -1,11 +1,7 @@
-//import fetch from "node-fetch";
+import fetch from "node-fetch";
 
 exports.handler = (ev, ct, cb) => {
-    return {
-        statusCode: 200,
-        body: JSON.stringify({success: true, data: { ev: ev, ct: ct}})
-    }
-    /*try {
+    try {
         if (!ct.clientContext || !ct.clientContext.identity || !ct.clientContext.user) {
             return {
                 statusCode: 400,
@@ -44,6 +40,5 @@ exports.handler = (ev, ct, cb) => {
             statusCode: 503,
             body: JSON.stringify({success: false, err: err})
         }
-    }*/
-
+    }
 }
