@@ -35,9 +35,9 @@ const handler = async (event, context) => {
 
         let matchedUsers = [];
         for (let testU of data.users) {
-          //TODO: Add matching algorithm here with current user (user.user_metadata) and ensure not the same (user.email != testU.email)
+            //TODO: Add matching algorithm here with current user (user.user_metadata) and ensure not the same (user.email != testU.email)
             if (testU.user_metadata && testU.user_metadata.listing) {
-              matchedUsers.push(testU.user_metadata.profile);
+                matchedUsers.push(testU.user_metadata.listing);
             }
         }
 
