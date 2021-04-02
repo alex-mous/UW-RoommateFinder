@@ -36,6 +36,10 @@ exports.handler = (ev, ct, cb) => {
             });
     } catch (err) {
         console.log("External 500", err);
+        return {
+            statusCode: 503,
+            body: JSON.stringify({success: false, err: err})
+        }
     }
 
 }
