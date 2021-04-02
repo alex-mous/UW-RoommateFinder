@@ -1,4 +1,7 @@
-# UW RoommateFinder
+<p align="center">
+    <img src="https://github.com/alex-mous/UW-RoommateFinder/blob/97ad77fea1a148c4184f7f4ad0644e47749082b6/public/assets/UWRF%20logo%20with%20subs.png">
+</p>
+
 [![GitHub issues](https://img.shields.io/github/issues/alex-mous/UW-RoommateFinder)](https://github.com/alex-mous/UW-RoommateFinder/issues) [![GitHub forks](https://img.shields.io/github/forks/alex-mous/UW-RoommateFinder)](https://github.com/alex-mous/UW-RoommateFinder/network) [![GitHub stars](https://img.shields.io/github/stars/alex-mous/UW-RoommateFinder)](https://github.com/alex-mous/UW-RoommateFinder/stargazers) 
 ![version](https://img.shields.io/badge/version-0.2-purple)
 
