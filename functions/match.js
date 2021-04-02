@@ -1,8 +1,14 @@
 import fetch from "node-fetch";
 
 exports.handler = (ev, ct, cb) => {
+    if (!ct.clientContext || !ct.clientContext.identity || !ct.clientContext.user) {
+        return {
+            statusCode: 400,
+            body: JSON.stringify({success: false})
+        }
+    }
+
     const {identity, user} = ct.clientContext;
-    const data = ev.body;
     console.log("ID", identity);
     console.log("User", user);
     console.log("Data", data);
