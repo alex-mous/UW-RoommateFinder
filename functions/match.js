@@ -7,7 +7,7 @@ exports.handler = (ev, ct, cb) => {
     console.log("User", user);
     console.log("Data", data);
 
-    if (!identity) {
+    if (!identity || !user) {
         return {
             statusCode: 400,
             body: JSON.stringify({success: true, test: ct.clientContext})
