@@ -22,13 +22,31 @@ const handler = async (event, context) => {
             headers: { Authorization: adminAuthHeader },
         })).json();
       
-        console.log("Resulting data", JSON.stringify(data));
+        console.log("Resulting data: ",data);
+        if (!data.users) {
+          return {
+              statusCode: 401,
+              body: JSON.stringify({
+                success: false,
+                err: "Error while trying to source users - likely insufficient authentication"
+              })
+          };
+        }
+
+        let matchedUsers = [];
+        for (let testU of data.users) {
+          //TODO: Add matching algorithm here with current user (user.user_metadata) and ensure not the same (user.email != testU.email)
+            if (testU.user_metadata && testU.user_metadata.listing) {
+              matchedUsers.push(testU.user_metadata.profile);
+            }
+        }
+
         return {
-          statusCode: 200,
-          body: JSON.stringify({
-            success: true,
-            users: data
-          })
+            statusCode: 200,
+            body: JSON.stringify({
+              success: true,
+              users: matchedUsers
+            })
         };
     } catch (error) {
         console.log("Err", error);
