@@ -1,7 +1,11 @@
 [build]
   functions = "functions_build/"
   publish = "public/"
+  command = "npm run build"
 
+
+[dev]
+  functions = "functions_build/"
 
 [context.production]
   publish = "public/"
