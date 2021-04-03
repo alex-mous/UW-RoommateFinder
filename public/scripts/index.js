@@ -22,6 +22,19 @@ window.onload = () => {
 
     document.querySelector("#loginForm").onsubmit = doLogin;
     document.querySelector("#signupForm").onsubmit = doSignup;
+
+    
+    document.querySelector(".navbar-toggler").onclick = () => { //BLur background
+        document.querySelector("#main").classList.toggle("blurred");
+    }
+
+    window.matchMedia("(min-width: 992px)").onchange = () => {
+        if (window.innerWidth > 992) {
+            if (document.querySelector("#main").classList.contains("blurred")) {
+                document.querySelector(".navbar-toggler").click();
+            }
+        }
+    }
 }
 
 //Check if there is a confirmation token to process or if there is any hash that needs to be addressed (including confirmed state after email fully confirmed)
