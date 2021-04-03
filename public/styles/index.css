@@ -300,6 +300,7 @@ main.blurred .splash {
 
 
 .btn-purple {
+    color: #fff;
     background-color: #3c2d72;
 }
 
@@ -308,6 +309,7 @@ main.blurred .splash {
 }
 
 .btn-outline-purple {
+    color: #fff;
     border-color: #3c2d72;
     border-width: 2.5px;
 }

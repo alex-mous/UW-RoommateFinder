@@ -7,7 +7,10 @@ window.onload = () => {
 
     document.querySelector("#logoutBtn").onclick = doLogout;
 
-    if (!user.user_metadata) showMsg("Please go to <a href='/profile'>Profile</a> to complete your profile and start getting matches");
+    if (!user.user_metadata) {
+        showMsg("Please go to <a href='/profile'>Profile</a> to complete your profile and start getting matches");
+        return;
+    }
 
     user.jwt(true).then(() => {
         console.log("Fetching matches...");
