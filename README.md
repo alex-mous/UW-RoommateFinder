@@ -9,7 +9,7 @@ UW RoommateFinder is a project designed by the UW Discord 2025 CS team that help
 loys)
 
 ## Usage
-To use it create an account at [roommatematcher.netlify.app](https://roommatematcher.netlify.app) (an UW email is necessary), after that answer the questions in the form. In your profile should be a refresh button, press it and you will able to see your 10 best matches, with a small description of each person. Everytime you want to check your matches it is recomended that you refresh them, as there might be better ones. 
+To use it create an account at [https://roommatefinder.netlify.app](https://roommatefinder.netlify.app) (an UW email is necessary), after that answer the questions in the form. In your profile should be a refresh button, press it and you will able to see your 10 best matches, with a small description of each person. Everytime you want to check your matches it is recomended that you refresh them, as there might be better ones. 
 
 ## Support
 For support you can contact us on the [UW 2025 discord](https://discord.gg/TtchJ6DGKF), you can also look for @Tsuho#3532, @Amarante#3384,@Palak Mehta#6615, or @i dont know#3651.
