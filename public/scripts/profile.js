@@ -218,8 +218,7 @@ const onBioText = (e) => {
     document.querySelector("#bioCount").innerText = words.length;     //simul word counting
     let parent = document.getElementById("bioCount").parentNode;
     let len = words.length;
-    parent.classList.toggle("text-success", len<150);    //color changing, same with line 222, 223
-    parent.classList.toggle("text-warning", len=150);
+    parent.classList.toggle("text-success", len<=150);    //color changing, same with line 222
     parent.classList.toggle("text-danger", len>150);
     if (len >= 150 && e.which == 0x20) {
         e.preventDefault();
