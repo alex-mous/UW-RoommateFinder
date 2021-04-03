@@ -115,7 +115,7 @@ a.no-style:hover {
         font-size: 4.5vw;
     }
 
-    #loginForm, #signupForm {
+    #loginForm, #signupForm, #resetForm {
         left: 12.5%;
         width: 75%;
     }
@@ -134,7 +134,7 @@ a.no-style:hover {
         font-size: 1.5em;
     }
 
-    #loginForm, #signupForm {
+    #loginForm, #signupForm, #resetForm {
         left: 22.5%;
         width: 55%;
     }
@@ -153,7 +153,7 @@ a.no-style:hover {
         font-size: 2em;
     }
 
-    #loginForm, #signupForm {
+    #loginForm, #signupForm, #resetForm {
         left: 35%;
         width: 30%;
     }
@@ -263,7 +263,7 @@ main.blurred .splash {
     filter: blur(3px) brightness(0.2);
 }
 
-#loginForm, #signupForm {
+#loginForm, #signupForm, #resetForm {
     position: relative;
     top: 30%;
 }

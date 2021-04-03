@@ -43,7 +43,9 @@ const handler = async (event, context) => {
             let absScore = 0; //The lower the better
             for (let pref in profile.prefsAbs) {
                 console.log(`Checking... ${pref}: ${myProfile.prefsAbs[pref]} vs ${profile.prefsAbs[pref]}`);
-                absScore += Math.abs(profile.prefsAbs[pref] - myProfile.prefsAbs[pref]);
+                absScore += 1*(myProfile.prefsAbs[pref].you < profile.prefsAbs[pref].me);
+                absScore += 1*(profile.prefsAbs[pref].you < myProfile.prefsAbs[pref].me);
+                if (absScore > 0) break;
             }
 
             if (profile.prefsRanked.lgbtqpref == "n" && myProfile.prefsRanked.lgbtqpref == "n") {                 //Both not lgbtq - need same pronouns
@@ -113,6 +115,7 @@ const handler = async (event, context) => {
             // maxScore = 207
             testU.matchScore = 100*(minimizedScore + rankedScore)/207;
         }
+        console.log(data.users);
 
         /*            matchedUsers.push({
               ...testU.user_metadata.listing,
@@ -123,7 +126,7 @@ const handler = async (event, context) => {
             statusCode: 200,
             body: JSON.stringify({
               success: true,
-              users: matchedUsers
+              users: []
             })
         };
     } catch (error) {

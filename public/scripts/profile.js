@@ -1,5 +1,3 @@
-// auth, user defined in main
-
 window.onload = () => {
     if (user == null) window.location.href = "/" //Exit page if not logged in
 
@@ -58,16 +56,22 @@ const doUpdate = (e) => {
         profile: {
             prefsAbs: { //Absolute "deal-breakers", such as smoking/no smoking
             //Numeric - can be subtracted but MUST BE 0 FOR MATCH!!
-                drinkme: data.get("drink"),
-                drinkyou: data.get("drinkr"),
-                smokeme: data.get("smoke"),
-                smokeyou: data.get("smoker"),
-                vapeme: data.get("vape"),
-                vapeyou: data.get("vaper"),
-                weedme: data.get("weed"),
-                weedyou: data.get("weedr"),
-                
-
+                drink: {
+                    me: data.get("drink"),
+                    you: data.get("drinkr")
+                },
+                smoke: {
+                    me: data.get("smoke"),
+                    you: data.get("smoker")
+                },
+                vape: {
+                    me: data.get("vape"),
+                    you: data.get("vaper")
+                },
+                weed: {
+                    me: data.get("weed"),
+                    you: data.get("weedr")
+                }
             },
             prefsRanked: { //Preferences that are preferrable if they exists, but not like flags and are not subtractable like Minimized ones
                 country: data.get("country"), //May be null - force null if US to simplify matching
@@ -163,14 +167,14 @@ const loadForm = () => {
     document.querySelector("select[name='ideology2']").value = userData.profile.prefsRanked.ideology.lr;
 
     document.querySelector(`input[name='rushing'][value='${userData.profile.prefsMinimized.rushing}']`).checked = true;
-    document.querySelector(`input[name='drink'][value='${userData.profile.prefsAbs.drinkme}']`).checked = true;
-    document.querySelector(`input[name='drinkr'][value='${userData.profile.prefsAbs.drinkyou}']`).checked = true;
-    document.querySelector(`input[name='vape'][value='${userData.profile.prefsAbs.vapeme}']`).checked = true;
-    document.querySelector(`input[name='vaper'][value='${userData.profile.prefsAbs.vapeyou}']`).checked = true;
-    document.querySelector(`input[name='smoke'][value='${userData.profile.prefsAbs.smokeme}']`).checked = true;
-    document.querySelector(`input[name='smoker'][value='${userData.profile.prefsAbs.smokeyou}']`).checked = true;
-    document.querySelector(`input[name='weed'][value='${userData.profile.prefsAbs.weedme}']`).checked = true;
-    document.querySelector(`input[name='weedr'][value='${userData.profile.prefsAbs.weedyou}']`).checked = true;
+    document.querySelector(`input[name='drink'][value='${userData.profile.prefsAbs.drink.me}']`).checked = true;
+    document.querySelector(`input[name='drinkr'][value='${userData.profile.prefsAbs.drink.you}']`).checked = true;
+    document.querySelector(`input[name='vape'][value='${userData.profile.prefsAbs.vape.me}']`).checked = true;
+    document.querySelector(`input[name='vaper'][value='${userData.profile.prefsAbs.vape.you}']`).checked = true;
+    document.querySelector(`input[name='smoke'][value='${userData.profile.prefsAbs.smoke.me}']`).checked = true;
+    document.querySelector(`input[name='smoker'][value='${userData.profile.prefsAbs.smoke.you}']`).checked = true;
+    document.querySelector(`input[name='weed'][value='${userData.profile.prefsAbs.weed.me}']`).checked = true;
+    document.querySelector(`input[name='weedr'][value='${userData.profile.prefsAbs.weed.you}']`).checked = true;
 
     if (userData.profile.prefsRanked.interests) {
         for (let opt of document.querySelector("select[name='interests']").options) {

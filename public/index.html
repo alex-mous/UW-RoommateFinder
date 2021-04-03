@@ -116,6 +116,7 @@ Path:
                 </label>
                 <button class="mt-2 w-100 btn btn-success">Log in!</button>
                 <p class="text-center my-1">Don't have an account? <a class="link" href="#" id="showSignUpLink">Sign up instead</a></p>
+                <p class="text-center my-1">Forgot your password? <a class="link" href="#" id="sendResetEmail">Send a reset email</a></p>
                 <p class="text-center my-3"><span id="loginMsg"></span></p>
             </form>
 
@@ -136,6 +137,20 @@ Path:
                 <button class="w-100 btn btn-success">Sign up!</button>
                 <p class="text-center my-1">Already have an account? <a class="link" href="#" id="showLoginLink">Log in instead</a></p>
                 <p class="text-center my-3"><span id="signupMsg"></span></p>
+            </form>
+
+            <form class="d-none" id="resetForm">
+                <p class="w-100 h3 mb-2 text-center">Reset Password</p>
+                <label class="w-100">
+                    <span class="sr-only">Password</span>
+                    <input class="form-control" type="password" name="password" placeholder="Password">
+                </label>
+                <label class="w-100">
+                    <span class="sr-only">Confirm Password</span>
+                    <input class="form-control" type="password" name="passwordverify" placeholder="Confirm Password">
+                </label>
+                <button class="w-100 btn btn-success">Confirm Reset</button>
+                <p class="text-center my-3"><span id="resetMsg"></span></p>
             </form>
         </section>
 

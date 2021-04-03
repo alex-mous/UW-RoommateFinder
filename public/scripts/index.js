@@ -18,13 +18,15 @@ window.onload = () => {
     document.querySelector("#showSignUpLink").onclick = () => showForms(true);
     document.querySelector("#showLoginLink").onclick = () => showForms(false);
 
+    document.querySelector("#sendResetEmail").onclick = doPasswordReset;
+
     document.querySelector("#formClose").onclick = () => showForms(true, false);
 
     document.querySelector("#loginForm").onsubmit = doLogin;
     document.querySelector("#signupForm").onsubmit = doSignup;
-
+    document.querySelector("#resetForm").onsubmit = doPasswordResetConfirm;
     
-    document.querySelector(".navbar-toggler").onclick = () => { //BLur background
+    document.querySelector(".navbar-toggler").onclick = () => { //Blur background
         document.querySelector("#main").classList.toggle("blurred");
     }
 
@@ -61,6 +63,21 @@ const checkConfirmation = (hash) => {
         window.setTimeout(() => {
             window.location.href = "/dashboard";
         }, 3000);
+    } else if (hash.includes("recovery_token")) {
+        document.querySelector("#resetForm").classList.remove("d-none");
+        document.querySelector("#formFloat").classList.remove("d-none");
+        document.querySelector("#main").classList.add("blurred");
+        let token = hash.slice(hash.indexOf("confirmation_token=")+19);
+        showMsg(`Confirming reset token...`, "resetMsg", "info");
+        auth.recover(token, true)
+            .then((resp) => {
+                console.log("Recovery token confirmed", resp);
+                showMsg(`Reset token confirmed! Please enter a new password.`, "resetMsg", "success");
+            })
+            .catch((err) => {
+                console.error("Error while confirming reset", err);
+                showMsg(`<b>Error while confirming reset link!</b> The link probably expired. Please request <a href="/">a new one</a>`, "resetMsg", "danger");
+            });
     }
 }
 
@@ -79,6 +96,7 @@ const doSignup = (e) => {
     showMsg("<b>Loading...</b>", "signupMsg", "info");
     if (data.get("password") != data.get("passwordverify")) {
         showMsg(`<b>Error!</b> Passwords do not match`, "signupMsg", "danger");
+        return;
     }
     auth.signup(data.get("email"), data.get("password"))
         .then((resp) => {
@@ -110,5 +128,47 @@ const doLogin = (e) => {
             console.log("Error received: API response for login: ");
             console.dir(err);
             showMsg(`<b>Error while logging in!</b> ${err.json.error_description||err.json.msg}`, "loginMsg", "danger");
+        });
+}
+
+//Attempt to reset the user's password
+const doPasswordReset = (e) => {
+    e.preventDefault();
+    let email = (new FormData(document.querySelector("#loginForm"))).get("email");
+    if (!email) {
+        showMsg(`<b>Enter an email before requesting a password reset!</b>`, "loginMsg", "danger");
+        return;
+    }
+    showMsg(`Sending reset email...`, "loginMsg", "info");
+    auth.requestPasswordRecovery(email)
+        .then((resp) => {
+            console.log("Recovery email sent", resp);
+            showMsg("<b>Recovery email sent!</b> Please click the link in the email to enter a new password", "loginMsg", "success");
+        })
+        .catch((err) => {
+            console.err("Error while sending password reset email", err);
+            showMsg(`<b>Error while trying to reset password!</b> Error provided: ${err.json.error_description||err.json.msg}`, "loginMsg", "danger");
+        })
+}
+
+//Attempt to confirm the reset for the user's password
+const doPasswordResetConfirm = (e) => {
+    e.preventDefault();
+    let data = new FormData(e.target);
+    if (data.get("password") != data.get("passwordverify")) {
+        showMsg(`<b>Error!</b> Passwords do not match.`, "resetMsg", "danger");
+        return;
+    }
+    user.update({ password: data.get("password") })
+        .then((resp) => {
+            console.log("Password updated", resp);
+            showMsg("<b>Password reset!</b> You will be redirected to home in a few seconds...", "resetMsg", "success");
+            window.setTimeout(() => {
+                window.location.href = "/";
+            }, 3000);
+        })
+        .catch((err) => {
+            console.err("Error while resetting password", err);
+            showMsg(`<b>Error while resetting password!</b> Please try again. Error provided: ${err.json.error_description||err.json.msg}`, "resetMsg", "danger");
         });
 }
