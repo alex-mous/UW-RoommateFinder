@@ -1,32 +1,18 @@
 {
-  "name": "roommatematcher",
+  "name": "roommatefinder",
   "version": "1.0.0",
-  "description": "Roommate Matching web interface",
+  "description": "<p align=\"center\">\r     <img src=\"https://github.com/alex-mous/UW-RoommateFinder/blob/97ad77fea1a148c4184f7f4ad0644e47749082b6/public/assets/UWRF%20logo%20with%20subs.png\">\r </p>",
   "main": "index.js",
   "scripts": {
-    "start": "npm-run-all --parallel start:**",
-    "start:app": "netlify dev",
-    "start:server": "netlify-lambda serve functions",
-    "build": "npm-run-all --parallel build:**",
-    "build:app": "npm install .",
-    "build:functions": "netlify-lambda build functions"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/alex-mous/RoomateMatcher.git"
+    "build": "netlify-lambda build ./functions/"
   },
   "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/alex-mous/RoomateMatcher/issues"
+  "devDependencies": {
+    "netlify-lambda": "^2.0.3"
   },
-  "homepage": "https://github.com/alex-mous/RoomateMatcher#readme",
   "dependencies": {
     "encoding": "^0.1.13",
     "node-fetch": "^2.6.1"
-  },
-  "devDependencies": {
-    "netlify-lambda": "^2.0.3",
-    "npm-run-all": "^4.1.5"
   }
 }

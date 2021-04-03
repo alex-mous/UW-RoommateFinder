@@ -2,9 +2,9 @@
 
 //Initialize auth
 const auth = new GoTrue({
-    APIUrl: "https://roommatematcher.netlify.app/.netlify/identity",
+    APIUrl: "https://roommatefinder.netlify.app/.netlify/identity",
     audience: "",
-    setCookie: false
+    setCookie: true
 });
 const user = auth.currentUser();
 
