@@ -72,7 +72,8 @@ Path:
                     <hr class="d-md-none d-block w-50 my-0">
                     <label class="row custom-form-row">
                         <span class="col-md col-12 mb-1 py-2 text-center">
-                            <p class="m-0 p-0">What is your email address?</p>
+                            <p class="m-0 p-0">What are your preferred methods of contact?</p>
+                            <p class="text-info text-center small m-0 p-0">Email, phone, Instagram, SnapChat, etc.</p>
                         </span>
                         <input class="col mx-4 mx-sm-0  form-control d-inline" required type="text" name="email">
                     </label>
@@ -429,19 +430,19 @@ Path:
                         <span class="col-md col-12 mb-1 py-2 text-center">
                             <div class="form-check-inline">
                                 <label class="form-check-label">
-                                    <input class="form-check-input" type="radio" required name="pronouns" value="he">
+                                    <input class="form-check-input" type="radio" required name="pronouns" value="1">
                                     He/Him
                                 </label>
                             </div>
                             <div class="form-check-inline">
                                 <label class="form-check-label">
-                                    <input class="form-check-input" type="radio" name="pronouns" value="she">
+                                    <input class="form-check-input" type="radio" name="pronouns" value="0.5">
                                     She/Her
                                 </label>
                             </div>
                             <div class="form-check-inline">
                                 <label class="form-check-label">
-                                    <input class="form-check-input" type="radio" name="pronouns" value="they">
+                                    <input class="form-check-input" type="radio" name="pronouns" value="0">
                                     They/Them
                                 </label>
                             </div>
@@ -676,7 +677,7 @@ Path:
                     <label class="row custom-form-row">
                         <span class="col-md col-12 mb-1 py-2 text-center">
                             Do you identify as LGBTQ+?
-                            <p class="text-danger small m-0 p-0">Used to determine roommate compatability. If you'd rather not say, please specify in your bio or when people contact you</p>
+                            <p class="text-danger small m-0 p-0">Used to determine roommate compatability. If you'd rather not say, please specify in your bio or when people contact you as this will be ignored during filtering.</p>
                         </span>
                         <span class="col-md col-12 mb-1 py-2 text-center">
                             <div class="form-check-inline">
@@ -691,6 +692,12 @@ Path:
                                     No
                                 </label>
                             </div>
+                            <div class="form-check-inline">
+                                <label class="form-check-label">
+                                    <input class="form-check-input" type="radio" required name="lgbtq" value="r">
+                                    Rather not say
+                                </label>
+                            </div>
                         </span>
                     </label>
                     <label class="row no-height" id="f-lgbtq">
@@ -701,13 +708,13 @@ Path:
                         <span class="col-md col-12 mb-1 py-2 text-center">
                             <div class="form-check-inline">
                                 <label class="form-check-label">
-                                    <input class="form-check-input" type="radio" required disabled name="lgbtqpref" value="y">
+                                    <input class="form-check-input" type="radio" required disabled name="lgbtqpref" value="1">
                                     Yes
                                 </label>
                             </div>
                             <div class="form-check-inline">
                                 <label class="form-check-label">
-                                    <input class="form-check-input" type="radio" required disabled name="lgbtqpref" value="n">
+                                    <input class="form-check-input" type="radio" required disabled name="lgbtqpref" value="0">
                                     No
                                 </label>
                             </div>
@@ -1038,13 +1045,13 @@ Path:
                         <span class="col-md col-12 mb-1 py-2 text-center">
                             <div class="form-check-inline d-block d-sm-inline">
                                 <label class="form-check-label">
-                                    <input class="form-check-input" type="radio" required name="ideologyr" value="50">
+                                    <input class="form-check-input" type="radio" required name="ideologyr" value="5">
                                     Extremely important
                                 </label>
                             </div>
                             <div class="form-check-inline d-block d-sm-inline">
                                 <label class="form-check-label">
-                                    <input class="form-check-input" type="radio" required name="ideologyr" value="10">
+                                    <input class="form-check-input" type="radio" required name="ideologyr" value="1">
                                     Somewhat important
                                 </label>
                             </div>
@@ -1063,15 +1070,15 @@ Path:
                         </span>
                         <select class="col ml-4 ml-sm-0 mr-sm-2 form-control" required name="ideology1">
                             <option disabled selected value> -- select -- </option>
-                            <option value="A">Authoritarian</option>
-                            <option value="C">Center</option>
-                            <option value="L">Libertarian</option>
+                            <option value="1">Authoritarian</option>
+                            <option value="0.5">Center</option>
+                            <option value="0">Libertarian</option>
                          </select>
                         <select class="col mr-4 mx-sm-0 form-control" required name="ideology2">
                             <option disabled selected value> -- select -- </option>
-                            <option value="L">Left</option>
-                            <option value="C">Center</option>
-                            <option value="R">Right</option>
+                            <option value="1">Left</option>
+                            <option value="0.5">Center</option>
+                            <option value="0">Right</option>
                          </select>
                     </label>
                     <hr class="d-md-none d-block w-50 my-0">
@@ -1089,7 +1096,7 @@ Path:
                         <input type="time" class="col mx-4 mx-sm-0  form-control d-inline" required name="sleeptime">
                     </label>
                     <hr class="d-sm-none d-block w-75 my-2">
-                    <button class="btn btn-success w-100 mt-3">Update Profile!</button>
+                    <button class="btn btn-outline-success w-100 mt-3">Update Profile!</button>
                     <p class="mt-3 text-center w-100"><span id="resMsg"></span></p>
                 </form>
             </section>
