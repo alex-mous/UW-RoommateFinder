@@ -4,7 +4,8 @@
   "description": "<p align=\"center\">\r     <img src=\"https://github.com/alex-mous/UW-RoommateFinder/blob/97ad77fea1a148c4184f7f4ad0644e47749082b6/public/assets/UWRF%20logo%20with%20subs.png\">\r </p>",
   "main": "index.js",
   "scripts": {
-    "build": "netlify-lambda build ./functions/"
+    "build": "netlify-lambda build ./functions/",
+    "netlify": "netlify"
   },
   "author": "",
   "license": "ISC",
@@ -13,6 +14,7 @@
   },
   "dependencies": {
     "encoding": "^0.1.13",
+    "netlify-cli": "^3.14.0",
     "node-fetch": "^2.6.1"
   }
 }
