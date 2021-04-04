@@ -12,26 +12,23 @@ window.onload = () => {
         return;
     }
 
-    user.jwt(true).then(() => {
-        console.log("Fetching matches...");
-        fetch("/.netlify/functions/runmatch", {
-            headers: {
-                'Authorization': 'Bearer ' + user.token.access_token
-            },
-            credentials: 'include'
-        })
-            .then(res => res.json())
-            .then(res => {
-                console.log("API Results: ", res);
-                if (res.success) {
-                    for (let user of res.users) {
-                        let row = document.createElement("TR");
-                        row.innerHTML = `<td>${user.name}</td><td>${user.email}</td><td><div class="bio">${user.bio}</div></td><td>${user.match}</td>`;
-                        document.querySelector("#matchTable").appendChild(row);
-                    }
-                } else {
-                    //TODO: show error
-                }
-            });
+    console.log("Fetching matches...");
+    /*fetch("/.netlify/functions/runmatch", {
+        headers: {
+            'Authorization': 'Bearer ' + user.token.access_token
+        },
+        credentials: 'include'
     })
+        .then(res => res.json())
+        .then(res => {*/
+    console.log("Results: ", res);
+    if (user.app_metadata.success) {
+        for (let user of user.app_metadata.users) {
+            let row = document.createElement("TR");
+            row.innerHTML = `<td>${user.name}</td><td>${user.email}</td><td><div class="bio">${user.bio}</div></td><td>${user.match}</td>`;
+            document.querySelector("#matchTable").appendChild(row);
+        }
+    } else {
+        //TODO: show error
+    }
 }

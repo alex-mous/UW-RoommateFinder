@@ -2,8 +2,7 @@ const fetch = require('node-fetch').default;
 
 const handler = async (event, context) => {
     try {
-      console.log(event);
-        if (!context.clientContext || !context.clientContext.identity) {
+        /*if (!context.clientContext || !context.clientContext.identity) {
             return {
                 statusCode: 500,
                 body: {success: false, msg: "Identity not implemented for this endpoint and/or not sent"},
@@ -14,7 +13,7 @@ const handler = async (event, context) => {
               body: {success: false, msg: "User not sent - unauthorized"},
             }
         }
-        const { identity, user } = context.clientContext;
+        const { identity } = context.clientContext;
         const usersUrl = `${identity.url}/admin/users`;
         const adminAuthHeader = `Bearer ${identity.token}`;
         console.log("CTX", context.clientContext);
@@ -116,29 +115,28 @@ const handler = async (event, context) => {
             // maxScore = 207
             testU.matchScore = 100*(minimizedScore + rankedScore)/207;
         }
-        console.log(data.users);
+        console.log(data.users);*/
 
         /*            matchedUsers.push({
               ...testU.user_metadata.listing,
               match: 100
             });*/
-
+        console.log(event.body.user);
+        console.log(context.clientContext.identity);
         return {
             statusCode: 200,
             body: JSON.stringify({
-              success: true,
-              users: []
+              app_metadata: {success: true}
             })
         };
     } catch (error) {
         console.log("Err", error);
         return {
-          statusCode: 501,
+          statusCode: 200,
           body: JSON.stringify({
-            success: false,
-            err: error
+            app_metadata: {success: false}
           })
-        };
+        }
     }
 };
 

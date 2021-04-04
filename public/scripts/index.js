@@ -1,44 +1,3 @@
-// user, auth defined in main
-
-window.onload = () => {
-    if (user != null) document.querySelectorAll(".no-auth, .auth-only").forEach(ele => ele.classList.toggle("d-none"));
-
-    checkConfirmation(window.location.hash);
-
-    document.querySelectorAll(".login-btn").forEach(btn => {
-        btn.onclick = () => showForms(false);
-    });
-
-    document.querySelectorAll(".logout-btn").forEach(btn => {
-        btn.onclick = doLogout;
-    });
-
-    document.querySelector("#signupBtn").onclick = () => showForms(true);
-
-    document.querySelector("#showSignUpLink").onclick = () => showForms(true);
-    document.querySelector("#showLoginLink").onclick = () => showForms(false);
-
-    document.querySelector("#sendResetEmail").onclick = doPasswordReset;
-
-    document.querySelector("#formClose").onclick = () => showForms(true, false);
-
-    document.querySelector("#loginForm").onsubmit = doLogin;
-    document.querySelector("#signupForm").onsubmit = doSignup;
-    document.querySelector("#resetForm").onsubmit = doPasswordResetConfirm;
-    
-    document.querySelector(".navbar-toggler").onclick = () => { //Blur background
-        document.querySelector("#main").classList.toggle("blurred");
-    }
-
-    window.matchMedia("(min-width: 992px)").onchange = () => {
-        if (window.innerWidth > 992) {
-            if (document.querySelector("#main").classList.contains("blurred")) {
-                document.querySelector(".navbar-toggler").click();
-            }
-        }
-    }
-}
-
 //Check if there is a confirmation token to process or if there is any hash that needs to be addressed (including confirmed state after email fully confirmed)
 const checkConfirmation = (hash) => {
     if (hash.includes("confirmation_token")) {
@@ -67,11 +26,12 @@ const checkConfirmation = (hash) => {
         document.querySelector("#resetForm").classList.remove("d-none");
         document.querySelector("#formFloat").classList.remove("d-none");
         document.querySelector("#main").classList.add("blurred");
-        let token = hash.slice(hash.indexOf("confirmation_token=")+19);
+        let token = hash.slice(hash.indexOf("recovery_token=")+15);
         showMsg(`Confirming reset token...`, "resetMsg", "info");
         auth.recover(token, true)
             .then((resp) => {
                 console.log("Recovery token confirmed", resp);
+                user = resp;
                 showMsg(`Reset token confirmed! Please enter a new password.`, "resetMsg", "success");
             })
             .catch((err) => {
@@ -171,4 +131,49 @@ const doPasswordResetConfirm = (e) => {
             console.err("Error while resetting password", err);
             showMsg(`<b>Error while resetting password!</b> Please try again. Error provided: ${err.json.error_description||err.json.msg}`, "resetMsg", "danger");
         });
+}
+
+
+
+
+
+
+//Main methods
+// user, auth defined in main
+
+if (user != null) document.querySelectorAll(".no-auth, .auth-only").forEach(ele => ele.classList.toggle("d-none"));
+
+checkConfirmation(window.location.hash);
+
+document.querySelector(".navbar-toggler").onclick = () => { //Blur background
+    document.querySelector("#main").classList.toggle("blurred");
+}
+
+document.querySelectorAll(".login-btn").forEach(btn => {
+    btn.onclick = () => showForms(false);
+});
+
+document.querySelectorAll(".logout-btn").forEach(btn => {
+    btn.onclick = doLogout;
+});
+
+document.querySelector("#signupBtn").onclick = () => showForms(true);
+
+document.querySelector("#showSignUpLink").onclick = () => showForms(true);
+document.querySelector("#showLoginLink").onclick = () => showForms(false);
+
+document.querySelector("#sendResetEmail").onclick = doPasswordReset;
+
+document.querySelector("#formClose").onclick = () => showForms(true, false);
+
+document.querySelector("#loginForm").onsubmit = doLogin;
+document.querySelector("#signupForm").onsubmit = doSignup;
+document.querySelector("#resetForm").onsubmit = doPasswordResetConfirm;
+
+window.matchMedia("(min-width: 992px)").onchange = () => {
+    if (window.innerWidth > 992) {
+        if (document.querySelector("#main").classList.contains("blurred")) {
+            document.querySelector(".navbar-toggler").click();
+        }
+    }
 }
