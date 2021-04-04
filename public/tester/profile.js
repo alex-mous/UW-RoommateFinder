@@ -1,3 +1,5 @@
+// auth, user defined in main
+
 window.onload = () => {
     if (user == null) window.location.href = "/" //Exit page if not logged in
 
@@ -21,8 +23,8 @@ window.onload = () => {
 
     document.querySelectorAll("input[name='lgbtq']").forEach((ele) => {
         ele.onchange = (e) => {
-            document.querySelector("#f-lgbtq").classList.toggle("full-height", e.target.value == "y");
-            document.querySelectorAll("#f-lgbtq input").forEach(inpt => inpt.disabled = e.target.value != "y");
+            document.querySelector("#f-lgbtq").classList.toggle("full-height", e.target.value != "n");
+            document.querySelectorAll("#f-lgbtq input").forEach(inpt => inpt.disabled = e.target.value == "n");
         }
     });
 
@@ -55,7 +57,7 @@ const doUpdate = (e) => {
         },
         profile: {
             prefsAbs: { //Absolute "deal-breakers", such as smoking/no smoking
-            //Numeric - can be subtracted but MUST BE 0 FOR MATCH!!
+            //Numeric - can be subtracted
                 drink: {
                     me: data.get("drink"),
                     you: data.get("drinkr")
@@ -71,10 +73,14 @@ const doUpdate = (e) => {
                 weed: {
                     me: data.get("weed"),
                     you: data.get("weedr")
-                }
+                },
+                lgbtq: data.get("lgbtqpref"),
+            //Ternary or more
+                pronouns: data.get("pronouns"),
+
             },
             prefsRanked: { //Preferences that are preferrable if they exists, but not like flags and are not subtractable like Minimized ones
-                country: data.get("country"), //May be null - force null if US to simplify matching
+                country: data.get("country"), //May be null
                 state: data.get("state"), //May be null
                 major: data.get("major"),
                 sport: data.get("sport"),
@@ -85,10 +91,7 @@ const doUpdate = (e) => {
                     lr: data.get("ideology2")
                 },
                 location: data.get("campus"),
-                hall: data.get("residence"),
-                lgbtqpref: data.get("lgbtqpref"), //Maybe ABS PREF - here because it cannot be numerically compared
-                lgbtq: data.get("lgbtq"), //Maybe ABS PREF - here because it cannot be numerically compared
-                pronouns: data.get("pronouns") //Maybe ABS PREF
+                hall: data.get("residence")
             },
             prefsMinimized: { //Preferences that can be minimized by subtraction - all numerical values
                 cleanliness: data.get("cleanliness"),
@@ -99,8 +102,8 @@ const doUpdate = (e) => {
                 social: data.get("social"),
                 rushing: data.get("rushing"),
                 temperature: data.get("temperature"),
-                waketime: (parseInt(data.get("waketime"))*60 + parseInt(data.get("waketime").slice(-2)))/144, //Minutes over 144 - between 0 and 10
-                sleeptime: (parseInt(data.get("sleeptime"))*60 + parseInt(data.get("sleeptime").slice(-2)))/144 //Minutes over 144 - between 0 and 10
+                waketime: parseInt(data.get("waketime"))*60 + parseInt(data.get("waketime").slice(-2)), //Minutes
+                sleeptime: parseInt(data.get("sleeptime"))*60 + parseInt(data.get("sleeptime").slice(-2)) //Minutes
             }
         }
     }
@@ -150,7 +153,7 @@ const loadForm = () => {
         document.querySelector("input[name='countrymatch'][value='n']").checked = true;
     }
 
-    document.querySelector(`input[name='pronouns'][value='${userData.profile.prefsRanked.pronouns}']`).checked = true;
+    document.querySelector(`input[name='pronouns'][value='${userData.profile.prefsAbs.pronouns}']`).checked = true;
     document.querySelector(`input[name='social'][value='${userData.profile.prefsMinimized.social}']`).checked = true;
 
     document.querySelector("select[name='closeness']").value = userData.profile.prefsMinimized.closeness;
@@ -188,7 +191,7 @@ const loadForm = () => {
     document.querySelector("input[name='lgbtq']").onchange({
             target: lgbtqRad
     });
-    if (userData.profile.prefsRanked.lgbtq == "y") document.querySelector(`input[name='lgbtqpref'][value='${userData.profile.prefsRanked.lgbtqpref}']`).checked = true;
+    if (userData.profile.prefsRanked.lgbtq == "y") document.querySelector(`input[name='lgbtqpref'][value='${userData.profile.prefsAbs.lgbtq}']`).checked = true;
 
     let ideologyRad = document.querySelector(`input[name='ideologyr'][value='${userData.profile.prefsRanked.ideology.rank}']`);
     ideologyRad.checked = true;
@@ -197,9 +200,9 @@ const loadForm = () => {
     });
 
     let setTime = (name, time) => {
-        let hrs = Math.floor(12*time/5);
+        let hrs = Math.floor(time/60);
         if (hrs < 10) hrs = `0${hrs}`;
-        let mins = Math.round(12*time)%5;
+        let mins = time%60;
         if (mins < 10) mins = `0${mins}`; //Pad in case not correct format
         document.querySelector(`input[name='${name}']`).value = `${hrs}:${mins}`;
     }
@@ -215,33 +218,10 @@ const onBioText = (e) => {
     document.querySelector("#bioCount").innerText = words.length;     //simul word counting
     let parent = document.getElementById("bioCount").parentNode;
     let len = words.length;
-    parent.classList.toggle("text-success", len<=150);    //color changing, same with line 222
+    parent.classList.toggle("text-success", len<150);    //color changing, same with line 222, 223
+    parent.classList.toggle("text-danger", len=150);
     parent.classList.toggle("text-danger", len>150);
     if (len >= 150 && e.which == 0x20) {
         e.preventDefault();
     }
 }
-
-var autoExpand = function (field) {
-
-	// Reset field height
-	field.style.height = 'inherit';
-
-	// Get the computed styles for the element
-	var computed = window.getComputedStyle(field);
-
-	// Calculate the height
-	var height = parseInt(computed.getPropertyValue('border-top-width'), 10)
-	             + parseInt(computed.getPropertyValue('padding-top'), 10)
-	             + field.scrollHeight
-	             + parseInt(computed.getPropertyValue('padding-bottom'), 10)
-	             + parseInt(computed.getPropertyValue('border-bottom-width'), 10);
-
-	field.style.height = height + 'px';
-
-};
-
-document.addEventListener('input', function (event) {
-	if (event.target.tagName.toLowerCase() !== 'textarea') return;
-	autoExpand(event.target);
-}, false);

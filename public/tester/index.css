@@ -1,0 +1,317 @@
+.custom-form-row {
+    padding: 0.25em 0;
+}
+
+
+/*General Attributes*/
+
+html {
+    height: 100%;
+    overflow: hidden;
+}
+
+body {
+    overflow-x: hidden;
+    height: 100%;
+    background-color: rgb(24, 26, 27);
+}
+
+body, .btn, .splash-nav-item a {
+    color:  #d9d5d0 !important;
+}
+
+a.no-style {
+    text-decoration: none;
+    color: #d9d5d0 !important;
+}
+
+a.no-style:hover {
+    color: #d9d5d0;
+}
+
+.splash {
+    position: absolute;
+    text-align: center;
+}
+
+.spnav {
+    position: absolute;
+    top: 0;
+    font-family: 'Titillium Web', sans-serif !important;
+    width: 100%;
+    margin: 0;
+    z-index: 20;
+    background-color: rgb(0,0,0,0);
+}
+
+.splash.logo {
+    position: absolute;
+    top: 0.3em;
+    right: 0.3em;
+    width: calc(60px + 1em);
+    padding: 0.35em;
+    border-radius: 15px;
+    background-color: rgb(25,25,25,0.75);
+}
+
+.splash-nav-item {
+    color: rgb(255,255,255);
+    text-decoration: none;
+    border-bottom: 1.5px solid #444;
+    font-size: 1.25rem;
+    margin: 0.3rem 1rem;
+    padding: 0.25em;
+    width: 10em;
+    transition: border-radius ease 300ms;
+}
+
+.splash-nav-item.active {
+    border-color: #ccc;
+}
+
+.splash-nav-item:hover {
+    color: rgb(200,200,200);
+    border-bottom-width: 1.5px;
+    border-bottom-style: solid;
+    border-bottom-color: #eee;
+    border-radius: 6px;
+    background-color: rgb(0,0,0, 0.25);
+}
+
+/*Splash Screen*/
+
+.splash.txt {
+    background: rgb(0,0,0,0);
+    font-family: 'Titillium Web', sans-serif;
+    font-weight: 800;
+    top: 15%;
+    margin: auto auto;
+    will-change: opacity;
+    z-index: 10;
+    width: 100%;
+}
+
+#siteLogo {
+    display: block;
+}
+
+.splash.txt .title {
+    opacity: 0%;
+    animation: splashtxt 1.5s 0.5s ease-in forwards;
+}
+
+.splash.txt .subtitle {
+    opacity: 0%;
+    animation: splashtxt 2s 1.5s ease-in forwards;
+    padding: 0 1.5em;
+}
+
+@media only screen and (max-width: 620px) {
+    .title {
+        font-size: 7.5vw;
+    }
+
+    .subtitle {
+        font-size: 4.5vw;
+    }
+
+    #loginForm, #signupForm {
+        left: 12.5%;
+        width: 75%;
+    }
+
+    #formClose {
+        left: 8%;
+    }
+}
+
+@media only screen and (min-width: 620px) and (max-width: 992px) {
+    .title {
+        font-size: 2.75em;
+    }
+
+    .subtitle {
+        font-size: 1.5em;
+    }
+
+    #loginForm, #signupForm {
+        left: 22.5%;
+        width: 55%;
+    }
+
+    #formClose {
+        left: 20.5%;
+    }
+}
+
+@media only screen and (min-width: 992px) {
+    .title {
+        font-size: 4.5em;
+    }
+
+    .subtitle {
+        font-size: 2em;
+    }
+
+    #loginForm, #signupForm {
+        left: 35%;
+        width: 30%;
+    }
+
+    #formClose {
+        left: 33%;
+    }
+}
+
+@media only screen and (min-width: 1200px) {
+    .subtitle {
+        padding: 0 7em !important;
+    }
+
+}
+
+@media only screen and (min-width: 1345px) {
+    .subtitle {
+        padding: 0 23vw !important;
+    }
+}
+
+@media only screen and (min-width: 1550px) {
+    .subtitle {
+        padding: 0 0 !important;
+    }
+}
+
+
+.splash.scroll {
+    background: rgb(0,0,0,0);
+    font-family: 'Titillium Web', sans-serif;
+    position: absolute;
+    width: 100%;
+    top: 60%;
+    opacity: 0%;
+    z-index: 20;
+    padding: 0 1em;
+    text-align: center;
+    animation: splashtxt 0.5s 2.1s ease-in forwards, splashscroll 2s 2s ease-in-out forwards;
+    will-change: transform, opacity;
+}
+
+.splash.scroll p {
+    font-size: 1.5rem;
+    padding: 0;
+    margin: 0;
+}
+
+
+.splash.img {
+    width: 100%;
+    min-height: 100%;
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    z-index: 1;
+    animation: splash 3s ease-in-out forwards;
+    background-color: rgb(0,0,0);
+    will-change: opacity;
+    filter: blur(4px);
+}
+
+/*--Splash Animation--*/
+
+@keyframes splash {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 25%;
+    }
+}
+
+@keyframes splashtxt {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 100%;
+    }
+}
+
+@keyframes splashscroll {
+    0% {
+        transform: translateY(2rem);
+    }
+    100% {
+
+    }
+}
+
+/*Login/Signup forms*/
+#formFloat {
+    z-index: 25;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    text-align: center;
+}
+
+main.blurred .splash {
+    filter: blur(3px) brightness(0.2);
+}
+
+#loginForm, #signupForm {
+    position: relative;
+    top: 30%;
+}
+
+#formClose {
+    position: relative;
+    top: 29%;
+    margin: 0;
+    padding: 0;
+    font-size: 2em;
+    cursor: pointer;
+    width: 2em;
+}
+
+#formMsg {
+    position: relative;
+    top: 50%;
+}
+
+#warnMsg {
+    padding-top: 0.5em;
+}
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    z-index: 10;
+    color: #d9d5d0 !important;
+}
+
+.navbar-light .navbar-nav .nav-link {
+    color: rgb(0,0,0,0.55);
+}
+
+
+.btn-purple {
+    background-color: #3c2d72;
+}
+
+.btn-purple:hover {
+    background-color: #372a66;
+}
+
+.btn-outline-purple {
+    border-color: #3c2d72;
+    border-width: 2.5px;
+}
+
+.btn-outline-purple:hover {
+    background-color: #3c2d72;
+}
