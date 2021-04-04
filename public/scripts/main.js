@@ -17,6 +17,7 @@ if (user != null) { //Toggle conditional display elements
 //Show or clear a message. htmlMsg store the html to be displayed. blockId is the ID of the element to target. type is the text type (info/success/warn/danger)
 const showMsg = (htmlMsg, blockId, type) => {
     let msgBlock = document.querySelector(`#${blockId}`);
+    if (!msgBlock) return;
     msgBlock.classList = [`text-${type}`];
     msgBlock.innerHTML = htmlMsg;
 }
