@@ -42,10 +42,10 @@ const doLogout = () => {
     showMsg("Logging out...", "warnMsg", "info");
     auth.currentUser().logout()
         .then(() => {
-            showMsg("Logged out! Reloading in 3 seconds...", "warnMsg", "success");
+            showMsg("Logged out! Reloading in a few seconds...", "warnMsg", "success");
             window.setTimeout(() => {
-                window.location.reload();
-            }, 3000);
+                window.location.href = "/";
+            }, 1000);
         })
         .catch((err) => {
             showMsg("<b>Error while logging out.</b> Please check the console.", "warnMsg", "danger");
