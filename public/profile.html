@@ -56,13 +56,22 @@ Path:
             
             <p class="h1 text-center">RoommateFinder - Profile</p>
 
-			<section class="text-center my-4" id="about">
-                Enter information about yourself below and we will match you to a list of the top ten people with closest interests and preferences.
-                <p class="text-info mt-3">All fields required unless otherwise specified. All information will be kept private from other matches except for the information required in the Match Listing section.</p>
+			<section class="text-center my-2 lead" id="about">
+                Update your RoommateFinder profile or delete your account.
+			</section>
+            <hr class="w-75">
+            <section class="text-center my-4" id="delete">
+                <p class="h3 text-center mt-4 mb-3">Delete Account</p>
+                <p>Found a roommate or tired of being listed?</p>
+                <button class="btn btn-outline-danger" id="deleteBtn">Delete my account</button>
 			</section>
             <hr class="w-75">
             <section class="mt-3 mb-5" id="form">
-                
+                <p class="h3 text-center mt-4 mb-3">Update Profile</p>
+                <p class="text-center">
+                    Enter information about yourself below and we will match you to a list of the top ten people with closest interests and preferences.
+                    <p class="text-info text-center mt-3">All fields required unless otherwise specified. All information will be kept private from other matches except for the information required in the Match Listing section.</p>
+                </p>
                 <form id="profileForm">
                     <p class="h4 text-center mt-4 mb-1">Match Listing</p>
                     <p class="text-danger text-center small m-0 p-0">This information will be shown to other matches</p>
@@ -671,6 +680,27 @@ Path:
                             <div class="form-check-inline">
                                 <label class="form-check-label">
                                     <input class="form-check-input" type="radio" required name="rushing" value="0">
+                                    No
+                                </label>
+                            </div>
+                        </span>
+                    </label>
+                    <hr class="d-md-none d-block w-50 my-0">
+                    <label class="row custom-form-row">
+                        <span class="col-md col-12 mb-1 py-2 text-center">
+                            Do you mind living in co-ed dorms (Gender-inclusive housing)?
+                            <p class="text-info small m-0 p-0">For more information, see <a href="https://hfs.uw.edu/Gender-inclusive-housing">the UW HFS website</a>.</p>
+                        </span>
+                        <span class="col-md col-12 mb-1 py-2 text-center">
+                            <div class="form-check-inline">
+                                <label class="form-check-label">
+                                    <input class="form-check-input" type="radio" required name="genderinclusive" value="y">
+                                    Yes
+                                </label>
+                            </div>
+                            <div class="form-check-inline">
+                                <label class="form-check-label">
+                                    <input class="form-check-input" type="radio" required name="genderinclusive" value="n">
                                     No
                                 </label>
                             </div>

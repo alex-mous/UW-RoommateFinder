@@ -3,6 +3,7 @@ window.onload = () => {
 
     document.querySelector("#profileForm").onsubmit = doUpdate;
     document.querySelector("#logoutBtn").onclick = doLogout;
+    document.querySelector("#deleteBtn").onclick = doDelete;
 
     let bioText = document.querySelector("textarea[name='bio']");
     bioText.onkeydown = onBioText;
@@ -30,6 +31,12 @@ window.onload = () => {
         ele.onchange = (e) => {
             document.querySelector("#f-ideology").classList.toggle("full-height", e.target.value > 0);
             document.querySelectorAll("#f-ideology select").forEach(inpt => inpt.disabled = e.target.value == 0);
+        }
+    });
+
+    document.querySelectorAll("textarea").forEach((ele) => {
+        ele.oninput = (event) => {
+            autoExpand(event.target);
         }
     });
 
@@ -88,7 +95,8 @@ const doUpdate = (e) => {
                 hall: data.get("residence"),
                 lgbtqpref: data.get("lgbtqpref"), //Maybe ABS PREF - here because it cannot be numerically compared
                 lgbtq: data.get("lgbtq"), //Maybe ABS PREF - here because it cannot be numerically compared
-                pronouns: data.get("pronouns") //Maybe ABS PREF
+                pronouns: data.get("pronouns"), //Maybe ABS PREF
+                genderinclusive: data.get("genderinclusive")
             },
             prefsMinimized: { //Preferences that can be minimized by subtraction - all numerical values
                 cleanliness: data.get("cleanliness"),
@@ -112,10 +120,24 @@ const doUpdate = (e) => {
             ...user
         }
     }).then(u => {
-        showMsg("Profile updated!", "resMsg", "success")
-        console.log("User:", u);
+        showMsg("Profile updated! Please <a onclick='doLogout()' href='#'>log out</a> and then log back in to update your matches.", "resMsg", "success")
+        console.log("New user:", u);
     });
 
+}
+
+
+//Delete a user account (after confirmation)
+const doDelete = (e) => {
+    if (prompt("Warning: this cannot be undone! Type 'delete' to permanently delete your account.").toLowerCase() == "delete") {
+        fetch("/.netlify/functions/deleteuser", {
+            headers: {
+                Authorization: `Bearer ${user.token.access_token}`
+            },
+            credentials: "include"
+        })
+        alert("Account deleted. Redirecting to home...");
+    }
 }
 
 //Load all of the form data from user memory (precondition - user is logged in)
@@ -175,6 +197,7 @@ const loadForm = () => {
     document.querySelector(`input[name='smoker'][value='${userData.profile.prefsAbs.smoke.you}']`).checked = true;
     document.querySelector(`input[name='weed'][value='${userData.profile.prefsAbs.weed.me}']`).checked = true;
     document.querySelector(`input[name='weedr'][value='${userData.profile.prefsAbs.weed.you}']`).checked = true;
+    document.querySelector(`input[name='genderinclusive'][value='${userData.profile.prefsRanked.genderinclusive || "n"}']`).checked = true;
 
     if (userData.profile.prefsRanked.interests) {
         for (let opt of document.querySelector("select[name='interests']").options) {
@@ -221,27 +244,3 @@ const onBioText = (e) => {
         e.preventDefault();
     }
 }
-
-var autoExpand = function (field) {
-
-	// Reset field height
-	field.style.height = 'inherit';
-
-	// Get the computed styles for the element
-	var computed = window.getComputedStyle(field);
-
-	// Calculate the height
-	var height = parseInt(computed.getPropertyValue('border-top-width'), 10)
-	             + parseInt(computed.getPropertyValue('padding-top'), 10)
-	             + field.scrollHeight
-	             + parseInt(computed.getPropertyValue('padding-bottom'), 10)
-	             + parseInt(computed.getPropertyValue('border-bottom-width'), 10);
-
-	field.style.height = height + 'px';
-
-};
-
-document.addEventListener('input', function (event) {
-	if (event.target.tagName.toLowerCase() !== 'textarea') return;
-	autoExpand(event.target);
-}, false);
