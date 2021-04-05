@@ -39,7 +39,7 @@ const handler = async (event, context) => {
             }
             
             //console.log(`Gender and sexuality:\nMe: Pronouns: ${myProfile.prefsRanked.pronouns} LGBTQ: ${myProfile.prefsRanked.lgbtq} LGBTQ Pref: ${myProfile.prefsRanked.lgbtqpref}\You: Pronouns: ${profile.prefsRanked.pronouns} LGBTQ: ${profile.prefsRanked.lgbtq} LGBTQ Pref: ${profile.prefsRanked.lgbtqpref}`);
-            if (profile.prefsRanked.lgbtq == "n" && myProfile.prefsRanked.lgbtq == "n") {                 //Both not lgbtq - need same pronouns
+            if ((profile.prefsRanked.lgbtq == "n" && myProfile.prefsRanked.lgbtq == "n") && (profile.prefsRanked.genderinclusive == "n" || myProfile.prefsRanked.genderinclusive == "n")) {                 //Both not lgbtq - need same pronouns
                 absScore += Math.abs(profile.prefsRanked.pronouns - myProfile.prefsRanked.pronouns);
                 //console.log(`Both straight. Gender 1: ${profile.prefsRanked.pronouns} Gender 2: ${profile.prefsRanked.pronouns} Score: ${absScore}`);
             } else if (profile.prefsRanked.lgbtq == "y" && myProfile.prefsRanked.lgbtq == "y") {          //Both lgbtq
@@ -113,10 +113,9 @@ const handler = async (event, context) => {
             console.log("User", testU.email);
             console.log("Score", matchScore);
             if (!rankedUsers[matchScore]) {
-                rankedUsers[matchScore] = [testU.listing];
-            } else {
-                rankedUsers[matchScore].push(testU.listing);
+                rankedUsers[matchScore] = [];
             }
+            rankedUsers[matchScore].push(testU.user_metadata.listing);
         }
 
         let topUsers = [];
@@ -124,9 +123,14 @@ const handler = async (event, context) => {
         let keys = (Object.keys(rankedUsers)).reverse();
         let i = 0;
         while (topUsers.length < 25 && i < keys.length) { //add users, up to 25
-            for (let u of rankedUsers[keys[i]]) topUsers.push(u);
+            for (let u of rankedUsers[keys[i]]) {
+                u.score = keys[i];
+                topUsers.push(u);
+            }
             i++;
         }
+
+        console.log("Returning top users: ", topUsers);
 
         return {
             statusCode: 200,

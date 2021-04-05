@@ -115,7 +115,7 @@ const doUpdate = (e) => {
 
     showMsg("Saving...", "resMsg", "info");
 
-    auth.currentUser().update({
+    user.update({
         data: {
             ...user
         }
@@ -136,7 +136,19 @@ const doDelete = (e) => {
             },
             credentials: "include"
         })
-        alert("Account deleted. Redirecting to home...");
+            .then((res) => res.json())
+            .then((res) => {
+                console.log("Response from API for account deletion:", res);
+                alert("Account deleted. Redirecting to home...");
+                window.setTimeout(() => {
+                    window.location.href = "/";
+                }, 1000);
+            })
+            .catch((err) => {
+                console.log("Error while deleting account:", err);
+                alert("Failed to delete account. Please submit a support ticket and we will manually delete it for you.");
+            })
+            
     }
 }
 

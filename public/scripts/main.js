@@ -38,9 +38,9 @@ const setMode = (light) => {
 
 //Logout the current user
 const doLogout = () => {
-    if (!auth.currentUser()) return;
+    if (!user) return;
     showMsg("Logging out...", "warnMsg", "info");
-    auth.currentUser().logout()
+    user.logout()
         .then(() => {
             showMsg("Logged out! Reloading in a few seconds...", "warnMsg", "success");
             window.setTimeout(() => {
