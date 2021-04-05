@@ -120,7 +120,8 @@ const handler = async (event, context) => {
 
         let topUsers = [];
         //Keys in rankedUsers will be auto-sorted as all ints - all we need to do is find (up to) the top 25
-        let keys = (Object.keys(rankedUsers)).sort().reverse();
+        let keys = (Object.keys(rankedUsers));
+        keys = keys.slice(0, Math.min(25, keys.length)).sort().reverse();
         let i = 0;
         while (topUsers.length < 25 && i < keys.length) { //add users, up to 25
             for (let u of rankedUsers[keys[i]]) {
