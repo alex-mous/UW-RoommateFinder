@@ -6,7 +6,7 @@ const auth = new GoTrue({
     audience: "",
     setCookie: true
 });
-const user = auth.currentUser();
+let user = auth.currentUser();
 
 if (user != null) { //Toggle conditional display elements
     console.log("User logged in: ", user);

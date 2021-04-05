@@ -36,7 +36,7 @@ const checkConfirmation = (hash) => {
             })
             .catch((err) => {
                 console.error("Error while confirming reset", err);
-                showMsg(`<b>Error while confirming reset link!</b> The link probably expired. Please request <a href="/">a new one</a>`, "resetMsg", "danger");
+                showMsg(`<b>Error while confirming reset link!</b> The link probably expired. Please request <a href="#" onclick="doPasswordReset()">a new one</a>`, "resetMsg", "danger");
             });
     }
 }
@@ -93,7 +93,7 @@ const doLogin = (e) => {
 
 //Attempt to reset the user's password
 const doPasswordReset = (e) => {
-    e.preventDefault();
+    e?.preventDefault();
     let email = (new FormData(document.querySelector("#loginForm"))).get("email");
     if (!email) {
         showMsg(`<b>Enter an email before requesting a password reset!</b>`, "loginMsg", "danger");
