@@ -39,7 +39,7 @@ const handler = async (event, context) => {
             }
             
             //console.log(`Gender and sexuality:\nMe: Pronouns: ${myProfile.prefsRanked.pronouns} LGBTQ: ${myProfile.prefsRanked.lgbtq} LGBTQ Pref: ${myProfile.prefsRanked.lgbtqpref}\You: Pronouns: ${profile.prefsRanked.pronouns} LGBTQ: ${profile.prefsRanked.lgbtq} LGBTQ Pref: ${profile.prefsRanked.lgbtqpref}`);
-            if ((profile.prefsRanked.lgbtq == "n" && myProfile.prefsRanked.lgbtq == "n") && (profile.prefsRanked.genderinclusive == "n" || myProfile.prefsRanked.genderinclusive == "n")) {                 //Both not lgbtq - need same pronouns
+            if ((profile.prefsRanked.lgbtq == "n" && myProfile.prefsRanked.lgbtq == "n") && (!profile.prefsRanked.genderinclusive || (profile.prefsRanked.genderinclusive == "n" || myProfile.prefsRanked.genderinclusive == "n"))) {                 //Both not lgbtq - need same pronouns
                 absScore += Math.abs(profile.prefsRanked.pronouns - myProfile.prefsRanked.pronouns);
                 //console.log(`Both straight. Gender 1: ${profile.prefsRanked.pronouns} Gender 2: ${profile.prefsRanked.pronouns} Score: ${absScore}`);
             } else if (profile.prefsRanked.lgbtq == "y" && myProfile.prefsRanked.lgbtq == "y") {          //Both lgbtq
