@@ -4,4 +4,6 @@ window.onload = () => {
             autoExpand(event.target);
         }
     });
+
+	document.querySelector("#logoutBtn").onclick = doLogout;
 }

@@ -54,7 +54,7 @@ const doUpdate = (e) => {
         Ranked prefs are less important and will be ranked +5 points each  (plus more in the case of multiple of the same in multi-selects)
             Except for ideology, in which case it will be 10 points for somewhat care and 1000 points for extremely important (equivalent to absolute)
     */
-    let user = {
+    let userData = {
         listing: {
             name: data.get("name"),
             email: data.get("email"),
@@ -117,7 +117,7 @@ const doUpdate = (e) => {
 
     user.update({
         data: {
-            ...user
+            ...userData
         }
     }).then(u => {
         showMsg("Profile updated! Please <a onclick='doLogout()' href='#'>log out</a> and then log back in to update your matches.", "resMsg", "success")
