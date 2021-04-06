@@ -80,16 +80,20 @@ const handler = async (event, context) => {
                     interest => myProfile.prefsRanked.interests.includes(interest)
                 ).length;
             //console.log(`Ranked after interest: this ${myProfile.prefsRanked.interests} you ${profile.prefsRanked.interests}: ${rankedScore}`);
-            rankedScore -= 10*( //Can be very important, so max for each rank is 5. The lower the better, so -=
-                Math.abs(
-                  profile.prefsRanked.ideology.rank*(profile.prefsRanked.ideology.al)
-                  - myProfile.prefsRanked.ideology.rank*(myProfile.prefsRanked.ideology.al)
-                )
-                + Math.abs(
-                  profile.prefsRanked.ideology.rank*(profile.prefsRanked.ideology.lr)
-                  - myProfile.prefsRanked.ideology.rank*(myProfile.prefsRanked.ideology.lr)
-              )
-            );
+            let politicalScore = 0;
+            if (profile.prefsRanked.ideology.rank != 0 && myProfile.prefsRanked.ideology.rank != 0) { //only if both care
+                politicalScore = ( //Can be very important, so max for each rank is 5. The lower the better, so -=
+                    Math.abs(
+                      profile.prefsRanked.ideology.rank*(profile.prefsRanked.ideology.al)
+                      - myProfile.prefsRanked.ideology.rank*(myProfile.prefsRanked.ideology.al)
+                    )
+                    + Math.abs(
+                      profile.prefsRanked.ideology.rank*(profile.prefsRanked.ideology.lr)
+                      - myProfile.prefsRanked.ideology.rank*(myProfile.prefsRanked.ideology.lr)
+                    )
+                );
+            }
+            rankedScore -= 10*politicalScore;
             //console.log(`Ranked after ideology: this ${JSON.stringify(myProfile.prefsRanked.ideology)} you ${JSON.stringify(profile.prefsRanked.ideology)}: ${rankedScore}`);
             rankedScore += 10*(
                 profile.prefsRanked.location == myProfile.prefsRanked.location
