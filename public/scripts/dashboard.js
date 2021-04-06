@@ -1,9 +1,7 @@
 // auth, user already defined in main
 
 window.onload = () => {
-    if (user == null) { //Exit page if not logged in
-        window.location.href = "/";
-    }
+    if (user == null) window.location.href = "/#login"; //Exit page if not logged in
 
     document.querySelector("#logoutBtn").onclick = doLogout;
 

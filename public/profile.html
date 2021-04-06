@@ -60,12 +60,6 @@ Path:
                 Update your RoommateFinder profile or delete your account.
 			</section>
             <hr class="w-75">
-            <section class="text-center my-4" id="delete">
-                <p class="h3 text-center mt-4 mb-3">Delete Account</p>
-                <p>Found a roommate or tired of being listed?</p>
-                <button class="btn btn-outline-danger" id="deleteBtn">Delete my account</button>
-			</section>
-            <hr class="w-75">
             <section class="mt-3 mb-5" id="form">
                 <p class="h3 text-center mt-4 mb-3">Update Profile</p>
                 <p class="text-center">
@@ -84,8 +78,8 @@ Path:
                     <hr class="d-md-none d-block w-50 my-0">
                     <label class="row custom-form-row">
                         <span class="col-md col-12 mb-1 py-2 text-center">
-                            <p class="m-0 p-0">What are your preferred methods of contact?</p>
-                            <p class="text-info text-center small m-0 p-0">Email, phone, Instagram, SnapChat, etc.</p>
+                            <p class="m-0 p-0">Please list some ways to contact you</p>
+                            <p class="text-info text-center small m-0 p-0">Such as your email address, phone number, Instagram or SnapChat handle, etc.</p>
                         </span>
                         <input class="col mx-4 mx-sm-0 form-control d-inline" required type="text" name="email">
                     </label>
@@ -97,6 +91,27 @@ Path:
                             <p class="text-center small text-success">Current word count: <span id="bioCount">0</span>/150 Max</p>
                         </span>
                         <textarea class="col mx-4 mx-sm-0 w-0 form-control d-inline" id="bioText" required name="bio"></textarea>
+                    </label>
+                    <hr class="d-md-none d-block w-50 my-0">
+                    <label class="row custom-form-row">
+                        <span class="col-md col-12 mb-1 py-2 text-center">
+                            Would you like other matches to be able to see the information you enter below?
+                            <p class="text-info text-center mt-3">Selecting no will mean your information will be kept anonymous, but it may reduce your chances of finding a roommate.</p>
+                        </span>
+                        <span class="col-md col-12 mb-1 py-2 text-center">
+                            <div class="form-check-inline">
+                                <label class="form-check-label">
+                                    <input class="form-check-input" type="radio" required name="public" value="y">
+                                    Yes
+                                </label>
+                            </div>
+                            <div class="form-check-inline">
+                                <label class="form-check-label">
+                                    <input class="form-check-input" type="radio" required name="public" value="n">
+                                    No
+                                </label>
+                            </div>
+                        </span>
                     </label>
                     <p class="h4 text-center mt-4 mb-1">Basic Demographics</p>
                    
@@ -684,6 +699,7 @@ Path:
                     <label class="row custom-form-row">
                         <span class="col-md col-12 mb-1 py-2 text-center">
                             Do you plan on rushing?
+                            <p class="text-info text-center mt-3">Do you plan on joining a fraternity/sorority</p>
                         </span>
                         <span class="col-md col-12 mb-1 py-2 text-center">
                             <div class="form-check-inline">
@@ -1148,6 +1164,13 @@ Path:
                     <p class="mt-3 text-center w-100"><span id="resMsg"></span></p>
                 </form>
             </section>
+            <hr class="w-75">
+            <section class="text-center my-4" id="delete">
+                <p class="h3 text-center mt-4 mb-3">Delete Account</p>
+                <p>Found a roommate or tired of being listed?</p>
+                <button class="btn btn-outline-danger" id="deleteBtn">Delete my account</button>
+			</section>
+           
 			<footer class="footer pt-3 pb-1 px-3 my-0">
                 <p class="text-muted">
                     Copyright (c) 2021. Created with ❤️ and 🍵 by Alex Mous. <a href="https://github.com/alex-mous/UW-RoommateFinder" rel="noopener nofollow" target="_blank">View the source code on GitHub!</a>

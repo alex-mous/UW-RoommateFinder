@@ -1,5 +1,5 @@
 window.onload = () => {
-    if (user == null) window.location.href = "/" //Exit page if not logged in
+    if (user == null) window.location.href = "/#login"; //Exit page if not logged in
 
     document.querySelector("#profileForm").onsubmit = doUpdate;
     document.querySelector("#logoutBtn").onclick = doLogout;
@@ -58,7 +58,8 @@ const doUpdate = (e) => {
         listing: {
             name: data.get("name"),
             email: data.get("email"),
-            bio: data.get("bio")
+            bio: data.get("bio"),
+            public: data.get("public")
         },
         profile: {
             prefsAbs: { //Absolute "deal-breakers", such as smoking/no smoking
@@ -120,8 +121,11 @@ const doUpdate = (e) => {
             ...userData
         }
     }).then(u => {
-        showMsg("Profile updated! Please <a onclick='doLogout()' href='#'>log out</a> and then log back in to update your matches.", "resMsg", "success")
+        showMsg("Profile updated! Please <a onclick='doLogout()' href='#'>log out</a> and then log back in to update your matches.", "resMsg", "success");
         console.log("New user:", u);
+    }).catch(err => {
+        console.error("Error while trying to submit user data", err);
+        showMsg("Error while updating profile - the user authentication has probably expired. Please <a href='/#login'>log back in</a> and return to this page.", "resMsg", "danger");
     });
 
 }
@@ -159,6 +163,8 @@ const loadForm = () => {
     document.querySelector("input[name='name']").value = userData.listing.name;
     document.querySelector("input[name='email']").value = userData.listing.email;
     document.querySelector("textarea[name='bio']").value = userData.listing.bio;
+    document.querySelector(`input[name='public'][value='${userData.listing.public || "n"}']`).checked = true;
+    
     onBioText({
         target: document.querySelector("textarea[name='bio']"),
         which: 0x20,
