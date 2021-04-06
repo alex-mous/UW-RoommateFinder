@@ -7,8 +7,8 @@ window.onload = () => {
 
     document.querySelector("#logoutBtn").onclick = doLogout;
 
-    if (!user.user_metadata) {
-        showMsg("Please go to <a href='/profile'>Profile</a> to complete your profile and start getting matches");
+    if (!user.user_metadata.listing) {
+        showMsg("Please go to <a href='/profile'>Profile</a> to complete your profile and start getting matches", "mainMsg", "danger");
         return;
     }
 
@@ -16,10 +16,11 @@ window.onload = () => {
     if (user.app_metadata.success) {
         for (let usr of user.app_metadata.users) {
             let row = document.createElement("TR");
-            row.innerHTML = `<td>${usr.name}</td><td>${usr.email}</td><td><div class="bio">${usr.bio}</div></td><td>${usr.match}</td>`;
+            row.innerHTML = `<td>${usr.name}</td><td>${usr.email}</td><td><div class="bio">${usr.bio}</div></td><td>${usr.score}</td>`;
             document.querySelector("#matchTable").appendChild(row);
         }
+        showMsg("No new notifications. Latest best matches shown.", "mainMsg", "info");
     } else {
-        //TODO: show error
+        showMsg("Error in finding users! Please submit a request via <a href='/support'>our support page</a>.", "mainMsg", "danger");
     }
 }

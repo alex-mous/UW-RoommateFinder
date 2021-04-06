@@ -190,6 +190,10 @@ main.blurred .splash {
     filter: blur(3px) brightness(0.2);
 }
 
+main.blurred .footer {
+    display: none;
+}
+
 #loginForm, #signupForm, #resetForm {
     position: relative;
     top: 30%;

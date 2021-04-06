@@ -38,9 +38,9 @@ const setMode = (light) => {
 
 //Logout the current user
 const doLogout = () => {
-    if (!auth.currentUser()) return;
+    if (!user) return;
     showMsg("Logging out...", "warnMsg", "info");
-    auth.currentUser().logout()
+    user.logout()
         .then(() => {
             showMsg("Logged out! Reloading in a few seconds...", "warnMsg", "success");
             window.setTimeout(() => {
@@ -52,4 +52,23 @@ const doLogout = () => {
             console.log("Error while attempting to log out: ")
             console.dir(err);
         });
+}
+
+//Auto expand a text area
+const autoExpand = (field) => {
+	// Reset field height
+	field.style.height = 'inherit';
+
+	// Get the computed styles for the element
+	var computed = window.getComputedStyle(field);
+
+	// Calculate the height
+	var height = parseInt(computed.getPropertyValue('border-top-width'), 10)
+	             + parseInt(computed.getPropertyValue('padding-top'), 10)
+	             + field.scrollHeight
+	             + parseInt(computed.getPropertyValue('padding-bottom'), 10)
+	             + parseInt(computed.getPropertyValue('border-bottom-width'), 10);
+
+	field.style.height = height + 'px';
+
 }
