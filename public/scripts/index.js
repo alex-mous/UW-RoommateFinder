@@ -144,8 +144,6 @@ const doPasswordResetConfirm = (e) => {
 //Main methods
 // user, auth defined in main
 
-if (user != null) document.querySelectorAll(".no-auth, .auth-only").forEach(ele => ele.classList.toggle("d-none"));
-
 checkConfirmation(window.location.hash);
 
 document.querySelector(".navbar-toggler").onclick = () => { //Blur background

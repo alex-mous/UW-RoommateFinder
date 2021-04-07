@@ -10,6 +10,7 @@ let user = auth.currentUser();
 
 if (user != null) { //Toggle conditional display elements
     console.log("User logged in: ", user);
+    document.querySelectorAll(".no-auth, .auth-only").forEach(ele => ele.classList.toggle("d-none"));
 }
 
 //------------ Global Methods

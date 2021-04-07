@@ -33,6 +33,9 @@ Path:
             </button>
             <div class="collapse navbar-collapse ml-auto" id="mainNavItems">
                 <div class="ml-auto navbar-nav nav">
+                    <a class="nav-item nav-link mx-1" href="/">
+                        Home
+                    </a> 
                     <a class="nav-item nav-link mx-lg-2 mx-1" href="/about">
                         Why RoommateFinder?
                     </a>
@@ -45,8 +48,11 @@ Path:
                     <a class="nav-item nav-link mx-1" href="/support">
                         Support
                     </a>
-                    <a class="mx-1 btn btn-outline-danger" id="logoutBtn" href="#">
+                    <a class="mx-1 btn btn-outline-danger auth-only d-none" id="logoutBtn" href="#">
                         Log Out
+                    </a>
+                    <a class="mx-1 btn btn-outline-purple no-auth" href="/#login">
+                        Log In
                     </a>
                 </div>
             </div>
@@ -57,18 +63,18 @@ Path:
             <!--<img src="/assets/UWSCampus1.jpg" class="img splash"></img>-->
 
             <section class="txt splash">
-            
-            <p class="h1 text-center">RoommateFinder - Dashboard</p>
+                <p class="h1 text-center">RoommateFinder - Dashboard</p>
 
-            <p class="text-center"><i class="fa fa-info-circle mr-2"></i><span class="text-info" id="mainMsg">No new notifications</span></p>
+                <p class="text-center"><i class="fa fa-info-circle mr-2"></i><span class="text-info" id="mainMsg">No new notifications</span></p>
 
-            <p class="text-center">If your <a href="/profile">profile</a> is complete and you have logged out and logged back in since last updating it, you'll see all of your matches listed below.</p>
-            
-            <p class="text-center">Due to the costliness of recalculating your matches, they will only be updated each time you log out and then log back in.</p>
-	    </section>
+                <p class="text-center">If your <a href="/profile">profile</a> is complete and you have logged out and logged back in since last updating it, you'll see all of your matches listed below.</p>
+                
+                <p class="text-center">Due to the costliness of recalculating your matches, they will only be updated each time you log out and then log back in.</p>
+	        </section>
 		    
-            <p class="h2 text-center">Matches</p>
             <section class="text-center my-4" id="matches">
+                <p class="h2 text-center">Matches</p>
+                <p class="text-center small text-info">If you see someone who looks like a good match, reach out to them using the contact information they listed.</p>
                 <table class="table">
                     <thead>
                         <tr>
@@ -84,12 +90,18 @@ Path:
                             <th>
                                 Match Score
                             </th>
+                            <th>
+                                Profile
+                            </th>
                         </tr>
                     </thead>
                     <tbody id="matchTable">
 
                     </tbody>
                 </table>
+			</section>
+            <section class="text-center my-4 d-none" id="userview">
+                
 			</section>
             <hr class="w-75">
 
@@ -102,8 +114,8 @@ Path:
 
 		<!-- JavaScript Scripts -->
 
-		<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
+		<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous" async></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous" async defer></script>
         <script type="text/javascript" src="/scripts/gotrue.js"></script>
         <script type="text/javascript" src="/scripts/main.js"></script>
 		<script type="text/javascript" src="/scripts/dashboard.js"></script>

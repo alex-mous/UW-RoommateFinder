@@ -43,7 +43,7 @@ const handler = async (event, context) => {
                 absScore += Math.abs(profile.prefsRanked.pronouns - myProfile.prefsRanked.pronouns);
                 //console.log(`Both straight. Gender 1: ${profile.prefsRanked.pronouns} Gender 2: ${profile.prefsRanked.pronouns} Score: ${absScore}`);
             } else if (profile.prefsRanked.lgbtq == "y" && myProfile.prefsRanked.lgbtq == "y") {          //Both lgbtq
-                if (profile.prefsRanked.lgbtqpref != "1" || myprofile.prefsRanked.lgbtqpref != "1") {                     //one not comfortable - need same pronouns
+                if (profile.prefsRanked.lgbtqpref != "1" || myProfile.prefsRanked.lgbtqpref != "1") {                     //one not comfortable - need same pronouns
                     absScore += Math.abs(profile.prefsRanked.pronouns - myProfile.prefsRanked.pronouns);          //need same pronouns
                 }
                 //console.log(`Both not straight. Gender 1: ${profile.prefsRanked.pronouns} Gender 2: ${profile.prefsRanked.pronouns} Score: ${absScore}`);
@@ -119,7 +119,13 @@ const handler = async (event, context) => {
             if (!rankedUsers[matchScore]) {
                 rankedUsers[matchScore] = [];
             }
-            rankedUsers[matchScore].push(testU.user_metadata.listing);
+            if (testU.user_metadata.listing.public == "y") {
+                rankedUsers[matchScore].push(testU.user_metadata);
+            } else {
+                rankedUsers[matchScore].push({
+                    listing: testU.user_metadata.listing
+                });
+            }
         }
 
         let topUsers = [];
@@ -129,7 +135,7 @@ const handler = async (event, context) => {
         let i = 0;
         while (topUsers.length < 25 && i < keys.length) { //add users, up to 25
             for (let u of rankedUsers[keys[i]]) {
-                u.score = keys[i];
+                u.listing.score = Math.min(keys[i]+20, 100);
                 topUsers.push(u);
             }
             i++;
@@ -201,7 +207,7 @@ module.exports = { handler }
             if (profile.prefsRanked.lgbtqpref == "n" && myProfile.prefsRanked.lgbtqpref == "n") {                 //Both not lgbtq - need same pronouns
                 absScore += Math.abs(profile.prefsRanked.pronouns - myProfile.prefsRanked.pronouns);
             } else if (profile.prefsRanked.lgbtqpref == "y" && myProfile.prefsRanked.lgbtqpref == "y") {          //Both lgbtq
-                if (profile.prefsRanked.lgbtq != "1" || myprofile.prefsRanked.lgbtq != "1") {                     //one not comfortable - need same pronouns
+                if (profile.prefsRanked.lgbtq != "1" || myProfile.prefsRanked.lgbtq != "1") {                     //one not comfortable - need same pronouns
                     absScore += Math.abs(profile.prefsRanked.pronouns - myProfile.prefsRanked.pronouns);          //need same pronouns
                 }
             } else if (profile.prefsRanked.lgbtqpref != "r" || myProfile.prefsRanked.lgbtqpref != "r") {           //One lgbtq and the other not and both do not have rather not say - incompatible
