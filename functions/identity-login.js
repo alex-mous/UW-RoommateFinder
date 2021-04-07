@@ -148,7 +148,7 @@ const handler = async (event, context) => {
             body: JSON.stringify({
               app_metadata: {
                   success: true,
-                  users: topUsers
+                  topUsers: topUsers
                 }
             })
         };
