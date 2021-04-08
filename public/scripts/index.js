@@ -38,6 +38,9 @@ const checkConfirmation = (hash) => {
                 console.error("Error while confirming reset", err);
                 showMsg(`<b>Error while confirming reset link!</b> The link probably expired. Please request <a href="#" onclick="doPasswordReset()">a new one</a>`, "resetMsg", "danger");
             });
+    } else if (hash.includes("#login")) {
+        showForms(false);
+        showMsg(`<b>Please login or sign up before continuing</b>`, "loginMsg", "danger");
     }
 }
 
@@ -140,8 +143,6 @@ const doPasswordResetConfirm = (e) => {
 
 //Main methods
 // user, auth defined in main
-
-if (user != null) document.querySelectorAll(".no-auth, .auth-only").forEach(ele => ele.classList.toggle("d-none"));
 
 checkConfirmation(window.location.hash);
 
