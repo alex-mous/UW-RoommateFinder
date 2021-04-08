@@ -3,7 +3,7 @@
 </p>
 
 [![GitHub issues](https://img.shields.io/github/issues/alex-mous/UW-RoommateFinder)](https://github.com/alex-mous/UW-RoommateFinder/issues) [![GitHub forks](https://img.shields.io/github/forks/alex-mous/UW-RoommateFinder)](https://github.com/alex-mous/UW-RoommateFinder/network) [![GitHub stars](https://img.shields.io/github/stars/alex-mous/UW-RoommateFinder)](https://github.com/alex-mous/UW-RoommateFinder/stargazers) 
-![version](https://img.shields.io/badge/version-0.2-purple)[![Netlify Status](https://api.netlify.com/api/v1/badges/448621a4-1c06-4ea8-8c7c-adc6ba6586b9/deploy-status)](https://app.netlify.com/sites/roommatematcher/deploys)
+![version](https://img.shields.io/badge/version-1.0.0-purple)[![Netlify Status](https://api.netlify.com/api/v1/badges/448621a4-1c06-4ea8-8c7c-adc6ba6586b9/deploy-status)](https://app.netlify.com/sites/roommatematcher/deploys)
 
 UW RoommateFinder is a project designed by the UW Discord 2025 CS team that helps incoming students of the University of Washington find roommates who have similar preferences and interests.
 
