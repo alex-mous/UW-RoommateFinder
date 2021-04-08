@@ -9,6 +9,28 @@
     width: 100%;
 }
 
+.btn-purple {
+    color: #fff;
+    background-color: #3c2d72;
+}
+
+.btn-purple:hover {
+    background-color: #372a66;
+}
+
+.btn-outline-purple {
+    color: #fff;
+    border-color: #3c2d72;
+    border-width: 2.5px;
+}
+
+.btn-outline-purple:hover {
+    background-color: #3c2d72;
+}
+
+.navbar {
+    font-family: 'Titillium Web', sans-serif !important;
+}
 
 /*Bootstrap color overrides form dark mode*/
 @media (prefers-color-scheme: dark) {
@@ -26,5 +48,9 @@
 
     .btn-outline-success {
         color: #c3bfbb !important;
+    }
+
+    body, .btn, .splash-nav-item a {
+        color:  #d9d5d0 !important;
     }
 }

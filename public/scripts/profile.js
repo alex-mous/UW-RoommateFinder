@@ -1,39 +1,20 @@
 window.onload = () => {
-    if (user == null) window.location.href = "/" //Exit page if not logged in
+    if (user == null) window.location.href = "/#login"; //Exit page if not logged in
 
     document.querySelector("#profileForm").onsubmit = doUpdate;
     document.querySelector("#logoutBtn").onclick = doLogout;
+    document.querySelector("#deleteBtn").onclick = doDelete;
 
     let bioText = document.querySelector("textarea[name='bio']");
     bioText.onkeydown = onBioText;
 
-    document.querySelectorAll("input[name='countrymatch']").forEach((ele) => {
-        ele.onchange = (e) => {
-            document.querySelector("#f-country").classList.toggle("full-height", e.target.value == "y");
-            document.querySelectorAll("#f-country select, #f-state select").forEach(inpt => inpt.disabled = e.target.value != "y");
-        }
+    loadForm(user.user_metadata);
+    
+    onBioText({
+        target: document.querySelector("textarea[name='bio']"),
+        which: 0x20,
+        preventDefault: () => {}
     });
-
-    document.querySelector("select[name='country']").onchange = (e) => {
-        document.querySelector("#f-state").classList.toggle("full-height", e.target.value == "United States");
-        document.querySelector("#f-state select").disabled = e.target.value != "United States";
-    }
-
-    document.querySelectorAll("input[name='lgbtq']").forEach((ele) => {
-        ele.onchange = (e) => {
-            document.querySelector("#f-lgbtq").classList.toggle("full-height", e.target.value == "y");
-            document.querySelectorAll("#f-lgbtq input").forEach(inpt => inpt.disabled = e.target.value != "y");
-        }
-    });
-
-    document.querySelectorAll("input[name='ideologyr']").forEach((ele) => {
-        ele.onchange = (e) => {
-            document.querySelector("#f-ideology").classList.toggle("full-height", e.target.value > 0);
-            document.querySelectorAll("#f-ideology select").forEach(inpt => inpt.disabled = e.target.value == 0);
-        }
-    });
-
-    loadForm();
 }
 
 const doUpdate = (e) => {
@@ -47,11 +28,12 @@ const doUpdate = (e) => {
         Ranked prefs are less important and will be ranked +5 points each  (plus more in the case of multiple of the same in multi-selects)
             Except for ideology, in which case it will be 10 points for somewhat care and 1000 points for extremely important (equivalent to absolute)
     */
-    let user = {
+    let userData = {
         listing: {
             name: data.get("name"),
             email: data.get("email"),
-            bio: data.get("bio")
+            bio: data.get("bio"),
+            public: data.get("public")
         },
         profile: {
             prefsAbs: { //Absolute "deal-breakers", such as smoking/no smoking
@@ -88,7 +70,8 @@ const doUpdate = (e) => {
                 hall: data.get("residence"),
                 lgbtqpref: data.get("lgbtqpref"), //Maybe ABS PREF - here because it cannot be numerically compared
                 lgbtq: data.get("lgbtq"), //Maybe ABS PREF - here because it cannot be numerically compared
-                pronouns: data.get("pronouns") //Maybe ABS PREF
+                pronouns: data.get("pronouns"), //Maybe ABS PREF
+                genderinclusive: data.get("genderinclusive")
             },
             prefsMinimized: { //Preferences that can be minimized by subtraction - all numerical values
                 cleanliness: data.get("cleanliness"),
@@ -107,105 +90,44 @@ const doUpdate = (e) => {
 
     showMsg("Saving...", "resMsg", "info");
 
-    auth.currentUser().update({
+    user.update({
         data: {
-            ...user
+            ...userData
         }
     }).then(u => {
-        showMsg("Profile updated!", "resMsg", "success")
-        console.log("User:", u);
+        showMsg("Profile updated! Please <a onclick='doLogout()' href='#'>log out</a> and then log back in to update your matches.", "resMsg", "success");
+        console.log("New user:", u);
+    }).catch(err => {
+        console.error("Error while trying to submit user data", err);
+        showMsg("Error while updating profile - the user authentication has probably expired. Please <a href='/#login'>log back in</a> and return to this page.", "resMsg", "danger");
     });
 
 }
 
-//Load all of the form data from user memory (precondition - user is logged in)
-const loadForm = () => {
-    let userData = user.user_metadata;
-    if (!userData?.listing) return;
-    document.querySelector("input[name='name']").value = userData.listing.name;
-    document.querySelector("input[name='email']").value = userData.listing.email;
-    document.querySelector("textarea[name='bio']").value = userData.listing.bio;
-    onBioText({
-        target: document.querySelector("textarea[name='bio']"),
-        which: 0x20,
-        preventDefault: () => {}
-    })
 
-    if (userData.profile.prefsRanked.country != null) {
-        let yesBx = document.querySelector("input[name='countrymatch'][value='y']");
-        yesBx.checked = true;
-        document.querySelector("input[name='countrymatch']").onchange({
-            target: yesBx
-        });
-        let countrySelect = document.querySelector("select[name='country']");
-        countrySelect.value = userData.profile.prefsRanked.country;
-        if (userData.profile.prefsRanked.state) {
-            let stateSelect = document.querySelector("select[name='state']");
-            stateSelect.value = userData.profile.prefsRanked.state;
-            countrySelect.onchange({
-                target: countrySelect
-            });
-        }
-    } else {
-        document.querySelector("input[name='countrymatch'][value='n']").checked = true;
+//Delete a user account (after confirmation)
+const doDelete = (e) => {
+    if (prompt("Warning: this cannot be undone! Type 'delete' to permanently delete your account.").toLowerCase() == "delete") {
+        fetch("/.netlify/functions/deleteuser", {
+            headers: {
+                Authorization: `Bearer ${user.token.access_token}`
+            },
+            credentials: "include"
+        })
+            .then((res) => res.json())
+            .then((res) => {
+                console.log("Response from API for account deletion:", res);
+                alert("Account deleted. Redirecting to home...");
+                window.setTimeout(() => {
+                    window.location.href = "/";
+                }, 1000);
+            })
+            .catch((err) => {
+                console.log("Error while deleting account:", err);
+                alert("Failed to delete account. Please submit a support ticket and we will manually delete it for you.");
+            })
+            
     }
-
-    document.querySelector(`input[name='pronouns'][value='${userData.profile.prefsRanked.pronouns}']`).checked = true;
-    document.querySelector(`input[name='social'][value='${userData.profile.prefsMinimized.social}']`).checked = true;
-
-    document.querySelector("select[name='closeness']").value = userData.profile.prefsMinimized.closeness;
-    document.querySelector("select[name='major']").value = userData.profile.prefsRanked.major;
-    document.querySelector("select[name='campus']").value = userData.profile.prefsRanked.location;
-    document.querySelector("select[name='residence']").value = userData.profile.prefsRanked.hall;
-    document.querySelector("select[name='temperature']").value = userData.profile.prefsMinimized.temperature;
-    document.querySelector("select[name='cleanliness']").value = userData.profile.prefsMinimized.cleanliness;
-    document.querySelector("select[name='noise']").value = userData.profile.prefsMinimized.noise;
-    document.querySelector("select[name='pplover']").value = userData.profile.prefsMinimized.pplover;
-    document.querySelector("select[name='visover']").value = userData.profile.prefsMinimized.visover;
-    document.querySelector("select[name='sport']").value = userData.profile.prefsRanked.sport;
-    document.querySelector("select[name='ideology1']").value = userData.profile.prefsRanked.ideology.al;
-    document.querySelector("select[name='ideology2']").value = userData.profile.prefsRanked.ideology.lr;
-
-    document.querySelector(`input[name='rushing'][value='${userData.profile.prefsMinimized.rushing}']`).checked = true;
-    document.querySelector(`input[name='drink'][value='${userData.profile.prefsAbs.drink.me}']`).checked = true;
-    document.querySelector(`input[name='drinkr'][value='${userData.profile.prefsAbs.drink.you}']`).checked = true;
-    document.querySelector(`input[name='vape'][value='${userData.profile.prefsAbs.vape.me}']`).checked = true;
-    document.querySelector(`input[name='vaper'][value='${userData.profile.prefsAbs.vape.you}']`).checked = true;
-    document.querySelector(`input[name='smoke'][value='${userData.profile.prefsAbs.smoke.me}']`).checked = true;
-    document.querySelector(`input[name='smoker'][value='${userData.profile.prefsAbs.smoke.you}']`).checked = true;
-    document.querySelector(`input[name='weed'][value='${userData.profile.prefsAbs.weed.me}']`).checked = true;
-    document.querySelector(`input[name='weedr'][value='${userData.profile.prefsAbs.weed.you}']`).checked = true;
-
-    if (userData.profile.prefsRanked.interests) {
-        for (let opt of document.querySelector("select[name='interests']").options) {
-            if (userData.profile.prefsRanked.interests.includes(opt.value)) opt.selected = true;
-            else opt.selected = false;
-        }
-    }
-
-    let lgbtqRad = document.querySelector(`input[name='lgbtq'][value='${userData.profile.prefsRanked.lgbtq || "n"}']`);
-    lgbtqRad.checked = true;
-    document.querySelector("input[name='lgbtq']").onchange({
-            target: lgbtqRad
-    });
-    if (userData.profile.prefsRanked.lgbtq == "y") document.querySelector(`input[name='lgbtqpref'][value='${userData.profile.prefsRanked.lgbtqpref}']`).checked = true;
-
-    let ideologyRad = document.querySelector(`input[name='ideologyr'][value='${userData.profile.prefsRanked.ideology.rank}']`);
-    ideologyRad.checked = true;
-    document.querySelector("input[name='ideologyr']").onchange({
-            target: ideologyRad
-    });
-
-    let setTime = (name, time) => {
-        let hrs = Math.floor(12*time/5);
-        if (hrs < 10) hrs = `0${hrs}`;
-        let mins = Math.round(12*time)%5;
-        if (mins < 10) mins = `0${mins}`; //Pad in case not correct format
-        document.querySelector(`input[name='${name}']`).value = `${hrs}:${mins}`;
-    }
-
-    setTime("waketime", userData.profile.prefsMinimized.waketime);
-    setTime("sleeptime", userData.profile.prefsMinimized.sleeptime);
 }
 
 //Validate bio length isn't too long and update UI accordingly
@@ -221,27 +143,3 @@ const onBioText = (e) => {
         e.preventDefault();
     }
 }
-
-var autoExpand = function (field) {
-
-	// Reset field height
-	field.style.height = 'inherit';
-
-	// Get the computed styles for the element
-	var computed = window.getComputedStyle(field);
-
-	// Calculate the height
-	var height = parseInt(computed.getPropertyValue('border-top-width'), 10)
-	             + parseInt(computed.getPropertyValue('padding-top'), 10)
-	             + field.scrollHeight
-	             + parseInt(computed.getPropertyValue('padding-bottom'), 10)
-	             + parseInt(computed.getPropertyValue('border-bottom-width'), 10);
-
-	field.style.height = height + 'px';
-
-};
-
-document.addEventListener('input', function (event) {
-	if (event.target.tagName.toLowerCase() !== 'textarea') return;
-	autoExpand(event.target);
-}, false);

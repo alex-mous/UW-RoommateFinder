@@ -33,7 +33,10 @@ Path:
             </button>
             <div class="collapse navbar-collapse ml-auto" id="mainNavItems">
                 <div class="ml-auto navbar-nav nav">
-                    <a class="nav-item nav-link mx-2" href="/about">
+                    <a class="nav-item nav-link mx-1" href="/">
+                        Home
+                    </a> 
+                    <a class="nav-item nav-link mx-lg-2 mx-1" href="/about">
                         Why RoommateFinder?
                     </a>
                     <a class="nav-item nav-link mx-1 active" href="/profile">
@@ -45,8 +48,11 @@ Path:
                     <a class="nav-item nav-link mx-1" href="/support">
                         Support
                     </a>
-                    <a class="mx-1 btn btn-outline-danger" id="logoutBtn" href="#">
+                    <a class="mx-1 btn btn-outline-danger auth-only d-none" id="logoutBtn" href="#">
                         Log Out
+                    </a>
+                    <a class="mx-1 btn btn-outline-purple no-auth" href="/#login">
+                        Log In
                     </a>
                 </div>
             </div>
@@ -56,13 +62,16 @@ Path:
             
             <p class="h1 text-center">RoommateFinder - Profile</p>
 
-			<section class="text-center my-4" id="about">
-                Enter information about yourself below and we will match you to a list of the top ten people with closest interests and preferences.
-                <p class="text-info mt-3">All fields required unless otherwise specified. All information will be kept private from other matches except for the information required in the Match Listing section.</p>
+			<section class="text-center my-2 lead" id="about">
+                Update your RoommateFinder profile or delete your account.
 			</section>
             <hr class="w-75">
             <section class="mt-3 mb-5" id="form">
-                
+                <p class="h3 text-center mt-4 mb-3">Update Profile</p>
+                <p class="text-center">
+                    Enter information about yourself below and we will match you to a list of the top ten people with closest interests and preferences.
+                    <p class="text-info text-center mt-3">All fields required unless otherwise specified. All information will be kept private from other matches except for the information required in the Match Listing section.</p>
+                </p>
                 <form id="profileForm">
                     <p class="h4 text-center mt-4 mb-1">Match Listing</p>
                     <p class="text-danger text-center small m-0 p-0">This information will be shown to other matches</p>
@@ -75,8 +84,8 @@ Path:
                     <hr class="d-md-none d-block w-50 my-0">
                     <label class="row custom-form-row">
                         <span class="col-md col-12 mb-1 py-2 text-center">
-                            <p class="m-0 p-0">What are your preferred methods of contact?</p>
-                            <p class="text-info text-center small m-0 p-0">Email, phone, Instagram, SnapChat, etc.</p>
+                            <p class="m-0 p-0">Please list some ways to contact you</p>
+                            <p class="text-info text-center small m-0 p-0">Such as your email address, phone number, Instagram or SnapChat handle, etc.</p>
                         </span>
                         <input class="col mx-4 mx-sm-0 form-control d-inline" required type="text" name="email">
                     </label>
@@ -88,6 +97,27 @@ Path:
                             <p class="text-center small text-success">Current word count: <span id="bioCount">0</span>/150 Max</p>
                         </span>
                         <textarea class="col mx-4 mx-sm-0 w-0 form-control d-inline" id="bioText" required name="bio"></textarea>
+                    </label>
+                    <hr class="d-md-none d-block w-50 my-0">
+                    <label class="row custom-form-row">
+                        <span class="col-md col-12 mb-1 py-2 text-center">
+                            Would you like other matches to be able to see the information you enter below?
+                            <p class="text-info small m-0 p-0">Selecting no will mean your information will be kept anonymous, but it may reduce your chances of finding a roommate.</p>
+                        </span>
+                        <span class="col-md col-12 mb-1 py-2 text-center">
+                            <div class="form-check-inline">
+                                <label class="form-check-label">
+                                    <input class="form-check-input" type="radio" required name="public" value="y">
+                                    Yes
+                                </label>
+                            </div>
+                            <div class="form-check-inline">
+                                <label class="form-check-label">
+                                    <input class="form-check-input" type="radio" required name="public" value="n">
+                                    No
+                                </label>
+                            </div>
+                        </span>
                     </label>
                     <p class="h4 text-center mt-4 mb-1">Basic Demographics</p>
                    
@@ -496,6 +526,21 @@ Path:
                         </span>
                         <select class="col mx-4 mx-sm-0 form-control" required name="major">
                             <option disabled selected value> -- select -- </option>
+                            <option value="DNR">Don't rank me by this</option>
+                            <option value="Undecided">Undecided</option>
+                            <option value="art">Art/Music</option>
+                            <option value="bio">Bio/Environmental</option>
+                            <option value="business">Business</option>
+                            <option value="cs">CS/CE/CS-related</option>
+                            <option value="engineering">Engineering</option>
+                            <option value="Undecided">Health Science</option>
+                            <option value="language">Language</option>
+                            <option value="math">Math</option>
+                            <option value="physics">Physical Science</option>
+                            <option value="social">Social Science</option>
+                        </select>
+                        <!--<select class="col mx-4 mx-sm-0 form-control" required name="major">
+                            <option disabled selected value> -- select -- </option>
                             <option value="Undecided">Undecided</option>
                             <option value="American Ethnic Studies">American Ethnic Studies</option>
                            	<option value="Art">Art</option>
@@ -603,7 +648,7 @@ Path:
                             <option value="Sociology">Sociology</option>
                             <option value="Social Welfare">Social Welfare</option>
                             <option value="Voice (Music)">Voice (Music)</option>
-                         </select>
+                         </select>-->
                     </label>
                     <p class="h4 text-center mt-4 mb-1">Housing Preferences</p>
                     <label class="row custom-form-row">
@@ -660,6 +705,7 @@ Path:
                     <label class="row custom-form-row">
                         <span class="col-md col-12 mb-1 py-2 text-center">
                             Do you plan on rushing?
+                            <p class="text-info small m-0 p-0">Do you plan on joining a fraternity/sorority?</p>
                         </span>
                         <span class="col-md col-12 mb-1 py-2 text-center">
                             <div class="form-check-inline">
@@ -671,6 +717,27 @@ Path:
                             <div class="form-check-inline">
                                 <label class="form-check-label">
                                     <input class="form-check-input" type="radio" required name="rushing" value="0">
+                                    No
+                                </label>
+                            </div>
+                        </span>
+                    </label>
+                    <hr class="d-md-none d-block w-50 my-0">
+                    <label class="row custom-form-row">
+                        <span class="col-md col-12 mb-1 py-2 text-center">
+                            Do you mind living in co-ed dorms (Gender-inclusive housing)?
+                            <p class="text-info small m-0 p-0">For more information, see <a href="https://hfs.uw.edu/Gender-inclusive-housing">the UW HFS website</a>.</p>
+                        </span>
+                        <span class="col-md col-12 mb-1 py-2 text-center">
+                            <div class="form-check-inline">
+                                <label class="form-check-label">
+                                    <input class="form-check-input" type="radio" required name="genderinclusive" value="y">
+                                    Yes
+                                </label>
+                            </div>
+                            <div class="form-check-inline">
+                                <label class="form-check-label">
+                                    <input class="form-check-input" type="radio" required name="genderinclusive" value="n">
                                     No
                                 </label>
                             </div>
@@ -1038,12 +1105,15 @@ Path:
                             <option value="plants">Plants</option>
                             <option value="tech">Technology</option>
                             <option value="travel">Travelling</option>
+                            <option value="manga">Manga</option>
+                            <option value="manga">Manga</option>
                          </select>
                     </label>
                     <hr class="d-md-none d-block w-50 my-0">
                     <label class="row custom-form-row">
                         <span class="col-md col-12 mb-1 py-2 text-center">
                             <p class="m-0 p-0">How important is a roommate who has a similar political ideology to you?</p>
+                            <p class="text-info text-center small m-0 p-0">If you need to figure out where you stand, please take a political test such as <a href='https://sapplyvalues.github.io/' rel="noopener nofollow" target="_blank">this one</a>.</p>
                         </span>
                         <span class="col-md col-12 mb-1 py-2 text-center">
                             <div class="form-check-inline d-block d-sm-inline">
@@ -1061,7 +1131,7 @@ Path:
                             <div class="form-check-inline d-block d-sm-inline">
                                 <label class="form-check-label">
                                     <input class="form-check-input" type="radio" required name="ideologyr" value="0">
-                                    Don't care at all
+                                    Don't want to say
                                 </label>
                             </div>
                         </span>
@@ -1103,6 +1173,13 @@ Path:
                     <p class="mt-3 text-center w-100"><span id="resMsg"></span></p>
                 </form>
             </section>
+            <hr class="w-75">
+            <section class="text-center my-4" id="delete">
+                <p class="h3 text-center mt-4 mb-3">Delete Account</p>
+                <p>Found a roommate or tired of being listed?</p>
+                <button class="btn btn-outline-danger" id="deleteBtn">Delete my account</button>
+			</section>
+            <hr class="w-75">
 			<footer class="footer pt-3 pb-1 px-3 my-0">
                 <p class="text-muted">
                     Copyright (c) 2021. Created with ❤️ and 🍵 by Alex Mous. <a href="https://github.com/alex-mous/UW-RoommateFinder" rel="noopener nofollow" target="_blank">View the source code on GitHub!</a>
@@ -1110,38 +1187,13 @@ Path:
             </footer>
 		</main>
 
-
-		<!--Schema for Google-->
-		<script type="application/ld+json">
-			{
-			  "@context": "https://schema.org",
-			  "@type": "Organization",
-			  "url": "URL",
-			  "logo": "URL/assets/logo.png"
-			}
-		</script>
-
-		<script type="application/ld+json">
-			{
-			  "@context": "https://schema.org",
-			  "@type": "BreadcrumbList",
-			  "itemListElement": [{
-				"@type": "ListItem",
-				"position": 1,
-				"name": "Home",
-				"item": "URL"
-			  }]
-			}
-		</script>
-
 		<!-- JavaScript Scripts -->
-
-		<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
         <script type="text/javascript" src="/scripts/gotrue.js"></script>
         <script type="text/javascript" src="/scripts/main.js"></script>
 		<script type="text/javascript" src="/scripts/profile.js"></script>
-
+		<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous" async defer></script>
+        
 		
 	</body>
 </html>

@@ -1,25 +1,13 @@
-var autoExpand = function (field) {
+window.onload = () => {
+	document.querySelectorAll("textarea").forEach((ele) => {
+        ele.oninput = (event) => {
+            autoExpand(event.target);
+        }
+    });
 
-	// Reset field height
-	field.style.height = 'inherit';
+	document.querySelector("#logoutBtn").onclick = doLogout;
 
-	// Get the computed styles for the element
-	var computed = window.getComputedStyle(field);
-
-	// Calculate the height
-	var height = parseInt(computed.getPropertyValue('border-top-width'), 10)
-	             + parseInt(computed.getPropertyValue('padding-top'), 10)
-	             + field.scrollHeight
-	             + parseInt(computed.getPropertyValue('padding-bottom'), 10)
-	             + parseInt(computed.getPropertyValue('border-bottom-width'), 10);
-
-	field.style.height = height + 'px';
-
-};
-
-document.addEventListener('input', function (event) {
-	if (event.target.tagName.toLowerCase() !== 'textarea') return;
-	autoExpand(event.target);
-}, false);
-
-document.querySelector("#logoutBtn").onclick = doLogout;
+	if (window.location.hash.includes("success")) {
+		showMsg("Response successfully sent! We will get back to you soon.", "resMsg", "success");
+	}
+}
