@@ -13,6 +13,13 @@ if (user != null) { //Toggle conditional display elements
     document.querySelectorAll(".no-auth, .auth-only").forEach(ele => ele.classList.toggle("d-none"));
 }
 
+
+
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-LTP9LT2JKC');
+
 //------------ Global Methods
 
 //Show or clear a message. htmlMsg store the html to be displayed. blockId is the ID of the element to target. type is the text type (info/success/warn/danger)
