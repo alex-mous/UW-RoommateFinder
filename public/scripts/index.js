@@ -83,9 +83,9 @@ const doLogin = (e) => {
         .then((resp) => {
             console.log("Received API response for login: ", resp);
             showMsg("<b>Success!</b> You'll be redirected to <a href='/dashboard'>your Dashboard</a> in a few seconds.", "loginMsg", "success");
-            /*window.setTimeout(() => {
+            window.setTimeout(() => {
                 window.location.href = "/dashboard";
-            }, 3000);*/
+            }, 3000);
         })
         .catch((err) => {
             console.log("Error received: API response for login: ");

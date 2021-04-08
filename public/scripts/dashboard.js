@@ -1,5 +1,7 @@
 // auth, user already defined in main
 
+let topUsers; //top users from api
+
 window.onload = () => {
     if (user == null) window.location.href = "/#login"; //Exit page if not logged in
 
@@ -10,33 +12,48 @@ window.onload = () => {
         return;
     }
 
-    let params = new URLSearchParams(window.location.search);
-    let i = params.get("user")
-    if (i) {
-        console.log("Showing user with index ", i)
-        showUser(i);
-        return;
-    }
-
-    console.log("Showing matches...");
-    if (user.app_metadata.success) {
-        let users = user.app_metadata.users;
-        for (let i in users) {
-            let row = document.createElement("TR");
-            let profileLink = "Not public";
-            if (users[i].listing.public) {
-                profileLink = "<button class='btn btn-sm btn-purple' onclick='showUser(\"" + i + "\")'>View profile</button>";
+    console.log("Requesting matches...");
+    fetch("/.netlify/functions/match", {
+        method: "POST",
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            email: user.email,
+            user_metadata: user.user_metadata
+        })
+    })
+        .then(res => res.json())
+        .then(res => {
+            console.log("Response from endpoint: ", res);
+            if (res.success) {
+                topUsers = res.users;
+                for (let i in res.users) {
+                    let row = document.createElement("TR");
+                    let profileLink = "Not public";
+                    if (res.users[i].listing.public == "y") {
+                        profileLink = "<btn class='btn btn-sm btn-purple' onclick='toggleUser(true, \"" + i + "\")'>View profile</btn>";
+                    }
+                    row.innerHTML = `<td>${res.users[i].listing.name}</td><td>${res.users[i].listing.email}</td><td><div class="bio">${res.users[i].listing.bio}</div></td><td>${res.users[i].listing.score}%</td><td>${profileLink}</td>`;
+                    document.querySelector("#matchTable").appendChild(row);
+                }
+                showMsg("No new notifications. Latest best matches shown.", "mainMsg", "info");
+            } else {
+                showMsg("Error in finding users! Please submit a request via <a href='/support'>our support page</a>.", "mainMsg", "danger");
             }
-            row.innerHTML = `<td>${users[i].listing.name}</td><td>${users[i].listing.email}</td><td><div class="bio">${users[i].listing.bio}</div></td><td>${users[i].listing.score}%</td><td>${profileLink}</td>`;
-            document.querySelector("#matchTable").appendChild(row);
-        }
-        showMsg("No new notifications. Latest best matches shown.", "mainMsg", "info");
-    } else {
-        showMsg("Error in finding users! Please submit a request via <a href='/support'>our support page</a>.", "mainMsg", "danger");
-    }
+        })
+        .catch(err => {
+            console.log("Error at endpoint", err);
+            showMsg("Error in request! Please submit a request via <a href='/support'>our support page</a>.", "mainMsg", "danger");
+        })
+    
 }
 
 //Show a popup overlay with the user information
-const showUser = (i) => {
-    document.querySelector("#matches, #userview").classList.toggle("d-none");
+const toggleUser = (showUser, i) => {
+    document.querySelector("#matches").classList.toggle("d-none", showUser);
+    document.querySelector("#userview").classList.toggle("d-none", !showUser);
+    if (showUser) {
+        loadForm(topUsers[i], false);
+    }
 }

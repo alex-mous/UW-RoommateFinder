@@ -2,16 +2,17 @@ const fetch = require('node-fetch').default;
 
 const handler = async (event, context) => {
     try {
-        const user = context.clientContext.user;
+        console.log(event, context);
+        const user = JSON.parse(event.body);
 
-        if (!user) {
+        if (!context.clientContext.identity) {
             return {
-                statusCode: 501,
+                statusCode: 400,
                 body: JSON.stringify({
-                  success: false,
-                  err: "Invalid authentication"
+                    success: false,
+                    err: "Invalid authentication"
                 })
-            };
+            }
         }
 
         const usersUrl = `${context.clientContext.identity.url}/admin/users`;
@@ -154,13 +155,13 @@ const handler = async (event, context) => {
             statusCode: 200,
             body: JSON.stringify({
                 success: true,
-                topUsers: topUsers
+                users: topUsers
             })
         };
     } catch (error) {
         console.log("Error", error);
         return {
-            statusCode: 501,
+            statusCode: 500,
             body: JSON.stringify({
                 success: false,
                 err: error
