@@ -3,7 +3,6 @@ const fetch = require('node-fetch').default;
 const handler = async (event, context) => {
     try {
         const user = JSON.parse(event.body).user;
-        
 
         const usersUrl = `${context.clientContext.identity.url}/admin/users`;
         let data = await (await fetch(usersUrl, {

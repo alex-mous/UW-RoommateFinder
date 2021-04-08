@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "netlify-lambda build ./functions/",
+    "deploy": "netlify build && netlify deploy -p",
     "netlify": "netlify"
   },
   "author": "",
