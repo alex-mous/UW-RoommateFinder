@@ -8,7 +8,7 @@ window.onload = () => {
     let bioText = document.querySelector("textarea[name='bio']");
     bioText.onkeydown = onBioText;
 
-    loadForm(user.user_metadata);
+    loadForm(user.user_metadata, true);
     
     onBioText({
         target: document.querySelector("textarea[name='bio']"),
