@@ -54,3 +54,11 @@
         color:  #d9d5d0 !important;
     }
 }
+
+@media (prefers-color-scheme: dark) {
+    @supports (-webkit-touch-callout: none) {
+        select {
+            color: black  !important;
+        }
+    }
+}
