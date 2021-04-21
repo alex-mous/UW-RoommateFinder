@@ -123,7 +123,7 @@ const handler = async (event, context) => {
             }
 
             // maxScore = 207
-            let matchScore = Math.round(100*(minimizedScore + rankedScore)/207);
+            let matchScore = Math.max(0, Math.round(100*(minimizedScore + rankedScore)/207)); //Scale score and make sure never below 0
             if (!rankedUsers[matchScore]) {
                 rankedUsers[matchScore] = [];
             }
