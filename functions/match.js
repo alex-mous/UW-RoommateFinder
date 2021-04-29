@@ -27,6 +27,7 @@ const handler = async (event, context) => {
 
         let rankedUsers = {}; //Store ranked users by score as key and value as array of user listings
         let myProfile = user.user_metadata.profile; //This user must have meta data for this to be called
+        console.log("Number of users: ", data.users.length);
         for (let testU of data.users) {
             if (!testU.user_metadata || !testU.user_metadata.listing || testU.email == user.email) continue;
             let profile = testU.user_metadata.profile;
@@ -45,6 +46,7 @@ const handler = async (event, context) => {
 
             //console.log("Abs Score:", absScore);
             if (absScore > 0) {
+                //console.log("Skipping user because of abs pref");
                 continue;
             }
             
@@ -63,6 +65,7 @@ const handler = async (event, context) => {
             }
 
             if (absScore > 0) {
+                //console.log("Skipping user because of abs pref");
                 continue;
             }
 
@@ -139,17 +142,22 @@ const handler = async (event, context) => {
         let topUsers = [];
         //Keys in rankedUsers will be auto-sorted as all ints - all we need to do is find (up to) the top 25
         let keys = (Object.keys(rankedUsers));
+        console.log("Top keys:", keys);
         keys = keys.slice(0, Math.min(25, keys.length)).sort().reverse();
+        
         let i = 0;
-        while (topUsers.length < 25 && i < keys.length) { //add users, up to 25
+        let j = 0;
+        while (j < 25 && i < keys.length) { //add users, up to 25
             for (let u of rankedUsers[keys[i]]) {
+                if (j >= 25) break;
                 u.listing.score = keys[i];
                 topUsers.push(u);
+                j++;
             }
             i++;
         }
 
-        console.log("Returning data: ", topUsers);
+        console.log("Returning # of users: ", j);
 
         return {
             statusCode: 200,
